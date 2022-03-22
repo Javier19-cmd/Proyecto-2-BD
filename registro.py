@@ -16,6 +16,7 @@ def registro():
     #Menú para registrar a las personas en la base de datos.
     print("Bienvenid@ a la página de registro de la plataforma de streaming \n")
 
+    #Datos que se le pedirán a los usuarios: 
     nombre = input("Ingrese su nombre: ")
 
     apellido = input("Ingrese su apellido: ")
