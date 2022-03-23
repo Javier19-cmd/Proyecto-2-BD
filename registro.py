@@ -7,6 +7,7 @@ Referencias:
 import psycopg2 #Librería para la base de datos.
 from datos import * #Jalando el archivo que tiene los datos de la BD.
 import cryptocode   #Librería para encriptar las contraseñas.
+from perfiles import * #Llamando al archivo de perfiles, para poder registrarlos en otra tabla de la base de datos.
 
 def abrir_BD(): #Método que servirá para poder ingresar los datos del usuario en la base de datos.
     #Conexión a la base de datos.
@@ -106,6 +107,9 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
 
         #Cerrando la conexión.
         conexion1.close()
+
+        basico(usuario) #Llamando al método de plan básico para que se registre el perfil de la persona.
+                        #Se le pasa como parámetro el usuario para que cuando se inicie sesión, el sistema jale los datos que son.
         
     elif plan == 2: #Si el usuario eligió el número 2, entonces eligió el plan estándar.
         print("Plan estándar")
@@ -121,6 +125,9 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
         #Cerrando la conexión.
         conexion1.close()
 
+        estandar(usuario) #Llamando al método de plan estándar para que se registren los perfiles de la persona.
+                          #Se le pasa como parámetro el usuario para que cuando se inicie sesión, el sistema jale los datos que son.
+
     elif plan == 3: #Si el usuario eligió el número 3, entonces eligió el plan avanzado.
         print("Plan avanzado")
 
@@ -134,6 +141,9 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
 
         #Cerrando la conexión.
         conexion1.close()
+
+        avanzado(usuario) #Llamando al método de plan avanzado para que se registren los perfiles de la persona.
+                          #Se le pasa como parámetro el usuario para que cuando se inicie sesión, el sistema jale los datos que son.
 
     """
     #Comprobando que la contraseña sea la misma.
