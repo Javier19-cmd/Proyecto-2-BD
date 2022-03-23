@@ -1,6 +1,9 @@
 #Importando archivos.
 from registro import *
 
+#Registro de administradores.
+from registro_admins import *
+
 #Página de inicio del programa.
 def inicio():
     while True: #While para que la ejecución nunca termine.
@@ -28,6 +31,8 @@ def inicio():
             elif opcion==3:
                 #Opción para registrar administrador.
                 print("Opción de registro de administrador elegida \n")
+
+                registrar_admin() #Llamando al método que registra al administrador en la BD.
 
             elif opcion == 4: 
                 #Cerrar programa.

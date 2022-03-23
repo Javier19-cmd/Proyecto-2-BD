@@ -43,6 +43,7 @@ def registro():
         print("Longitud no válida, favor ingrese todo bien otra vez")
         registro()
 
+    #Encriptando contraseña.
     passkey = 'UVG' #Llave para encriptar.
 
     conn = cryptocode.encrypt(contraseña, passkey) #Contraseña encriptada.
@@ -85,7 +86,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
         print(row[0])
         if usuario == row[0]:
             print("Usuario existente, favor regresar a ingresar bien los datos")
-            registro()
+            registro() #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
     print("Se insertaron los datos: ")
     print(nombre)
