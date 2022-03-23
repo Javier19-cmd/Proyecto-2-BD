@@ -27,5 +27,11 @@ def registro():
 
     correo = input("Ingrese su correo: ")
 
+    print("\n")
+
     #Plan básico, estándar y avanzado.
+    print("Los planes que existen son: ")
+    print("1) Básico: Este plan es gratis")
+    print("2) Estándar: Este plan es pagado y vale $3")
+    print("3) Avanzado: Este plan es pagado y vale $5\n")
     plan = input("Ingrese su plan: ")
