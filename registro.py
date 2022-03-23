@@ -1,7 +1,7 @@
 """
 Referencias: 
 
-1. Biblioteca de cryptocode: https://www.delftstack.com/es/howto/python/python-encrypt-string/
+1. Librería de cryptocode: https://www.delftstack.com/es/howto/python/python-encrypt-string/
 
 """
 import psycopg2 #Librería para la base de datos.
