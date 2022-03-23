@@ -56,10 +56,13 @@ def registro():
     print("1) Básico: Este plan es gratis")
     print("2) Estándar: Este plan es pagado y vale $3")
     print("3) Avanzado: Este plan es pagado y vale $5\n")
-    plan = int(input("Ingrese su plan: "))
+    
+    try:
+        plan = int(input("Ingrese su plan: "))
 
-    insertar(nombre, apellido, usuario, conn, correo, plan) #Mandando los datos a la base de datos.
-
+        insertar(nombre, apellido, usuario, conn, correo, plan) #Mandando los datos a la base de datos.
+    except:
+        print("Opción no numérica")
 #Método para que se inserten los datos en la BD.
 def insertar(nombre, apellido, usuario, conn, correo, plan):
     
@@ -151,5 +154,3 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
     des = cryptocode.decrypt(conn, llave) #Desencriptando mensaje.
     print("Validando contraseña ", des)
     """
-
-registro()

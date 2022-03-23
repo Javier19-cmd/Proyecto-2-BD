@@ -50,90 +50,97 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
     while True:
         #El usuario puede elegir como máximo a cuatro perfiles.
         decision = int(input("¿Cuántos perfiles desea tener? "))
+        
+        #Try-catch para evitar que el usuario no meta una opción no numérica.
+        try: 
+            if decision == 1: 
+                #Insertar el usuario y el perfil.
+                #El usuario eligió a dos perfiles.
+                perfil = input("Ingrese el nombre del usuario: ")
+                
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
-        if decision == 1: 
-            #Insertar el usuario y el perfil.
-            #El usuario eligió a dos perfiles.
-            perfil = input("Ingrese el nombre del usuario: ")
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil,))
+
+                #Commit del query.
+                conexion1.commit()
+
+                #Cerrando la conexión.
+                conexion1.close()
+
+            elif decision == 2: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a dos perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+
+                #Commit del query.
+                conexion1.commit()
+
+                #Cerrando la conexión.
+                conexion1.close()
             
-            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
+            elif decision == 3: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a tres perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
 
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil,))
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
-            #Commit del query.
-            conexion1.commit()
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
 
-            #Cerrando la conexión.
-            conexion1.close()
+                #Commit del query.
+                conexion1.commit()
 
-        elif decision == 2: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a dos perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
+                #Cerrando la conexión.
+                conexion1.close()
+            
+            elif decision == 4: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a cuatro perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
+                perfil4 = input("Ingrese el nombre del usuario: ")
 
-            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil4,))
 
-            #Commit del query.
-            conexion1.commit()
+                #Commit del query.
+                conexion1.commit()
 
-            #Cerrando la conexión.
-            conexion1.close()
+                #Cerrando la conexión.
+                conexion1.close()
+
+            else: 
+                #Se eligieron más perfiles.
+                print("No se pueden elegir más perfiles.")
         
-        elif decision == 3: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a tres perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-
-            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
-
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-
-            #Commit del query.
-            conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
+        except: #Opción no numérica.
+            print("Opción no válida.")
         
-        elif decision == 4: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a cuatro perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-            perfil4 = input("Ingrese el nombre del usuario: ")
-
-            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
-
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-            cursor1.execute(sql,(usuario,perfil4,))
-
-            #Commit del query.
-            conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
-
-        else: 
-            #Se eligieron más perfiles.
-            print("No se pueden elegir más perfiles.")
+        break; #Regresando a la página de inicio.
 
 
 def avanzado(usuario):
@@ -153,199 +160,207 @@ def avanzado(usuario):
         #El usuario puede elegir como máximo a cuatro perfiles.
         decision = int(input("¿Cuántos perfiles desea tener? "))
 
-        if decision == 1: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a dos perfiles.
-            perfil = input("Ingrese el nombre del usuario: ")
+        #Try-catch para evitar que el usuario no elija una opción no numérica.
+        try: 
+            if decision == 1: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a dos perfiles.
+                perfil = input("Ingrese el nombre del usuario: ")
 
-            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil,))
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil,))
 
-            #Commit del query.
-            conexion1.commit()
+                #Commit del query.
+                conexion1.commit()
 
-            #Cerrando la conexión.
-            conexion1.close()
+                #Cerrando la conexión.
+                conexion1.close()
 
-        elif decision == 2: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a dos perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
+            elif decision == 2: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a dos perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
 
-            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
 
-            #Commit del query.
-            conexion1.commit()
+                #Commit del query.
+                conexion1.commit()
 
-            #Cerrando la conexión.
-            conexion1.close()
-        
-        elif decision == 3: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a tres perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-
-            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
-
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-
-            #Commit del query.
-            conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
-
-        
-        elif decision == 4: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a cuatro perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-            perfil4 = input("Ingrese el nombre del usuario: ")
+                #Cerrando la conexión.
+                conexion1.close()
             
+            elif decision == 3: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a tres perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
+
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
+
+                #Commit del query.
+                conexion1.commit()
+
+                #Cerrando la conexión.
+                conexion1.close()
+
+            
+            elif decision == 4: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a cuatro perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
+                perfil4 = input("Ingrese el nombre del usuario: ")
+                
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil4,))
+
+                #Commit del query.
+                conexion1.commit()
+
+                #Cerrando la conexión.
+                conexion1.close()
+
+            elif decision == 5: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a cinco perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
+                perfil4 = input("Ingrese el nombre del usuario: ")
+                perfil5 = input("Ingrese el nombre del usuario: ")
+
+                #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil4,))
+                cursor1.execute(sql,(usuario,perfil5,))
+
+                #Commit del query.
+                conexion1.commit()
+
+                #Cerrando la conexión.
+                conexion1.close()
+            
+            elif decision == 6: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a seis perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
+                perfil4 = input("Ingrese el nombre del usuario: ")
+                perfil5 = input("Ingrese el nombre del usuario: ")
+                perfil6 = input("Ingrese el nombre del usuario: ")
+
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-            cursor1.execute(sql,(usuario,perfil4,))
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil4,))
+                cursor1.execute(sql,(usuario,perfil5,))
+                cursor1.execute(sql,(usuario,perfil6,))
 
-            #Commit del query.
-            conexion1.commit()
+                #Commit del query.
+                conexion1.commit()
 
-            #Cerrando la conexión.
-            conexion1.close()
+                #Cerrando la conexión.
+                conexion1.close()
 
-        elif decision == 5: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a cinco perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-            perfil4 = input("Ingrese el nombre del usuario: ")
-            perfil5 = input("Ingrese el nombre del usuario: ")
+            elif decision == 7: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a siete perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
+                perfil4 = input("Ingrese el nombre del usuario: ")
+                perfil5 = input("Ingrese el nombre del usuario: ")
+                perfil6 = input("Ingrese el nombre del usuario: ")
+                perfil7 = input("Ingrese el nombre del usuario: ")
 
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-            cursor1.execute(sql,(usuario,perfil4,))
-            cursor1.execute(sql,(usuario,perfil5,))
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil4,))
+                cursor1.execute(sql,(usuario,perfil5,))
+                cursor1.execute(sql,(usuario,perfil6,))
+                cursor1.execute(sql,(usuario,perfil7,))
 
-            #Commit del query.
-            conexion1.commit()
+                #Commit del query.
+                conexion1.commit()
 
-            #Cerrando la conexión.
-            conexion1.close()
+                #Cerrando la conexión.
+                conexion1.close()
+            
+            elif decision == 8: 
+                #Insertar el usuario y los perfiles.
+                #El usuario eligió a ocho perfiles.
+                perfil1 = input("Ingrese el nombre del usuario: ")
+                perfil2 = input("Ingrese el nombre del usuario: ")
+                perfil3 = input("Ingrese el nombre del usuario: ")
+                perfil4 = input("Ingrese el nombre del usuario: ")
+                perfil5 = input("Ingrese el nombre del usuario: ")
+                perfil6 = input("Ingrese el nombre del usuario: ")
+                perfil7 = input("Ingrese el nombre del usuario: ")
+                perfil8 = input("Ingrese el nombre del usuario: ")
+
+            #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
+                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+
+                #Insertando los datos en la base de datos.
+                cursor1.execute(sql,(usuario,perfil1,))
+                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil4,))
+                cursor1.execute(sql,(usuario,perfil5,))
+                cursor1.execute(sql,(usuario,perfil6,))
+                cursor1.execute(sql,(usuario,perfil7,))
+                cursor1.execute(sql,(usuario,perfil8,))
+
+                #Commit del query.
+                conexion1.commit()
+
+                #Cerrando la conexión.
+                conexion1.close()
+            
+            else: 
+                #Se puso una cantidad que no se puede.
+                print("Cantidad no válida")
         
-        elif decision == 6: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a seis perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-            perfil4 = input("Ingrese el nombre del usuario: ")
-            perfil5 = input("Ingrese el nombre del usuario: ")
-            perfil6 = input("Ingrese el nombre del usuario: ")
-
-           #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
-
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-            cursor1.execute(sql,(usuario,perfil4,))
-            cursor1.execute(sql,(usuario,perfil5,))
-            cursor1.execute(sql,(usuario,perfil6,))
-
-            #Commit del query.
-            conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
-
-        elif decision == 7: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a siete perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-            perfil4 = input("Ingrese el nombre del usuario: ")
-            perfil5 = input("Ingrese el nombre del usuario: ")
-            perfil6 = input("Ingrese el nombre del usuario: ")
-            perfil7 = input("Ingrese el nombre del usuario: ")
-
-           #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
-
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-            cursor1.execute(sql,(usuario,perfil4,))
-            cursor1.execute(sql,(usuario,perfil5,))
-            cursor1.execute(sql,(usuario,perfil6,))
-            cursor1.execute(sql,(usuario,perfil7,))
-
-            #Commit del query.
-            conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
+        except: #Opción no numérica. 
+            print("Opción no válida")
         
-        elif decision == 8: 
-            #Insertar el usuario y los perfiles.
-            #El usuario eligió a ocho perfiles.
-            perfil1 = input("Ingrese el nombre del usuario: ")
-            perfil2 = input("Ingrese el nombre del usuario: ")
-            perfil3 = input("Ingrese el nombre del usuario: ")
-            perfil4 = input("Ingrese el nombre del usuario: ")
-            perfil5 = input("Ingrese el nombre del usuario: ")
-            perfil6 = input("Ingrese el nombre del usuario: ")
-            perfil7 = input("Ingrese el nombre del usuario: ")
-            perfil8 = input("Ingrese el nombre del usuario: ")
+        break; #Regresando a la página de inicio.
 
-           #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-            sql = "INSERT INTO perfiles VALUES (%s, %s)"
-
-            #Insertando los datos en la base de datos.
-            cursor1.execute(sql,(usuario,perfil1,))
-            cursor1.execute(sql,(usuario,perfil2,))
-            cursor1.execute(sql,(usuario,perfil3,))
-            cursor1.execute(sql,(usuario,perfil4,))
-            cursor1.execute(sql,(usuario,perfil5,))
-            cursor1.execute(sql,(usuario,perfil6,))
-            cursor1.execute(sql,(usuario,perfil7,))
-            cursor1.execute(sql,(usuario,perfil8,))
-
-            #Commit del query.
-            conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
-        
-        else: 
-            #Se puso una cantidad que no se puede.
-            print("Cantidad no válida")
