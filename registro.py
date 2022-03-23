@@ -1,6 +1,12 @@
+"""
+Referencias: 
+
+1. Biblioteca de cryptocode: https://www.delftstack.com/es/howto/python/python-encrypt-string/
+
+"""
 import psycopg2 #Librería para la base de datos.
 from datos import * #Jalando el archivo que tiene los datos de la BD.
-import cryptocode
+import cryptocode   #Librería para encriptar las contraseñas.
 
 def abrir_BD(): #Método que servirá para poder ingresar los datos del usuario en la base de datos.
     #Conexión a la base de datos.
@@ -24,11 +30,15 @@ def registro():
 
     usuario = input("Ingrese su usuario: ")
 
-    print("La contraseña debe ser menor a 5 caracteres.")
+    print("La contraseña debe de 5 caracteres.")
     contraseña = input("Ingrese su contraseña: ")
     
     if len(contraseña) > 5:
-        #Regresando al usuario a poner bien todos sus datos si en caso la contraseña excede los cinco caracteres
+        #Regresando al usuario a poner bien todos sus datos si en caso la contraseña excede los cinco caracteres.
+        print("Longitud no válida, favor ingrese todo bien otra vez")
+        registro()
+    elif len(contraseña) < 5:
+        #Regresando al usuario a poner todos su datos si en caso la contraseña es menor a cinco caracteres.
         print("Longitud no válida, favor ingrese todo bien otra vez")
         registro()
 
@@ -45,23 +55,91 @@ def registro():
     print("1) Básico: Este plan es gratis")
     print("2) Estándar: Este plan es pagado y vale $3")
     print("3) Avanzado: Este plan es pagado y vale $5\n")
-    plan = input("Ingrese su plan: ")
+    plan = int(input("Ingrese su plan: "))
 
     insertar(nombre, apellido, usuario, conn, correo, plan) #Mandando los datos a la base de datos.
 
 #Método para que se inserten los datos en la BD.
 def insertar(nombre, apellido, usuario, conn, correo, plan):
+    
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+    
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+    #Seleccionando los usuarios de la tabla.
+    #Verificando que el usuario ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez todo.
+    cursor1.execute("SELECT usuario FROM datos_usuario")
+    rows=cursor1.fetchall()
+    for row in rows:
+        print(row[0])
+        if usuario == row[0]:
+            print("Usuario existente, favor regresar a ingresar bien los datos")
+            registro()
+
     print("Se insertaron los datos: ")
     print(nombre)
     print(apellido)
     print(usuario)
     print(conn)
     print(correo)
-    print(plan)
+    
+    #Línea SQL para insertar los datos en la BD.
+    sql = "INSERT INTO datos_usuario VALUES (%s,%s,%s,%s,%s,%s)"
 
+    if plan == 1: #Si el usuario eligió el número 1, entonces eligió el plan básico.
+        print("Plan básico")
+       
+        plan1 = "Básico" #Insertando en letras el plan elegido.
+
+        #Insertando los datos.
+        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan1,))
+
+        #Commit del query.
+        conexion1.commit()
+
+        #Cerrando la conexión.
+        conexion1.close()
+        
+    elif plan == 2: #Si el usuario eligió el número 2, entonces eligió el plan estándar.
+        print("Plan estándar")
+
+        plan2 = "Estándar" #Insertando en letras el plan elegido.
+
+        #Insertando los datos.
+        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan2,))
+        
+        #Commit del query.
+        conexion1.commit()
+
+        #Cerrando la conexión.
+        conexion1.close()
+
+    elif plan == 3: #Si el usuario eligió el número 3, entonces eligió el plan avanzado.
+        print("Plan avanzado")
+
+        plan3 = "Avanzado" #Insertando en letras el plan elegido.
+        
+        #Insertando los datos.
+        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan3,))
+
+        #Commit del query.
+        conexion1.commit()
+
+        #Cerrando la conexión.
+        conexion1.close()
+
+    """
     #Comprobando que la contraseña sea la misma.
     llave = 'UVG' #Llave para desencriptar.
     des = cryptocode.decrypt(conn, llave) #Desencriptando mensaje.
-    print(des)
+    print("Validando contraseña ", des)
+    """
 
 registro()
