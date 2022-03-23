@@ -101,5 +101,3 @@ def avanzado():
             perfil6 = input("Ingrese el nombre del usuario: ")
             perfil7 = input("Ingrese el nombre del usuario: ")
             perfil8 = input("Ingrese el nombre del usuario: ")
-    
-avanzado()
