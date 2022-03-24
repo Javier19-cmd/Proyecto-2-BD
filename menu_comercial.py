@@ -46,10 +46,13 @@ def menu_comercial():
             eleccion = input("¿Cuál opción elige? ")
 
             if eleccion == 1: 
+                #Opción para ver el perfil.
                 print("Hola")
             elif eleccion == 2: 
+                #Opción para buscar película.
                 print("Hola")
-            elif eleccion == 3: 
+            elif eleccion == 3:
+                #Opción para ver lista de favoritos. 
                 print("Hola")
             elif eleccion == 4: 
                 #Salir de la pantalla.
@@ -60,6 +63,7 @@ def menu_comercial():
         except:
             #Se puso una opción que no era número.
             print("Se eligió una opción no numérica")
-
+"""
 usuario = "Javs"
 traer_perfiles(usuario)
+"""

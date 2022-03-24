@@ -1,2 +1,2 @@
-def menu_admin():
+def menu_admin ():
     print("Hola")
