@@ -50,8 +50,8 @@ def normal():
     conn = cryptocode.encrypt(contraseña, passkey) #Contraseña encriptada.
 
     #Imprimiendo datos.
-    print(usuario)
-    print(conn)
+    #print(usuario)
+    #print(conn)
 
     #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
@@ -65,7 +65,7 @@ def normal():
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
     #SQL para seleccionar usuario.
-    sql = "SELECT usuario FROM datos_usuario"
+    sql = "SELECT usuario FROM datos_usuario WHERE usuario = %s"
 
     #Verificando que el usuario sí exista en la tabla.
     cursor1.execute(sql, (usuario,))
@@ -73,6 +73,10 @@ def normal():
     for row in rows:
         if usuario == row[0]: 
             print("Éxito")
+<<<<<<< HEAD
+=======
+            
+>>>>>>> parent of 4bd8dcd (buscando usuario y contraseña en la BD)
             #Verificando que la contraseña exista en la base de datos.
             #Buscando contraseña.
             sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
@@ -83,6 +87,7 @@ def normal():
             for row1 in rows2:
                 a = row1[0] #Guardando la contraseña en una variable.
                 decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
+<<<<<<< HEAD
                 print(decode) #Imprimiendo la variable.
                 if contraseña == decode: 
                     print("Éxito")
@@ -90,6 +95,15 @@ def normal():
                     print("La contraseña no es válida")
         else: #La contraseña no es igual.
             print("Usuario no encontrado")
+=======
+                #print(decode) #Imprimiendo la variable.
+                if contraseña == decode: 
+                    print("Éxito x2")
+                    
+        else: 
+            #Se imprime un mensaje de error.
+            print("Fracaso")
+>>>>>>> parent of 4bd8dcd (buscando usuario y contraseña en la BD)
     
 
 def desencriptar_contrasena(usuario):
