@@ -73,24 +73,24 @@ def normal():
     for row in rows:
         if usuario == row[0]: 
             print("Éxito")
+            #Verificando que la contraseña exista en la base de datos.
+            #Buscando contraseña.
+            sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
+
+            cursor1.execute(sql2,(usuario,)) #Jalando contraseñas.
+            rows2=cursor1.fetchall()
+            #print(contra)
+            for row1 in rows2:
+                a = row1[0] #Guardando la contraseña en una variable.
+                decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
+                print(decode) #Imprimiendo la variable.
+                if contraseña == decode: 
+                    print("Éxito")
+                else: #La contraseña no es igual.
+                    print("Fracaso")
         else: #La contraseña no es igual.
             print("Usuario no encontrado")
     
-    #Verificando que la contraseña exista en la base de datos.
-    #Buscando contraseña.
-    sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
-
-    cursor1.execute(sql2,(usuario,)) #Jalando contraseñas.
-    rows2=cursor1.fetchall()
-    #print(contra)
-    for row1 in rows2:
-        a = row1[0] #Guardando la contraseña en una variable.
-        decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-        print(decode) #Imprimiendo la variable.
-        if contraseña == decode: 
-            print("Éxito")
-        else: #La contraseña no es igual.
-            print("Fracaso")
 
 def desencriptar_contrasena(usuario):
     
