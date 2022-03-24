@@ -32,6 +32,7 @@ def pagina():
             elif eleccion == 2: 
                 #Opción para iniciar sesión como administrador.
                 print("Iniciar sesión como administrador")
+                administrador() #Método para iniciar sesión con cuenta de administrador.
             elif eleccion == 3: 
                 #Opción para no salir.
                 print("Salir")
@@ -108,7 +109,7 @@ def normal():
 
 #Método para validar los datos de los administradores.
 def administrador():
-    print("Por favor ingrese sus datos de administrador")
+    print("Por favor ingrese sus datos de administrador \n")
 
     usuario = input("Ingresa tu usuario: ") #Pidiendo usuario.
     contraseña = input("Ingresa tu contraseña: ")#Pidiendo contraseña.
@@ -184,4 +185,4 @@ def desencriptar_contrasena(usuario):
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
-administrador()
+pagina() #Página principal de login.

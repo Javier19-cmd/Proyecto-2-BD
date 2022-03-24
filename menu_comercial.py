@@ -43,7 +43,7 @@ def menu_comercial():
 
         #Try-catch para evitar clavos.
         try: 
-            eleccion = input("¿Cuál opción elige? ")
+            eleccion = int(input("¿Cuál opción elige? ")) #Variable numérica.
 
             if eleccion == 1: 
                 #Opción para ver el perfil.
