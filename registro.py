@@ -102,7 +102,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
             print("La contraseña ya existe, por favor intente con otra.")
             registro() #Trayendo el registro de nuevo.
     """
-    
+
     print("Se insertaron los datos: ")
     print(nombre)
     print(apellido)
@@ -170,4 +170,3 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
     des = cryptocode.decrypt(conn, llave) #Desencriptando mensaje.
     print("Validando contraseña ", des)
     """
-registro()

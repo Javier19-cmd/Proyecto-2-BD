@@ -50,8 +50,8 @@ def normal():
     conn = cryptocode.encrypt(contraseña, passkey) #Contraseña encriptada.
 
     #Imprimiendo datos.
-    #print(usuario)
-    #print(conn)
+    print(usuario)
+    print(conn)
 
     #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
@@ -65,7 +65,7 @@ def normal():
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
     #SQL para seleccionar usuario.
-    sql = "SELECT usuario FROM datos_usuario WHERE usuario = %s"
+    sql = "SELECT usuario FROM datos_usuario"
 
     #Verificando que el usuario sí exista en la tabla.
     cursor1.execute(sql, (usuario,))
@@ -73,25 +73,24 @@ def normal():
     for row in rows:
         if usuario == row[0]: 
             print("Éxito")
-            
-            #Verificando que la contraseña exista en la base de datos.
-            #Buscando contraseña.
-            sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
-
-            cursor1.execute(sql2,(usuario,)) #Jalando contraseñas.
-            rows2=cursor1.fetchall()
-            #print(contra)
-            for row1 in rows2:
-                a = row1[0] #Guardando la contraseña en una variable.
-                decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-                #print(decode) #Imprimiendo la variable.
-                if contraseña == decode: 
-                    print("Éxito x2")
-                    
-        else: 
-            #Se imprime un mensaje de error.
-            print("Fracaso")
+        else: #La contraseña no es igual.
+            print("Usuario no encontrado")
     
+    #Verificando que la contraseña exista en la base de datos.
+    #Buscando contraseña.
+    sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
+
+    cursor1.execute(sql2,(usuario,)) #Jalando contraseñas.
+    rows2=cursor1.fetchall()
+    #print(contra)
+    for row1 in rows2:
+        a = row1[0] #Guardando la contraseña en una variable.
+        decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
+        print(decode) #Imprimiendo la variable.
+        if contraseña == decode: 
+            print("Éxito")
+        else: #La contraseña no es igual.
+            print("Fracaso")
 
 def desencriptar_contrasena(usuario):
     
