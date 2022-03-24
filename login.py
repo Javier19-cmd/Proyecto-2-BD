@@ -1,9 +1,11 @@
 #Importando los datos de la BD.
+from tkinter import Menu
 from datos import * 
 #Librería para la base de datos.
 import psycopg2 
 #Librería para encriptar las contraseñas.
 import cryptocode
+from menu import *
 
 #Método que sirve para poderle desplegar las opciones al usuario.
 def pagina():
@@ -72,39 +74,26 @@ def normal():
     rows=cursor1.fetchall()
     for row in rows:
         if usuario == row[0]: 
-            print("Éxito")
-<<<<<<< HEAD
-=======
-            
->>>>>>> parent of 4bd8dcd (buscando usuario y contraseña en la BD)
-            #Verificando que la contraseña exista en la base de datos.
-            #Buscando contraseña.
-            sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
-
-            cursor1.execute(sql2,(usuario,)) #Jalando contraseñas.
-            rows2=cursor1.fetchall()
-            #print(contra)
-            for row1 in rows2:
-                a = row1[0] #Guardando la contraseña en una variable.
-                decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-<<<<<<< HEAD
-                print(decode) #Imprimiendo la variable.
-                if contraseña == decode: 
-                    print("Éxito")
-                else: #La contraseña no es igual.
-                    print("La contraseña no es válida")
-        else: #La contraseña no es igual.
-            print("Usuario no encontrado")
-=======
-                #print(decode) #Imprimiendo la variable.
-                if contraseña == decode: 
-                    print("Éxito x2")
-                    
+            print("Usuario encontrado")
         else: 
-            #Se imprime un mensaje de error.
-            print("Fracaso")
->>>>>>> parent of 4bd8dcd (buscando usuario y contraseña en la BD)
+            print("Error")
     
+    #Verificando que la contraseña exista en la base de datos.
+    #Buscando contraseña.
+    sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
+
+    cursor1.execute(sql2,(usuario,)) #Jalando contraseñas.
+    rows2=cursor1.fetchall()
+    #print(contra)
+    for row1 in rows2:
+        a = row1[0] #Guardando la contraseña en una variable.
+        decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
+        print(decode) #Imprimiendo la variable.
+        if contraseña == decode: 
+            print("Contraseña correcta")
+            menu() #Trayendo menú de opciones.
+        else: #La contraseña no es igual.
+            print("Contraseña incorrecta")
 
 def desencriptar_contrasena(usuario):
     
@@ -118,7 +107,5 @@ def desencriptar_contrasena(usuario):
     )
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
-
-
 
 normal()
