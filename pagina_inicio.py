@@ -4,6 +4,9 @@ from registro import *
 #Registro de administradores.
 from registro_admins import *
 
+#Login de los usuarios.
+from login import *
+
 #Página de inicio del programa.
 def inicio():
     while True: #While para que la ejecución nunca termine.
@@ -23,8 +26,14 @@ def inicio():
             print("\n") #Salto de línea para que se vea mejor.
  
             if opcion == 1:
+                
+                #Opción para iniciar sesión.
                 print("Opción 1 elegida \n")
+                pagina() #Página para el inicio de sesión.
+
             elif opcion == 2: 
+
+                #Opción para registrar usuarios.
                 print("Opción de registro elegida \n")
                 registro() #Trayendo el método registro hasta este archivo.
             
