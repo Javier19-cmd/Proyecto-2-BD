@@ -27,6 +27,7 @@ def traer_perfiles(usuario):
         perf = input("Ingrese el perfil que desee usar ")
         if perf == row[0]:
             print("¡Bienvendio " + row[0] + "!")
+            menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
         else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
             print("Usuario mal redactado.")
             traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
@@ -34,7 +35,31 @@ def traer_perfiles(usuario):
 #Este es el menú que tendrá el usuario una vez pueda acceder a su perfil.
 def menu_comercial():
     while True: 
-        print("Hola")
+        print("Las opciones que hay son: \n")
+        print("1. Ver perfil")
+        print("2. Buscar películas")
+        print("3. Ver lista de favoritos")
+        print("4. Salir \n")
+
+        #Try-catch para evitar clavos.
+        try: 
+            eleccion = input("¿Cuál opción elige? ")
+
+            if eleccion == 1: 
+                print("Hola")
+            elif eleccion == 2: 
+                print("Hola")
+            elif eleccion == 3: 
+                print("Hola")
+            elif eleccion == 4: 
+                #Salir de la pantalla.
+                print("Saliendo....")
+                break;
+            else: #Se eligió una opción mayor o menor a 4.
+                print("Opción no válida")
+        except:
+            #Se puso una opción que no era número.
+            print("Se eligió una opción no numérica")
 
 usuario = "Javs"
 traer_perfiles(usuario)
