@@ -87,7 +87,7 @@ def normal():
                 if contraseña == decode: 
                     print("Éxito")
                 else: #La contraseña no es igual.
-                    print("Fracaso")
+                    print("La contraseña no es válida")
         else: #La contraseña no es igual.
             print("Usuario no encontrado")
     
