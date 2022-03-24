@@ -1,11 +1,13 @@
 #Importando los datos de la BD.
-from tkinter import Menu
 from datos import * 
 #Librería para la base de datos.
 import psycopg2 
 #Librería para encriptar las contraseñas.
 import cryptocode
-from menu import *
+#Llamando al menú de administradores.
+from menu_admins import *
+#Llamando al menú comercial.
+from menu_comercial import *
 
 #Método que sirve para poderle desplegar las opciones al usuario.
 def pagina():
@@ -91,7 +93,7 @@ def normal():
         print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
-            menu() #Trayendo menú de opciones.
+            menu_comercial() #Trayendo menú de opciones.
         else: #La contraseña no es igual.
             print("Contraseña incorrecta")
             #Enviando el usuario de la persona a una tabla de fracaso.
@@ -156,7 +158,7 @@ def administrador():
         print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
-            menu() #Trayendo menú de opciones.
+            menu_admin() #Trayendo menú de opciones.
         else: #La contraseña no es igual.
             print("Contraseña incorrecta")
             #Enviando el usuario de la persona a una tabla de fracaso.
