@@ -87,6 +87,15 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
         if usuario == row[0]:
             print("Usuario existente, favor regresar a ingresar bien los datos")
             registro() #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+    
+    #Seleccionando las contraseñas de la tabla.
+    #Verificando que la contraseña ingresada no exista en la tabla.
+    cursor1.execute("SELECT contraseña FROM datos_usuario")
+    rows2=cursor1.fetchall()
+    for row in rows2:
+        a = row[0]
+        decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
+        decode2 = cryptocode.decrypt(conn, "UVG") #Desencriptando la contraseña.
 
     print("Se insertaron los datos: ")
     print(nombre)
