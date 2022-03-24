@@ -94,6 +94,15 @@ def normal():
             menu() #Trayendo menú de opciones.
         else: #La contraseña no es igual.
             print("Contraseña incorrecta")
+            #Enviando el usuario de la persona a una tabla de fracaso.
+            sql3 = "INSERT INTO fracaso VALUES (%s)"
+            #Enviando datos a la tabla de fracaso.
+            cursor1.execute(sql3, (usuario,))
+            #Commit del query.
+            conexion1.commit()
+
+            #Cerrando la conexión.
+            conexion1.close()
 
 def desencriptar_contrasena(usuario):
     
