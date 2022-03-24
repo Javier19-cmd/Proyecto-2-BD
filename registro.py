@@ -88,15 +88,21 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
             print("Usuario existente, favor regresar a ingresar bien los datos")
             registro() #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
     
+    """
     #Seleccionando las contraseñas de la tabla.
     #Verificando que la contraseña ingresada no exista en la tabla.
     cursor1.execute("SELECT contraseña FROM datos_usuario")
     rows2=cursor1.fetchall()
     for row in rows2:
         a = row[0]
-        decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-        decode2 = cryptocode.decrypt(conn, "UVG") #Desencriptando la contraseña.
-
+        decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe que trae a la contraseña desde la base de datos.
+        decode2 = cryptocode.decrypt(conn, "UVG") #Desencriptando la contraseña que viene del programa.
+        
+        if decode == decode2:
+            print("La contraseña ya existe, por favor intente con otra.")
+            registro() #Trayendo el registro de nuevo.
+    """
+    
     print("Se insertaron los datos: ")
     print(nombre)
     print(apellido)
@@ -164,3 +170,4 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
     des = cryptocode.decrypt(conn, llave) #Desencriptando mensaje.
     print("Validando contraseña ", des)
     """
+registro()
