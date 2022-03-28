@@ -70,7 +70,7 @@ def traer_perfiles(usuario):
                 print(row2[0]) #Imprimiendo los perfiles.
                 perf = input("Ingrese el perfil que desee usar ")
                 if perf == row2[0]:
-                    print("¡Bienvendio " + row[0] + "!")
+                    print("¡Bienvendio " + row2[0] + "!")
                     menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
                 else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
                     print("Usuario mal redactado.")
