@@ -12,7 +12,6 @@ from menu_comercial import *
 #Método que sirve para poderle desplegar las opciones al usuario.
 def pagina():
     while True:
-        
         print("Bienvenido a la página de login \n")
         print("Elige la opción que te corresponda \n")
         print("1) Cuenta convencional")
