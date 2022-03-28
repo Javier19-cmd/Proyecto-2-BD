@@ -1,0 +1,2 @@
+def anuncios ():
+    print("Hola")
