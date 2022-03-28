@@ -261,10 +261,8 @@ def buscar(perfil):
             conexion1.close()
     
 
-    except:
+    except: #Esto es en caso de que la persona no eligió una opción no numérica.
         print("Elección no válida.")
-
-
 
 
 perfil = "Javier"

@@ -1,6 +1,7 @@
 import psycopg2 #Librería para la base de datos.
 from datos import * #Trayendo la información de la Base Datos.
 from ver_perfil import * #Trayendo las opciones para ver el perfil.
+from buscar import * #Trayendo las opciones de buscar.
 
 def traer_perfiles(usuario):
     
@@ -45,7 +46,7 @@ def traer_perfiles(usuario):
                 perf = input("Ingrese el perfil que desee usar ")
                 if perf == row[0]:
                     print("¡Bienvendio " + row[0] + "!")
-                    menu_comercial(usuario) #Trayendo el menú comercial a la pantalla del usuario.
+                    menu_comercial(usuario, perf) #Trayendo el menú comercial a la pantalla del usuario.
                 else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
                     print("Usuario mal redactado.")
                     traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
@@ -58,7 +59,7 @@ def traer_perfiles(usuario):
                 perf = input("Ingrese el perfil que desee usar ")
                 if perf == row1[0]:
                     print("¡Bienvendio " + row1[0] + "!")
-                    menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
+                    menu_comercial(usuario, perf) #Trayendo el menú comercial a la pantalla del usuario.
                 else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
                     print("Usuario mal redactado.")
                     traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
@@ -71,7 +72,7 @@ def traer_perfiles(usuario):
                 perf = input("Ingrese el perfil que desee usar ")
                 if perf == row2[0]:
                     print("¡Bienvendio " + row2[0] + "!")
-                    menu_comercial(usuario) #Trayendo el menú comercial a la pantalla del usuario.
+                    menu_comercial(usuario, perf) #Trayendo el menú comercial a la pantalla del usuario.
                 else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
                     print("Usuario mal redactado.")
                     traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
@@ -92,7 +93,7 @@ def traer_perfiles(usuario):
     """
 
 #Este es el menú que tendrá el usuario una vez pueda acceder a su perfil.
-def menu_comercial(usuario):
+def menu_comercial(usuario, perfil):
     while True: 
         print("Las opciones que hay son: \n")
         print("1. Ver perfil")
@@ -106,10 +107,10 @@ def menu_comercial(usuario):
 
             if eleccion == 1: 
                 #Opción para ver el perfil.
-                ver(usuario) #Opción para hacer downgrade.
+                ver(usuario) #Opción para hacer downgrade. #Opción de la clase de ver_perfil.
             elif eleccion == 2: 
                 #Opción para buscar película.
-                print("Hola")
+                buscar(perfil) #Opción para buscar. Esta se trae de la clase buscar.
             elif eleccion == 3:
                 #Opción para ver lista de favoritos. 
                 print("Hola")
