@@ -18,7 +18,7 @@ def buscar(perfil):
         print("4) Director")
         print("5) Premio")
         print("6) Duración")
-        print("7) Duración")
+        print("7) Salir")
 
 
         try: 
@@ -152,6 +152,28 @@ def buscar(perfil):
                     for row2 in rows2:
                         print(row2[0]) #Imprimiendo las películas del género.
 
+                        #Variable que contiene al nombre de la película.
+                        buscar = input("Ingrese el nombre de la película que desea buscar: ")
+
+                        #Query a usar para buscar con el nombre.
+                        sql = "SELECT link FROM videos WHERE nombre = %s"
+
+                        #Ejecutando el query de búsqueda.
+                        cursor1.execute(sql, (buscar,))
+
+                        rows=cursor1.fetchall()
+
+                        #Imprimiendo el link de la película y el nombre.
+                        for row in rows: 
+                            print(buscar)
+                            print(row[0])
+                            visto = 1
+                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            #Ejecutando el query de búsqueda.
+                            cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                            print("Enviando película al historial")
+
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
                 
@@ -166,7 +188,7 @@ def buscar(perfil):
             
             elif eleccion == 4: #Búsqueda por director.
                 
-                #Conexión a la base de datos.
+            #Conexión a la base de datos.
                 conexion1 = psycopg2.connect(
                         host=host(), #Host de la base de datos.
                         user= user(), #Usuario de la base de datos.
@@ -188,20 +210,41 @@ def buscar(perfil):
 
                 rows=cursor1.fetchall()
 
-                #Imprimiendo el link de las películas.
+                #Imprimiendo el link de la película.
                 for row in rows: 
                     print(buscar)
                     print(row[0])
 
                     #Query para buscar el nombre de las películas.
-                    sql3 = "SELECT nombre FROM videos WHERE genero = %s"
+                    sql3 = "SELECT nombre FROM videos WHERE director = %s"
                     #Ejecutando el query de búsqueda. Este busca el nombre de la película.
                     cursor1.execute(sql3, (buscar,))
                     rows2=cursor1.fetchall()
 
                     for row2 in rows2:
-                        print(row2[0]) #Imprimiendo las películas del director.
+                        print(row2[0]) #Imprimiendo las películas del género.
 
+                        #Variable que contiene al nombre de la película.
+                        buscar = input("Ingrese el nombre de la película que desea buscar: ")
+
+                        #Query a usar para buscar con el nombre.
+                        sql = "SELECT link FROM videos WHERE nombre = %s"
+
+                        #Ejecutando el query de búsqueda.
+                        cursor1.execute(sql, (buscar,))
+
+                        rows=cursor1.fetchall()
+
+                        #Imprimiendo el link de la película y el nombre.
+                        for row in rows: 
+                            print(buscar)
+                            print(row[0])
+                            visto = 1
+                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            #Ejecutando el query de búsqueda.
+                            cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                            print("Enviando película al historial")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
@@ -229,7 +272,7 @@ def buscar(perfil):
                 cursor1 = conexion1.cursor() #Cursor de la conexión.
 
                 #Variable que contiene al nombre de la película.
-                buscar = input("Ingrese el nombre del premio que desea buscar: ")
+                buscar = input("Ingrese el nombre del género que desea buscar: ")
 
                 #Query a usar para buscar.
                 sql = "SELECT link FROM videos WHERE premio = %s"
@@ -239,19 +282,41 @@ def buscar(perfil):
 
                 rows=cursor1.fetchall()
 
-                #Imprimiendo el link de las películas.
-                for row in rows:
-                    print(buscar) 
+                #Imprimiendo el link de la película.
+                for row in rows: 
+                    print(buscar)
                     print(row[0])
 
                     #Query para buscar el nombre de las películas.
-                    sql3 = "SELECT nombre FROM videos WHERE genero = %s"
+                    sql3 = "SELECT nombre FROM videos WHERE premio = %s"
                     #Ejecutando el query de búsqueda. Este busca el nombre de la película.
                     cursor1.execute(sql3, (buscar,))
                     rows2=cursor1.fetchall()
 
                     for row2 in rows2:
                         print(row2[0]) #Imprimiendo las películas del género.
+
+                        #Variable que contiene al nombre de la película.
+                        buscar = input("Ingrese el nombre de la película que desea buscar: ")
+
+                        #Query a usar para buscar con el nombre.
+                        sql = "SELECT link FROM videos WHERE nombre = %s"
+
+                        #Ejecutando el query de búsqueda.
+                        cursor1.execute(sql, (buscar,))
+
+                        rows=cursor1.fetchall()
+
+                        #Imprimiendo el link de la película y el nombre.
+                        for row in rows: 
+                            print(buscar)
+                            print(row[0])
+                            visto = 1
+                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            #Ejecutando el query de búsqueda.
+                            cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                            print("Enviando película al historial")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
@@ -265,9 +330,9 @@ def buscar(perfil):
                 #Cerrando la conexión.
                 conexion1.close()
             
-            elif eleccion == 6: #Búsqueda por longitud.
+            elif eleccion == 6: #Búsqueda por longitud. (Duración)
 
-                #Conexión a la base de datos.
+            #Conexión a la base de datos.
                 conexion1 = psycopg2.connect(
                         host=host(), #Host de la base de datos.
                         user= user(), #Usuario de la base de datos.
@@ -279,7 +344,7 @@ def buscar(perfil):
                 cursor1 = conexion1.cursor() #Cursor de la conexión.
 
                 #Variable que contiene al nombre de la película.
-                buscar = input("Ingrese la longitud de la película que desea buscar: ")
+                buscar = input("Ingrese la longitud que desea buscar: ")
 
                 #Query a usar para buscar.
                 sql = "SELECT link FROM videos WHERE duracion = %s"
@@ -295,13 +360,35 @@ def buscar(perfil):
                     print(row[0])
 
                     #Query para buscar el nombre de las películas.
-                    sql3 = "SELECT nombre FROM videos WHERE genero = %s"
+                    sql3 = "SELECT nombre FROM videos WHERE duracion = %s"
                     #Ejecutando el query de búsqueda. Este busca el nombre de la película.
                     cursor1.execute(sql3, (buscar,))
                     rows2=cursor1.fetchall()
 
                     for row2 in rows2:
-                        print(row2[0]) #Imprimiendo las películas con la longitud.
+                        print(row2[0]) #Imprimiendo las películas del género.
+
+                        #Variable que contiene al nombre de la película.
+                        buscar = input("Ingrese el nombre de la película que desea buscar: ")
+
+                        #Query a usar para buscar con el nombre.
+                        sql = "SELECT link FROM videos WHERE nombre = %s"
+
+                        #Ejecutando el query de búsqueda.
+                        cursor1.execute(sql, (buscar,))
+
+                        rows=cursor1.fetchall()
+
+                        #Imprimiendo el link de la película y el nombre.
+                        for row in rows: 
+                            print(buscar)
+                            print(row[0])
+                            visto = 1
+                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            #Ejecutando el query de búsqueda.
+                            cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                            print("Enviando película al historial")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
