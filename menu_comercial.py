@@ -45,7 +45,7 @@ def traer_perfiles(usuario):
                 perf = input("Ingrese el perfil que desee usar ")
                 if perf == row[0]:
                     print("¡Bienvendio " + row[0] + "!")
-                    menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
+                    menu_comercial(usuario) #Trayendo el menú comercial a la pantalla del usuario.
                 else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
                     print("Usuario mal redactado.")
                     traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
@@ -71,7 +71,7 @@ def traer_perfiles(usuario):
                 perf = input("Ingrese el perfil que desee usar ")
                 if perf == row2[0]:
                     print("¡Bienvendio " + row2[0] + "!")
-                    menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
+                    menu_comercial(usuario) #Trayendo el menú comercial a la pantalla del usuario.
                 else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
                     print("Usuario mal redactado.")
                     traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
@@ -92,7 +92,7 @@ def traer_perfiles(usuario):
     """
 
 #Este es el menú que tendrá el usuario una vez pueda acceder a su perfil.
-def menu_comercial():
+def menu_comercial(usuario):
     while True: 
         print("Las opciones que hay son: \n")
         print("1. Ver perfil")
@@ -106,7 +106,7 @@ def menu_comercial():
 
             if eleccion == 1: 
                 #Opción para ver el perfil.
-                ver() #Opción para hacer downgrade.
+                ver(usuario) #Opción para hacer downgrade.
             elif eleccion == 2: 
                 #Opción para buscar película.
                 print("Hola")
