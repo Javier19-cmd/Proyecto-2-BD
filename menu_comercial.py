@@ -1,5 +1,6 @@
 import psycopg2 #Librería para la base de datos.
 from datos import * #Trayendo la información de la Base Datos.
+from ver_perfil import * #Trayendo las opciones para ver el perfil.
 
 def traer_perfiles(usuario):
     
@@ -47,7 +48,7 @@ def menu_comercial():
 
             if eleccion == 1: 
                 #Opción para ver el perfil.
-                print("Hola")
+                ver() #Opción para hacer downgrade.
             elif eleccion == 2: 
                 #Opción para buscar película.
                 print("Hola")
