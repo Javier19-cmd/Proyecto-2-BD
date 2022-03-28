@@ -2,6 +2,7 @@ import psycopg2 #Librería para la base de datos.
 from datos import * #Trayendo la información de la Base Datos.
 from ver_perfil import * #Trayendo las opciones para ver el perfil.
 from buscar import * #Trayendo las opciones de buscar.
+from favoritos import * #Trayendo las opciones para agregar contenido a su lista de favoritos.
 
 def traer_perfiles(usuario):
     
@@ -113,7 +114,7 @@ def menu_comercial(usuario, perfil):
                 buscar(perfil) #Opción para buscar. Esta se trae de la clase buscar.
             elif eleccion == 3:
                 #Opción para ver lista de favoritos. 
-                print("Hola")
+                favoritos(perfil) #Opción para buscar. Opción de la clase favoritos.
             elif eleccion == 4: 
                 #Salir de la pantalla.
                 print("Saliendo....")

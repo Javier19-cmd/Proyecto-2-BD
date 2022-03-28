@@ -2,7 +2,7 @@ from datos import * #Importando todos los datos de la base de datos.
 from datetime import datetime #Librería para obtener la hora.
 import psycopg2 #Importando la librería para implementar la base de datos.
 
-def buscar(perfil):
+def favoritos(perfil):
 
     while True:
 
@@ -52,12 +52,12 @@ def buscar(perfil):
                 for row in rows: 
                     print(buscar)
                     print(row[0])
-                    visto = 1
-                    sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                    visto = 0
+                    sql1 = "INSERT INTO favoritos VALUES (%s, %s, %s, %s, %s)"
                     #Ejecutando el query de búsqueda.
                     cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
 
-                    print("Enviando película al historial")     
+                    print("Enviando película al favoritos")     
 
                 #Commit del query.
                 conexion1.commit()
@@ -167,12 +167,12 @@ def buscar(perfil):
                         for row in rows: 
                             print(buscar)
                             print(row[0])
-                            visto = 1
-                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            visto = 0
+                            sql1 = "INSERT INTO favoritos VALUES (%s, %s, %s, %s, %s)"
                             #Ejecutando el query de búsqueda.
                             cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
 
-                            print("Enviando película al historial")
+                            print("Enviando película al favoritos")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
@@ -239,12 +239,12 @@ def buscar(perfil):
                         for row in rows: 
                             print(buscar)
                             print(row[0])
-                            visto = 1
-                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            visto = 0
+                            sql1 = "INSERT INTO favoritos VALUES (%s, %s, %s, %s, %s)"
                             #Ejecutando el query de búsqueda.
                             cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
 
-                            print("Enviando película al historial")
+                            print("Enviando película al favoritos")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
@@ -311,12 +311,12 @@ def buscar(perfil):
                         for row in rows: 
                             print(buscar)
                             print(row[0])
-                            visto = 1
-                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            visto = 0
+                            sql1 = "INSERT INTO favoritos VALUES (%s, %s, %s, %s, %s)"
                             #Ejecutando el query de búsqueda.
                             cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
 
-                            print("Enviando película al historial")
+                            print("Enviando película al favoritos")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
@@ -383,12 +383,12 @@ def buscar(perfil):
                         for row in rows: 
                             print(buscar)
                             print(row[0])
-                            visto = 1
-                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            visto = 0
+                            sql1 = "INSERT INTO favoritos VALUES (%s, %s, %s, %s, %s)"
                             #Ejecutando el query de búsqueda.
                             cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
 
-                            print("Enviando película al historial")
+                            print("Enviando película al favoritos")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
