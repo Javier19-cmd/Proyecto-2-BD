@@ -19,6 +19,7 @@ def buscar(perfil):
         print("5) Premio")
         print("6) Duración")
 
+
         try: 
             eleccion = int(input("Cómo desea hacer su búsqueda "))
 
@@ -50,7 +51,12 @@ def buscar(perfil):
                 for row in rows: 
                     print(buscar)
                     print(row[0])
-                    
+                    visto = 1
+                    sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s)"
+                    #Ejecutando el query de búsqueda.
+                    cursor1.execute(sql1, (perfil, buscar, row[0], visto,))
+
+                    print("Enviando película al historial")     
 
                 #Commit del query.
                 conexion1.commit()
@@ -262,11 +268,8 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
-    
-
-        except: #Esto es en caso de que la persona no eligió una opción no numérica.
-            print("Elección no válida.")
-
+        except: 
+            print("Error")
 
 perfil = "Javier"
 buscar(perfil)
