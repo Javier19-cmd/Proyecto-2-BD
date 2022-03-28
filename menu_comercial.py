@@ -20,6 +20,63 @@ def traer_perfiles(usuario):
     #SQL para poder jalar los perfiles de la base de datos.
     sql = "SELECT perfil FROM perfiles WHERE usuario = %s"
 
+    #Obteniendo el plan del usuario.
+    plan = "SELECT plan FROM datos_usuario WHERE usuario = %s"
+
+    #Perfil gratis
+    sql2 = "SELECT p.perfil FROM datos_usuario du join perfiles p on du.usuario = p.usuario WHERE du.usuario = %s limit 1"
+
+    #Perfil básico 
+    sql3 = "SELECT p.perfil FROM datos_usuario du join perfiles p on du.usuario = p.usuario WHERE du.usuario = %s limit 4"
+
+    #Perfil avanzado
+    sql4 = "SELECT p.perfil FROM datos_usuario du join perfiles p on du.usuario = p.usuario WHERE du.usuario = %s limit 8"
+
+    #Trayendo los planes de la base de datos.
+    cursor1.execute(plan, (usuario,))
+    rows1 = cursor1.fetchall()
+
+    for row1 in rows1: 
+        if row1[0] == 'Básico':
+            cursor1.execute(sql2,(usuario,))
+            rows2 = cursor1.fetchall()
+            for row in rows2:
+                print(row[0]) #Imprimiendo los perfiles.
+                perf = input("Ingrese el perfil que desee usar ")
+                if perf == row[0]:
+                    print("¡Bienvendio " + row[0] + "!")
+                    menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
+                else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
+                    print("Usuario mal redactado.")
+                    traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+        
+        elif row1[0] == 'Estándar':
+            cursor1.execute(sql3,(usuario,))
+            rows2 = cursor1.fetchall()
+            for row1 in rows2:
+                print(row1[0]) #Imprimiendo los perfiles.
+                perf = input("Ingrese el perfil que desee usar ")
+                if perf == row1[0]:
+                    print("¡Bienvendio " + row1[0] + "!")
+                    menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
+                else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
+                    print("Usuario mal redactado.")
+                    traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+        
+        elif row[0] == 'Avanzado':
+            cursor1.execute(sql4,(usuario,))
+            rows2 = cursor1.fetchall()
+            for row2 in rows2:
+                print(row2[0]) #Imprimiendo los perfiles.
+                perf = input("Ingrese el perfil que desee usar ")
+                if perf == row2[0]:
+                    print("¡Bienvendio " + row[0] + "!")
+                    menu_comercial() #Trayendo el menú comercial a la pantalla del usuario.
+                else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
+                    print("Usuario mal redactado.")
+                    traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+
+    """
     #Trayendo los perfiles.
     cursor1.execute(sql, (usuario,)) #Ejecutando el query.
     rows=cursor1.fetchall()
@@ -32,6 +89,7 @@ def traer_perfiles(usuario):
         else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
             print("Usuario mal redactado.")
             traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+    """
 
 #Este es el menú que tendrá el usuario una vez pueda acceder a su perfil.
 def menu_comercial():
@@ -64,7 +122,3 @@ def menu_comercial():
         except:
             #Se puso una opción que no era número.
             print("Se eligió una opción no numérica")
-"""
-usuario = "Javs"
-traer_perfiles(usuario)
-"""

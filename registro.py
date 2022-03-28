@@ -83,7 +83,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
     cursor1.execute("SELECT usuario FROM datos_usuario")
     rows=cursor1.fetchall()
     for row in rows:
-        print(row[0])
+        #print(row[0])
         if usuario == row[0]:
             print("Usuario existente, favor regresar a ingresar bien los datos")
             registro() #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.

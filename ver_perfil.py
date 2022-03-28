@@ -24,7 +24,3 @@ def ver():
 #Opción para hacer el downgrade
 def downgrade():
     print("Hacer downgrade")
-
-
-
-ver()#Probando.

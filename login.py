@@ -93,7 +93,7 @@ def normal():
         print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
-            menu_comercial() #Trayendo menú de opciones.
+            traer_perfiles(usuario) #Trayendo menú de opciones.
         else: #La contraseña no es igual.
             print("Contraseña incorrecta")
             #Enviando el usuario de la persona a una tabla de fracaso.
