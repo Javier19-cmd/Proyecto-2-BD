@@ -18,6 +18,7 @@ def buscar(perfil):
         print("4) Director")
         print("5) Premio")
         print("6) Duración")
+        print("7) Duración")
 
 
         try: 
@@ -313,6 +314,9 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+            
+            elif eleccion == 7: #Salir.
+                break; #Saliendo de la pantalla.
         except: 
             print("Error")
 
