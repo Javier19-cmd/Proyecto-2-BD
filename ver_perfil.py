@@ -74,7 +74,7 @@ def downgrade(usuario):
             conexion1.close()
 
             print("Plan actualizado")
-        else: 
+        else: #El usuario eligió una opción no válida.
             print("Opción no válida")
-    except: 
+    except: #El usuario puso una opción no numérica.
         print("Opción no numérica elegida")
