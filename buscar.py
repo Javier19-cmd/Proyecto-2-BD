@@ -8,7 +8,7 @@ def buscar(perfil):
 
         #Variable para la hora.
         now = datetime.now()
-        print(now)
+        #print(now)
 
         print("La búsqueda se puede hacer de la siguiente manera: \n")
 
