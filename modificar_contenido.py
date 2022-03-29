@@ -21,8 +21,10 @@ def modificar_contenido():
                 agregar_contenido() #Llamando el método que agrega contenido.
             elif eleccion == 2: #Opción de modificar contenido.
                 print("Opción de modificar contenido elegido")
+                modificar_contenido() #Opción para modificar el contenido de la base de datos.
             elif eleccion == 3: #Opción para eliminar contenido.
                 print("Opción para eliminar contenido elegido")
+                eliminar_contenido() #Opción para eliminar contenido.
             elif eleccion == 4: #Opción para salir. 
                 print("Saliendo")
                 break;
@@ -414,3 +416,49 @@ def modificar_contenido():
                 print("Película actualizada \n")
 
                 break;
+
+#Opción para eliminar el contenido.
+def eliminar_contenido():
+
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+    
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+    nombre_película = input("Ingrese el nombre de la película que desea eliminar ")
+    
+    #Query a usar para buscar con el nombre.
+    sql = "SELECT nombre FROM videos WHERE nombre = %s"
+
+    #Ejecutando el query de búsqueda.
+    cursor1.execute(sql, (nombre_película,))
+
+    rows=cursor1.fetchall()
+
+    #Imprimiendo el nombre de la película.
+    for row in rows: 
+
+        print(row[0])
+        
+        if nombre_película == row[0]:
+            
+            sql1 = "DELETE FROM videos WHERE nombre = %s"
+
+            #Ejecutando el query de búsqueda.
+            cursor1.execute(sql1, (nombre_película,))
+            
+            #Commit del query.
+            conexion1.commit()
+
+            #Cerrando la conexión.
+            conexion1.close()
+            
+            print("Película eliminada \n")
+
+            break;
