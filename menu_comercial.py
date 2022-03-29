@@ -103,7 +103,7 @@ def menu_comercial(usuario, perfil):
         print("3. Ver lista de favoritos")
         print("4. Salir \n")
 
-        anuncios(usuario)
+        anuncios(usuario) #Módulo que enseña los anuncios. Viene de la clase de anuncios.
 
         #Try-catch para evitar clavos.
         try: 
