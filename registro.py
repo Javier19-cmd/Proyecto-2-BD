@@ -170,3 +170,4 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
     des = cryptocode.decrypt(conn, llave) #Desencriptando mensaje.
     print("Validando contraseña ", des)
     """
+registro()
