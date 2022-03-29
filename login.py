@@ -4,13 +4,10 @@ from datos import *
 import psycopg2 
 #Librería para encriptar las contraseñas.
 import cryptocode
-<<<<<<< HEAD
 #Llamando al menú de administradores.
 from menu_admins import *
 #Llamando al menú comercial.
 from menu_comercial import *
-=======
->>>>>>> parent of 99fb7fb (ya funciona bien el login otra vez)
 
 #Método que sirve para poderle desplegar las opciones al usuario.
 def pagina():
@@ -79,40 +76,10 @@ def normal():
     rows=cursor1.fetchall()
     for row in rows:
         if usuario == row[0]: 
-            print("Éxito")
-<<<<<<< HEAD
-=======
-            
->>>>>>> parent of 4bd8dcd (buscando usuario y contraseña en la BD)
-            #Verificando que la contraseña exista en la base de datos.
-            #Buscando contraseña.
-            sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
-
-            cursor1.execute(sql2,(usuario,)) #Jalando contraseñas.
-            rows2=cursor1.fetchall()
-            #print(contra)
-            for row1 in rows2:
-                a = row1[0] #Guardando la contraseña en una variable.
-                decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-<<<<<<< HEAD
-                print(decode) #Imprimiendo la variable.
-                if contraseña == decode: 
-                    print("Éxito")
-                else: #La contraseña no es igual.
-                    print("La contraseña no es válida")
-        else: #La contraseña no es igual.
-            print("Usuario no encontrado")
-=======
-                #print(decode) #Imprimiendo la variable.
-                if contraseña == decode: 
-                    print("Éxito x2")
-                    
+            print("Usuario encontrado")
         else: 
-            #Se imprime un mensaje de error.
-            print("Fracaso")
->>>>>>> parent of 4bd8dcd (buscando usuario y contraseña en la BD)
+            print("Error")
     
-<<<<<<< HEAD
     #Verificando que la contraseña exista en la base de datos.
     #Buscando contraseña.
     sql2 = "SELECT contraseña FROM datos_usuario WHERE usuario = %s"
@@ -142,8 +109,6 @@ def normal():
 #Método para validar los datos de los administradores.
 def administrador():
     print("Por favor ingrese sus datos de administrador \n")
-=======
->>>>>>> parent of 99fb7fb (ya funciona bien el login otra vez)
 
     usuario = input("Ingresa tu usuario: ") #Pidiendo usuario.
     contraseña = input("Ingresa tu contraseña: ")#Pidiendo contraseña.
@@ -168,7 +133,6 @@ def administrador():
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
-<<<<<<< HEAD
     #SQL para seleccionar usuario.
     sql = "SELECT usuario FROM admins WHERE usuario = %s"
 
@@ -206,8 +170,3 @@ def administrador():
 
             #Cerrando la conexión.
             conexion1.close()
-=======
-
-
-normal()
->>>>>>> parent of 99fb7fb (ya funciona bien el login otra vez)
