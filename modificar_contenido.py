@@ -49,7 +49,7 @@ def agregar_contenido():
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
     """
-    Insertar:
+    Actualizar:
      1. Nombre
      2. Actores
      3. Género
