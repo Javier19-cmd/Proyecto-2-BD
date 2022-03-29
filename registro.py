@@ -8,9 +8,14 @@ import psycopg2 #Librería para la base de datos.
 from datos import * #Jalando el archivo que tiene los datos de la BD.
 import cryptocode   #Librería para encriptar las contraseñas.
 from perfiles import * #Llamando al archivo de perfiles, para poder registrarlos en otra tabla de la base de datos.
+from datetime import datetime #Librería para obtener la hora.
 
 #Archivo que se encarga de registrar a las personas en la base de datos.
 def registro():
+
+    #Variable para la hora.
+    now = datetime.now()
+
     #Menú para registrar a las personas en la base de datos.
     print("Bienvenid@ a la página de registro de la plataforma de streaming \n")
 
@@ -50,10 +55,10 @@ def registro():
 
     plan = int(input("Ingrese su plan: "))
 
-    insertar(nombre, apellido, usuario, conn, correo, plan)
+    insertar(nombre, apellido, usuario, conn, correo, plan, now)
 
 #Método para que se inserten los datos en la BD.
-def insertar(nombre, apellido, usuario, conn, correo, plan):
+def insertar(nombre, apellido, usuario, conn, correo, plan, now):
     
     #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
@@ -99,7 +104,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
     print(correo)
     
     #Línea SQL para insertar los datos en la BD.
-    sql = "INSERT INTO datos_usuario VALUES (%s,%s,%s,%s,%s,%s)"
+    sql = "INSERT INTO datos_usuario VALUES (%s,%s,%s,%s,%s,%s, %s)"
 
     if plan == 1: #Si el usuario eligió el número 1, entonces eligió el plan básico.
         
@@ -108,7 +113,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
         plan1 = "Básico" #Insertando en letras el plan elegido.
 
         #Insertando los datos.
-        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan1,))
+        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan1, now,))
 
         #Commit del query.
         conexion1.commit()
@@ -126,7 +131,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
         plan2 = "Estándar" #Insertando en letras el plan elegido.
 
         #Insertando los datos.
-        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan2,))
+        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan2, now,))
         
         #Commit del query.
         conexion1.commit()
@@ -143,7 +148,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
         plan3 = "Avanzado" #Insertando en letras el plan elegido.
         
         #Insertando los datos.
-        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan3,))
+        cursor1.execute(sql,(nombre, apellido, usuario, conn, correo,plan3, now,))
 
         #Commit del query.
         conexion1.commit()
