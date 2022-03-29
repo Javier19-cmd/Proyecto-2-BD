@@ -62,7 +62,6 @@ def registro():
         plan = int(input("Ingrese su plan: "))
 
         insertar(nombre, apellido, usuario, conn, correo, plan) #Mandando los datos a la base de datos.
-        
     except:
         print("Opción no numérica")
 #Método para que se inserten los datos en la BD.
