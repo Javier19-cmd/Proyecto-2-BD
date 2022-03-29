@@ -3,6 +3,7 @@ from datos import * #Trayendo la información de la Base Datos.
 from ver_perfil import * #Trayendo las opciones para ver el perfil.
 from buscar import * #Trayendo las opciones de buscar.
 from favoritos import * #Trayendo las opciones para agregar contenido a su lista de favoritos.
+from anuncios import * #Trayendo la clase para agregar anuncios.
 
 def traer_perfiles(usuario):
     
@@ -101,6 +102,8 @@ def menu_comercial(usuario, perfil):
         print("2. Buscar películas")
         print("3. Ver lista de favoritos")
         print("4. Salir \n")
+
+        anuncios(usuario)
 
         #Try-catch para evitar clavos.
         try: 
