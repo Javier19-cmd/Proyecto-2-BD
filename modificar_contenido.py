@@ -103,7 +103,7 @@ def modificar_contenido():
     print("5. Modificar premio")
     print("6. Modificar fecha")
     print("7. Modificar link")
-    print("8. Modificar duración")
+    print("8. Modificar duración \n")
 
     decision = int(input("¿Cuál opción elige? "))
 
@@ -142,7 +142,7 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
         
@@ -168,7 +168,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese el nuevo nombre: ")
+                act = input("Ingrese los nuevos nombres de los actores: ")
 
                 sql1 = "UPDATE videos SET actor = %s WHERE nombre = %s"
 
@@ -181,11 +181,11 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
     
-    elif decision == 3: #Modificar genero.
+    elif decision == 3: #Modificar género.
 
         print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
         
@@ -207,7 +207,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese el nuevo nombre: ")
+                act = input("Ingrese el género: ")
 
                 sql1 = "UPDATE videos SET genero = %s WHERE nombre = %s"
 
@@ -220,7 +220,7 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
     elif decision == 3: #Modificar director.
@@ -245,7 +245,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese el nuevo nombre: ")
+                act = input("Ingrese el nuevo nombre del director: ")
 
                 sql1 = "UPDATE videos SET director = %s WHERE nombre = %s"
 
@@ -258,7 +258,7 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
 
@@ -284,7 +284,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese el nuevo nombre: ")
+                act = input("Ingrese el nuevo nombre del promedio: ")
 
                 sql1 = "UPDATE videos SET premio = %s WHERE nombre = %s"
 
@@ -297,7 +297,7 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
     elif decision == 5: #Modificar fecha.
@@ -322,7 +322,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese el nuevo nombre: ")
+                act = input("Ingrese la nueva fecha de estreno (esta se debe colocar de la siguiente manera: mes/día/año): ")
 
                 sql1 = "UPDATE videos SET fecha_streno = %s WHERE nombre = %s"
 
@@ -335,7 +335,7 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
     elif decision == 6: #Modificar link.
@@ -360,7 +360,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese el nuevo nombre: ")
+                act = input("Ingrese el link del video: ")
 
                 sql1 = "UPDATE videos SET link = %s WHERE nombre = %s"
 
@@ -373,7 +373,7 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
     elif decision == 7: #Modificar duración. 
@@ -398,7 +398,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese el nuevo nombre: ")
+                act = input("Ingrese la nueva duración: ")
 
                 sql1 = "UPDATE videos SET duracion = %s WHERE nombre = %s"
 
@@ -411,8 +411,6 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada")
+                print("Película actualizada \n")
 
                 break;
-
-modificar_contenido()
