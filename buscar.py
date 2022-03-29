@@ -1,6 +1,7 @@
 from datos import * #Importando todos los datos de la base de datos. 
 from datetime import datetime #Librería para obtener la hora.
 import psycopg2 #Importando la librería para implementar la base de datos.
+from recomendacion import * #Importando todos los métodos usados en la clase de recomendación.
 
 def buscar(perfil):
 
@@ -56,6 +57,8 @@ def buscar(perfil):
                     sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
                     #Ejecutando el query de búsqueda.
                     cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                    recomendacion_nombre(buscar) #Algoritmo que recomienda cosas. Pertenece a la clase de recomendación.
 
                     print("Enviando película al historial")     
 
@@ -113,6 +116,8 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+
+                recomendacion_actor(buscar) #Recomendación del género en base al actor que participa en la película.
             
             elif eleccion == 3: #Búsquda por género.
             
@@ -185,6 +190,8 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+
+                recomendacion_genero(buscar) #Recomendación de en base a los género.
             
             elif eleccion == 4: #Búsqueda por director.
                 
@@ -257,6 +264,8 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+
+                recomendacion_director(buscar)
             
             elif eleccion == 5: #Búsqueda por premio.
                 
@@ -329,6 +338,8 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+
+                recomendacion_premio(buscar) #Recomendación en base al premio.
             
             elif eleccion == 6: #Búsqueda por longitud. (Duración)
 
@@ -401,6 +412,8 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+
+                recomendacion_longitud(buscar) #Recomendación en base a la longitud.
             
             elif eleccion == 7: #Salir.
                 break; #Saliendo de la pantalla.
