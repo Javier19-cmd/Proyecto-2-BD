@@ -20,11 +20,11 @@ def inicio():
 
         print("4. Salir\n")
 
-        #Try-except para evitar que se ingrese una opción no numérica.
         try:
+
             opcion = int(input("Escoja la opción que desee \n")) #Opción a elegir.
             print("\n") #Salto de línea para que se vea mejor.
- 
+
             if opcion == 1:
                 
                 #Opción para iniciar sesión.
@@ -51,7 +51,7 @@ def inicio():
             else: 
                 #Se eligió un número más allá del 3 ó más abajo que el 1. 
                 print("Opción no válida \n")
-        except:
-            print("Se eligió una opción no numérica \n")
+        except: 
+            print("Ocurrió un error")
 
 inicio() #Página de inicio.

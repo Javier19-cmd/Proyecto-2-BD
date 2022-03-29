@@ -9,16 +9,6 @@ from datos import * #Jalando el archivo que tiene los datos de la BD.
 import cryptocode   #Librería para encriptar las contraseñas.
 from perfiles import * #Llamando al archivo de perfiles, para poder registrarlos en otra tabla de la base de datos.
 
-def abrir_BD(): #Método que servirá para poder ingresar los datos del usuario en la base de datos.
-    #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
-
 #Archivo que se encarga de registrar a las personas en la base de datos.
 def registro():
     #Menú para registrar a las personas en la base de datos.
@@ -57,13 +47,11 @@ def registro():
     print("1) Básico: Este plan es gratis")
     print("2) Estándar: Este plan es pagado y vale $3")
     print("3) Avanzado: Este plan es pagado y vale $5\n")
-    
-    try:
-        plan = int(input("Ingrese su plan: "))
 
-        insertar(nombre, apellido, usuario, conn, correo, plan) #Mandando los datos a la base de datos.
-    except:
-        print("Opción no numérica")
+    plan = int(input("Ingrese su plan: "))
+
+    insertar(nombre, apellido, usuario, conn, correo, plan)
+
 #Método para que se inserten los datos en la BD.
 def insertar(nombre, apellido, usuario, conn, correo, plan):
     
@@ -114,6 +102,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
     sql = "INSERT INTO datos_usuario VALUES (%s,%s,%s,%s,%s,%s)"
 
     if plan == 1: #Si el usuario eligió el número 1, entonces eligió el plan básico.
+        
         print("Plan básico")
        
         plan1 = "Básico" #Insertando en letras el plan elegido.
@@ -129,6 +118,7 @@ def insertar(nombre, apellido, usuario, conn, correo, plan):
 
         basico(usuario) #Llamando al método de plan básico para que se registre el perfil de la persona.
                         #Se le pasa como parámetro el usuario para que cuando se inicie sesión, el sistema jale los datos que son.
+
         
     elif plan == 2: #Si el usuario eligió el número 2, entonces eligió el plan estándar.
         print("Plan estándar")
