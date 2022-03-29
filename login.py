@@ -184,5 +184,3 @@ def desencriptar_contrasena(usuario):
     )
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
-
-pagina() #Página principal de login.
