@@ -7,6 +7,7 @@ def ver(usuario):
     while True:
         print("Bienvenido al menú para ver el perfil, ¿qué desea hacer? \n")
         print("1) Hacer downgrade")
+        print("2) Salir")
         try: 
             eleccion = int(input("Elija su opción \n"))
             
@@ -14,6 +15,10 @@ def ver(usuario):
                 
                 print("Opción de downgrade elegida \n")
                 downgrade(usuario) #Opción de downgrade elegida.
+            
+            elif eleccion == 2: #Regresando a la pantalla anterior.
+                print("Saliendo..... \n")
+                break; 
 
             else: #Opción mayor o menor a uno
                 
