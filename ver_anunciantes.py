@@ -34,7 +34,9 @@ def ver_anunciantes():
                 agregar_contenido() #Método para agregar contenido.
 
             elif eleccion == 5: #Modificar contenido.
-                print("Hola")
+
+                modificar_contenido() #Método para modificar contenido.
+            
             elif eleccion == 6: #Quitar contenido.
                 print("Hola")
             elif eleccion == 7: #Salir de la pantalla. 
@@ -195,5 +197,107 @@ def agregar_contenido():
     conexion1.close()
 
     print("Anunciante agregado")
+
+#Método para modificar contenido.
+def modificar_contenido():
+
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+    print("Para modificar contenido están las siguientes opciones\n")
+    print("1. Modificar link")
+    print("2. Modificar género")
+
+    try: 
+        dec = int(input("Ingrese su decisión: "))
+
+        if dec == 1: #Modificar link del anuncio.
+            
+            #Pidiendo el nombre del anunciante.
+            nombre = input("Ingrese nombre del anunciante ")
+
+            #Query a usar para buscar con el nombre.
+            sql = "SELECT nombre_anunciante FROM anuncio WHERE nombre_anunciante = %s"
+
+            #Ejecutando el query de búsqueda.
+            cursor1.execute(sql, (nombre,))
+
+            rows=cursor1.fetchall()
+
+            #Imprimiendo el nombre de la película.
+            for row in rows: 
+
+                print(row[0])
+                
+                if nombre == row[0]:
+                    
+                    act = input("Ingrese el link del anuncio: ")
+
+                    sql1 = "UPDATE anuncio SET link = %s WHERE nombre_anunciante = %s"
+
+                    #Ejecutando el query de búsqueda.
+                    cursor1.execute(sql1, (act, nombre,))
+                    
+                    #Commit del query.
+                    conexion1.commit()
+
+                    #Cerrando la conexión.
+                    conexion1.close()
+                    
+                    print("Link actualizado \n")
+
+                    break;
+
+        elif dec == 2: #Modificar género.
+            
+            #Pidiendo el nombre del anunciante.
+            nombre = input("Ingrese nombre del anunciante ")
+
+            #Query a usar para buscar con el nombre.
+            sql = "SELECT nombre_anunciante FROM anuncio WHERE nombre_anunciante = %s"
+
+            #Ejecutando el query de búsqueda.
+            cursor1.execute(sql, (nombre,))
+
+            rows=cursor1.fetchall()
+
+            #Imprimiendo el nombre de la película.
+            for row in rows: 
+
+                print(row[0])
+                
+                if nombre == row[0]:
+                    
+                    act = input("Ingrese el género del anuncio: ")
+
+                    sql1 = "UPDATE anuncio SET genero = %s WHERE nombre_anunciante = %s"
+
+                    #Ejecutando el query de búsqueda.
+                    cursor1.execute(sql1, (act, nombre,))
+                    
+                    #Commit del query.
+                    conexion1.commit()
+
+                    #Cerrando la conexión.
+                    conexion1.close()
+                    
+                    print("Género actualizado \n")
+
+                    break;
+        else: 
+            print("Opción no válida")
+    
+    except: 
+        print("Opción no numérica")
+
+
 
 ver_anunciantes()
