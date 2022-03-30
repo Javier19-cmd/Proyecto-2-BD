@@ -3,6 +3,7 @@ from datos import * #Trayendo la información de la Base Datos.
 from modificar_contenido import * #Trayendo la clase que servirá para modificar el contenido de las películas.
 from ver_usuarios import * #Trayendo todo lo que servirá para modificar el contenido de la base de datos.
 from ver_anunciantes import * #Trayendo todo lo que servirá para modificar a los anunciantes y a su contenido.
+from reporteria import * #Importando todo lo que sirve para la reportería.
 
 #Este menú se va a enseñar una vez ya se haya iniciado sesión como administrador.
 def menu_admin():
@@ -10,7 +11,8 @@ def menu_admin():
         print("1. Ver contenido")
         print("2. Ver usuarios")
         print("3. Ver contenido de anuncios")
-        print("4. Salir \n")
+        print("4. Ver contenido de anuncios")
+        print("5. Salir \n")
         
         #Try-catch del menú.
         try: 
@@ -22,7 +24,9 @@ def menu_admin():
             elif decision == 3:
                 #Ver contenido de anuncios. 
                 ver_anunciantes() #Perteneciente a la clase ver_anunciantes.
-            elif decision == 4: 
+            elif decision == 4:
+                reporteria() #Perteneciente a la clase de reportería.
+            elif decision == 5: 
                 #Salir al menú principal.
                 print("Saliendo....")
                 break;

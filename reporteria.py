@@ -222,5 +222,3 @@ def hora_pico():
 
     #Cerrando la conexión.
     conexion1.close()
-
-reporteria()
