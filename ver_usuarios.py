@@ -228,6 +228,3 @@ def cambiar_apellido():
             print("Apellido actualizado \n")
 
             break;
-
-
-ver_usuarios()

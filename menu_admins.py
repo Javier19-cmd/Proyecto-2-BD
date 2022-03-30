@@ -1,6 +1,7 @@
 import psycopg2 #Librería para la base de datos.
 from datos import * #Trayendo la información de la Base Datos.
-from modificar_contenido import * #Trayendo todo lo que servirá para modificar el contenido de la base de datos.
+from modificar_contenido import *
+from ver_usuarios import ver_usuarios #Trayendo todo lo que servirá para modificar el contenido de la base de datos.
 
 #Este menú se va a enseñar una vez ya se haya iniciado sesión como administrador.
 def menu_admin():
@@ -16,7 +17,7 @@ def menu_admin():
             if decision == 1:#Ver contenido.
                 modificar_contenido() #Perteneciente a la clase de modificar_contenido.
             elif decision == 2:#Ver usuarios.
-                print("Hola")
+                ver_usuarios() #Perteneciente a la clase de modificar_contenido.
             elif decision == 3:
                 #Ver contenido de anuncios. 
                 print("Hola")
@@ -29,5 +30,3 @@ def menu_admin():
         except: 
             #Opción no numérica elegida.
             print("Opción no numérica ingresada")
-
-menu_admin()
