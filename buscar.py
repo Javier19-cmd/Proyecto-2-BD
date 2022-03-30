@@ -57,7 +57,13 @@ def buscar(perfil):
                     #Ejecutando el query de búsqueda.
                     cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
 
-                    print("Enviando película al historial")     
+                    print("Enviando película al historial")
+
+                #Insertando datos de búsqueda.    
+                sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
+                
+                #Ejecutando el query de búsqueda.
+                cursor1.execute(sql2, (perfil, buscar,now,))     
 
                 #Commit del query.
                 conexion1.commit()
@@ -406,3 +412,6 @@ def buscar(perfil):
                 break; #Saliendo de la pantalla.
         except: 
             print("Error")
+
+perfil = "Javier"
+buscar(perfil)
