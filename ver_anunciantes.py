@@ -38,7 +38,9 @@ def ver_anunciantes():
                 modificar_contenido() #Método para modificar contenido.
             
             elif eleccion == 6: #Quitar contenido.
-                print("Hola")
+
+                quitar_auncio() #Método para quitar anuncio.
+            
             elif eleccion == 7: #Salir de la pantalla. 
                 print("Saliendo....")
                 break;
@@ -132,7 +134,7 @@ def modificar_anunciante():
 
 def eliminar_anunciante():
 
-        #Conexión a la base de datos.
+    #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
             host=host(), #Host de la base de datos.
             user= user(), #Usuario de la base de datos.
@@ -298,6 +300,32 @@ def modificar_contenido():
     except: 
         print("Opción no numérica")
 
+#Método para quitar anuncios.
+def quitar_auncio():
+    
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+    
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
 
+    nombre = input("Por favor escriba el anuncio que desea quitar ")
 
-ver_anunciantes()
+    #SQL para eliminar perfiles de la persona.
+    sql2 = "DELETE FROM anuncio WHERE nombre_anunciante = %s"
+
+    #Ejecutando los queries de eliminación. Primero se eliminó el anuncio del anunciante y luego al anunciante.
+    cursor1.execute(sql2, (nombre,)) #Eliminando anunciante de la tabla anunciante.
+
+    #Haciendo commit de los queries.
+    conexion1.commit()
+
+    #Cerrando la conexión.
+    conexion1.close()
+
+    print("Anuncio eliminado")

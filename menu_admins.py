@@ -1,7 +1,8 @@
 import psycopg2 #Librería para la base de datos.
 from datos import * #Trayendo la información de la Base Datos.
-from modificar_contenido import *
-from ver_usuarios import ver_usuarios #Trayendo todo lo que servirá para modificar el contenido de la base de datos.
+from modificar_contenido import * #Trayendo la clase que servirá para modificar el contenido de las películas.
+from ver_usuarios import * #Trayendo todo lo que servirá para modificar el contenido de la base de datos.
+from ver_anunciantes import * #Trayendo todo lo que servirá para modificar a los anunciantes y a su contenido.
 
 #Este menú se va a enseñar una vez ya se haya iniciado sesión como administrador.
 def menu_admin():
@@ -20,7 +21,7 @@ def menu_admin():
                 ver_usuarios() #Perteneciente a la clase de modificar_contenido.
             elif decision == 3:
                 #Ver contenido de anuncios. 
-                print("Hola")
+                ver_anunciantes() #Perteneciente a la clase ver_anunciantes.
             elif decision == 4: 
                 #Salir al menú principal.
                 print("Saliendo....")
