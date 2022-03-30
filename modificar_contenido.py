@@ -105,11 +105,12 @@ def modificar_contenido():
     print("5. Modificar premio")
     print("6. Modificar fecha")
     print("7. Modificar link")
-    print("8. Modificar duración \n")
+    print("8. Modificar duración")
+    print("9. Salir \n")
 
     decision = int(input("¿Cuál opción elige? "))
 
-    if decision == 1: 
+    if decision == 1: #Modificar el nombre de la película.
        
         print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
         
@@ -225,9 +226,10 @@ def modificar_contenido():
                 print("Película actualizada \n")
 
                 break;
-    elif decision == 3: #Modificar director.
+    
+    elif decision == 4: #Modificar director.
         
-        print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
+        print("Para modificar el director de la película, favor ingresar su nombre correctamente")
         
         #Pidiendo el nombre de la película.
         nombre = input("Ingrese el nombre de la película ")
@@ -264,7 +266,7 @@ def modificar_contenido():
 
                 break;
 
-    elif decision == 4: #Modificar premio.
+    elif decision == 5: #Modificar premio.
         
         print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
         
@@ -302,7 +304,7 @@ def modificar_contenido():
                 print("Película actualizada \n")
 
                 break;
-    elif decision == 5: #Modificar fecha.
+    elif decision == 6: #Modificar fecha.
         
         print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
         
@@ -340,9 +342,9 @@ def modificar_contenido():
                 print("Película actualizada \n")
 
                 break;
-    elif decision == 6: #Modificar link.
+    elif decision == 7: #Modificar link.
         
-        print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
+        print("Para modificar el link de la película, favor ingresar su nombre correctamente")
         
         #Pidiendo el nombre de la película.
         nombre = input("Ingrese el nombre de la película ")
@@ -378,9 +380,9 @@ def modificar_contenido():
                 print("Película actualizada \n")
 
                 break;
-    elif decision == 7: #Modificar duración. 
+    elif decision == 8: #Modificar duración. 
         
-        print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
+        print("Para modificar la duración de la película, favor ingresar su nombre correctamente")
         
         #Pidiendo el nombre de la película.
         nombre = input("Ingrese el nombre de la película ")
@@ -416,6 +418,10 @@ def modificar_contenido():
                 print("Película actualizada \n")
 
                 break;
+
+    elif decision == 8: #Se eligió la opción para salir.
+        print("Saliendo.....")
+        modificar_contenido() #Regresando a la pantalla principal.
 
 #Opción para eliminar el contenido.
 def eliminar_contenido():

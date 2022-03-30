@@ -35,7 +35,7 @@ def ver_anunciantes():
 
             elif eleccion == 5: #Modificar contenido.
 
-                modificar_contenido() #Método para modificar contenido.
+                modificar_contenidoo() #Método para modificar contenido.
             
             elif eleccion == 6: #Quitar contenido.
 
@@ -201,7 +201,7 @@ def agregar_contenido():
     print("Anunciante agregado")
 
 #Método para modificar contenido.
-def modificar_contenido():
+def modificar_contenidoo():
 
     #Conexión a la base de datos.
     conexion1 = psycopg2.connect(

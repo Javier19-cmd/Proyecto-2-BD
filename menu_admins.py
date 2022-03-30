@@ -11,7 +11,7 @@ def menu_admin():
         print("1. Ver contenido")
         print("2. Ver usuarios")
         print("3. Ver contenido de anuncios")
-        print("4. Ver contenido de anuncios")
+        print("4. Módulo de reportería")
         print("5. Salir \n")
         
         #Try-catch del menú.
