@@ -20,10 +20,12 @@ def reporteria():
 
         elif eleccion == 2: #Cantidad de reproducciones por cada categoría, por tipo de cuenta para un rango de fechas dado.
            
-            cant_reproducciones_por_tipo_cuenta_por_fechas()
+            cant_reproducciones_por_tipo_cuenta_por_fechas() #Método que ve la cantida de reproducciones por tipo de cuenta en un rago de fechas dado.
 
         elif eleccion == 3: #Top 10 de los directores y actores principales de las películas que los perfiles estándar y avanzados han visto.
-            print("Hola")
+            
+            top_10_directores_y_actores_por_perfiles_estandar_avanzados() #Método que ve el top 10 de los directores y actores principales de las películas que han visto los perfiles estándar y avanzado.
+         
         elif eleccion == 4: #La cantidad de cuentas avanzadas que se han creado en los últimos seis meses.
             print("Hola")
         elif eleccion == 5: #Ver la hora pico donde el servicio es más usado para una fecha dada.
@@ -71,7 +73,8 @@ def generos_mas_vistos_y_minutos_consumidos():
     conexion1.close()
 
 def cant_reproducciones_por_tipo_cuenta_por_fechas():
-        #Conexión a la base de datos.
+    
+    #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
             host=host(), #Host de la base de datos.
             user= user(), #Usuario de la base de datos.
@@ -105,5 +108,43 @@ def cant_reproducciones_por_tipo_cuenta_por_fechas():
 
     #Cerrando la conexión.
     conexion1.close()
+
+def top_10_directores_y_actores_por_perfiles_estandar_avanzados():
+
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+    
+    print("Para ingresar las fechas que desea buscar, escríbalas de la siguiente forma: año-mes-día")
+
+    fecha1 = input("Ingrese la fecha inicial: ")
+
+    fecha2 = input("Ingrese la fecha final (la fecha final debe tener un día de atraso para ver mejor los datos): ")
+
+    sql = "select v.director, v.actor, h.nombre, TO_DATE(substring(h.tiempo, 0,11), 'YYYY/MM/DD') as fecha from historial h join videos v on h.nombre = v.nombre join perfiles p on p.perfil = h.perfil join datos_usuario du on p.usuario = du.usuario where h.tiempo >= %s and h.tiempo <= %s and du.plan = 'Estándar' or du.plan = 'Avanzado' limit 10"
+
+    #Ejecutando el query de búsqueda.
+    cursor1.execute(sql, (fecha1, fecha2,))
+    
+    rows=cursor1.fetchall()
+
+    #Imprimiendo el nombre de la película.
+    for row in rows: 
+
+        print(row) #Imprimiendo los datos de la BD.
+    
+    #Commit del query.
+    conexion1.commit()
+
+    #Cerrando la conexión.
+    conexion1.close()
+
 
 reporteria()

@@ -108,4 +108,4 @@ def anuncios (usuario):
                     print("\n")
 
         else: 
-            print(":v")
+            print("Tu perfil no tiene anuncios, por ser paga")

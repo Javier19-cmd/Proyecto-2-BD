@@ -163,6 +163,9 @@ def administrador():
             print("Contraseña incorrecta")
             #Enviando el usuario de la persona a una tabla de fracaso.
             sql3 = "INSERT INTO fracaso VALUES (%s)"
+            
+            menu_comercial() #Trayendo menú comercial para los usuarios avanzados. 
+
             #Enviando datos a la tabla de fracaso.
             cursor1.execute(sql3, (usuario,))
             #Commit del query.

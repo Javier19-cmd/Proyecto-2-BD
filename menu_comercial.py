@@ -66,7 +66,7 @@ def traer_perfiles(usuario):
                     print("Usuario mal redactado.")
                     traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
         
-        elif row[0] == 'Avanzado':
+        elif row1[0] == 'Avanzado':
             cursor1.execute(sql4,(usuario,))
             rows2 = cursor1.fetchall()
             for row2 in rows2:
