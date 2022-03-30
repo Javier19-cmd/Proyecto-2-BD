@@ -13,11 +13,9 @@ def menu_admin():
         #Try-catch del menú.
         try: 
             decision = int(input("¿Cuál opción elige? "))
-            if decision == 1:
-                #Ver contenido.
+            if decision == 1:#Ver contenido.
                 modificar_contenido() #Perteneciente a la clase de modificar_contenido.
-            elif decision == 2:
-                #Ver usuarios.
+            elif decision == 2:#Ver usuarios.
                 print("Hola")
             elif decision == 3:
                 #Ver contenido de anuncios. 
