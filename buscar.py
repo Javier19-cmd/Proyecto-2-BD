@@ -412,6 +412,3 @@ def buscar(perfil):
                 break; #Saliendo de la pantalla.
         except: 
             print("Error")
-
-perfil = "Javier"
-buscar(perfil)
