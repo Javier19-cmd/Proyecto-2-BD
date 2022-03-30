@@ -10,7 +10,7 @@ def ver_usuarios():
         print("2. Cambiar dirección de correo de un usuario")
         print("3. Cambiar nombre de un usuario")
         print("4. Cambiar apellido de un usuario")
-        print("5. Cambiar nombre de un usuario")
+        print("5. Cambiar usuario de un usuario")
         print("6. Salir")
 
         try: 
@@ -18,17 +18,29 @@ def ver_usuarios():
             decision = int(input("¿Qué opción elije? "))
 
             if decision == 1: #Dar de baja a un usuario.
+
                 dar_debaja() #Método para dar debaja a un usuario.
+            
             elif decision == 2: #Cambiar dirección de correo de un usuario.
+             
                 cambiar_correo() #Método para cambiar el correo de la persona.
+            
             elif decision == 3: #Cambiar nombre de un usuario.
-                print("Hola") 
+            
+                cambiar_nombre() #Método para cambiar nombre de la persona.
+            
             elif decision == 4: #Cambiar apellido de un usuario.
+            
                 print("Hola")
-            elif decision == 5: #Cambiar nombre de un usuario.
+            
+            elif decision == 5: #Cambiar "usuario" de un usuario.
+            
                 print("Hola")
+            
             elif decision == 6: #Salir de la pantalla.
+            
                 print("Saliendo....")
+            
                 break;
             else: #Opción no válida.
                 print("Opción no válida.")
@@ -118,6 +130,55 @@ def cambiar_correo():
             conexion1.close()
             
             print("Correo actualizado \n")
+
+            break;
+
+def cambiar_nombre():
+        #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+    print("Para el correo de la persona, a continuación escriba su usuario")
+        
+    #Pidiendo el usuario de la persona.
+    usuario = input("Ingrese usuario de la persona ")
+
+    #Query a usar para buscar con el nombre.
+    sql = "SELECT usuario FROM datos_usuario WHERE usuario = %s"
+
+    #Ejecutando el query de búsqueda.
+    cursor1.execute(sql, (usuario,))
+
+    rows=cursor1.fetchall()
+
+    #Imprimiendo el nombre de la película.
+    for row in rows: 
+
+        print(row[0])
+        
+        if usuario == row[0]:
+            
+            act = input("Ingrese el nuevo nombre de la persona: ")
+
+            sql1 = "UPDATE datos_usuario SET nombre = %s WHERE usuario = %s"
+
+            #Ejecutando el query de búsqueda.
+            cursor1.execute(sql1, (act, usuario,))
+            
+            #Commit del query.
+            conexion1.commit()
+
+            #Cerrando la conexión.
+            conexion1.close()
+            
+            print("Nombre actualizado \n")
 
             break;
 
