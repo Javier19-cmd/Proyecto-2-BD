@@ -22,6 +22,16 @@ def basico(usuario):
     #El usuario solo puede tener como máximo a un usuario. 
     perfil = input("Ingrese el nombre del perfil: ")
 
+    #Seleccionando los perfiles de la tabla.
+    #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+    cursor1.execute("SELECT perfil FROM perfiles")
+    rows=cursor1.fetchall()
+    for row in rows:
+        #print(row[0])
+        if perfil == row[0]:
+            print("Perfil existente, favor regresar a ingresar bien los datos")
+            basico(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
     #Query para insertar el perfil de la persona que eligió el plan básico.
     sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
@@ -57,6 +67,16 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 #Insertar el usuario y el perfil.
                 #El usuario eligió a dos perfiles.
                 perfil = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil == row[0]:
+                        print("Perfil existente, favor intente con otro tipo de usuario")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
                 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -75,6 +95,26 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 #El usuario eligió a dos perfiles.
                 perfil1 = input("Ingrese el nombre del usuario: ")
                 perfil2 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfiles existentes, favor intente con otros usuarios")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -95,6 +135,36 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 perfil1 = input("Ingrese el nombre del usuario: ")
                 perfil2 = input("Ingrese el nombre del usuario: ")
                 perfil3 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -117,6 +187,46 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 perfil2 = input("Ingrese el nombre del usuario: ")
                 perfil3 = input("Ingrese el nombre del usuario: ")
                 perfil4 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil4 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        estandar(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -167,6 +277,16 @@ def avanzado(usuario):
                 #El usuario eligió a dos perfiles.
                 perfil = input("Ingrese el nombre del usuario: ")
 
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
 
@@ -184,6 +304,26 @@ def avanzado(usuario):
                 #El usuario eligió a dos perfiles.
                 perfil1 = input("Ingrese el nombre del usuario: ")
                 perfil2 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -204,6 +344,36 @@ def avanzado(usuario):
                 perfil1 = input("Ingrese el nombre del usuario: ")
                 perfil2 = input("Ingrese el nombre del usuario: ")
                 perfil3 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -227,6 +397,46 @@ def avanzado(usuario):
                 perfil2 = input("Ingrese el nombre del usuario: ")
                 perfil3 = input("Ingrese el nombre del usuario: ")
                 perfil4 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil4 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
                 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -251,6 +461,56 @@ def avanzado(usuario):
                 perfil3 = input("Ingrese el nombre del usuario: ")
                 perfil4 = input("Ingrese el nombre del usuario: ")
                 perfil5 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil4 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil5 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -277,6 +537,66 @@ def avanzado(usuario):
                 perfil4 = input("Ingrese el nombre del usuario: ")
                 perfil5 = input("Ingrese el nombre del usuario: ")
                 perfil6 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil4 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil5 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil6 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -305,6 +625,76 @@ def avanzado(usuario):
                 perfil5 = input("Ingrese el nombre del usuario: ")
                 perfil6 = input("Ingrese el nombre del usuario: ")
                 perfil7 = input("Ingrese el nombre del usuario: ")
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil4 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil5 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil6 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil7 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
@@ -335,6 +725,86 @@ def avanzado(usuario):
                 perfil6 = input("Ingrese el nombre del usuario: ")
                 perfil7 = input("Ingrese el nombre del usuario: ")
                 perfil8 = input("Ingrese el nombre del usuario: ")
+
+               #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil1 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil2 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil3 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil4 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+                
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil5 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil6 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil7 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
+
+                #Seleccionando los perfiles de la tabla.
+                #Verificando que el perfil ingresado no exista en la tabla. En caso de que exista, entonces se manda al cliente a registrar bien otra vez los perfiles.
+                cursor1.execute("SELECT perfil FROM perfiles")
+                rows=cursor1.fetchall()
+                for row in rows:
+                    #print(row[0])
+                    if perfil8 == row[0]:
+                        print("Perfil existente, favor regresar a ingresar bien los datos")
+                        avanzado(usuario) #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
 
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
                 sql = "INSERT INTO perfiles VALUES (%s, %s)"
