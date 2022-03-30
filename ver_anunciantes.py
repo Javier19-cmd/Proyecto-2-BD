@@ -12,6 +12,7 @@ def ver_anunciantes():
         print("4. Agregar contenido")
         print("5. Modificar contenido")
         print("6. Quitar contenido")
+        print("7. Salir")
 
         try: 
             eleccion = int(input("¿Qué opción elije? "))
@@ -29,11 +30,15 @@ def ver_anunciantes():
                 eliminar_anunciante() #Método para eliminar anunciante.
             
             elif eleccion == 4: #Agregar contenido.
-                print("Hola")
+                
+                agregar_contenido() #Método para agregar contenido.
+
             elif eleccion == 5: #Modificar contenido.
                 print("Hola")
-            elif eleccion == 6: #Salir de la pantalla.
-                print("Saliendo......")
+            elif eleccion == 6: #Quitar contenido.
+                print("Hola")
+            elif eleccion == 7: #Salir de la pantalla. 
+                print("Saliendo....")
                 break;
 
         except:
@@ -141,7 +146,13 @@ def eliminar_anunciante():
     #SQL para eliminar datos de la persona.
     sql = "DELETE FROM anunciante WHERE nombre = %s"
 
-    cursor1.execute(sql, (nombre,)) #Eliminando persona de la tabla de datos_usuario.
+    #SQL para eliminar perfiles de la persona.
+    sql2 = "DELETE FROM anuncio WHERE nombre_anunciante = %s"
+
+    #Ejecutando los queries de eliminación. Primero se eliminó el anuncio del anunciante y luego al anunciante.
+    cursor1.execute(sql2, (nombre,)) #Eliminando anunciante de la tabla anunciante.
+
+    cursor1.execute(sql, (nombre,)) #Eliminando los anuncios del anunciante.
 
     #Haciendo commit de los queries.
     conexion1.commit()
@@ -150,5 +161,39 @@ def eliminar_anunciante():
     conexion1.close()
 
     print("Anunciante eliminado")
+
+#Método para agregar contenido.
+def agregar_contenido():
+    
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+    
+    nombre = input("Ingrese el nombre del anunciante ")#Pidiendo nombre del anunciante.
+
+    link = input("Ingrese el link del anuncio ")#Pidiendo el link del anuncio.
+
+    genero = input("Ingrese el género del anuncio ") #Pidiendo el género del anuncio.
+
+    #SQL para insertar los datos en una tabla.
+    sql = "INSERT INTO anuncio VALUES (%s, %s, %s)"
+
+    #Corriendo el sql.
+    cursor1.execute(sql, (nombre, link, genero,))
+
+        #Haciendo commit de los queries.
+    conexion1.commit()
+
+    #Cerrando la conexión.
+    conexion1.close()
+
+    print("Anunciante agregado")
 
 ver_anunciantes()
