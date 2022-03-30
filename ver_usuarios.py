@@ -10,8 +10,7 @@ def ver_usuarios():
         print("2. Cambiar dirección de correo de un usuario")
         print("3. Cambiar nombre de un usuario")
         print("4. Cambiar apellido de un usuario")
-        print("5. Cambiar usuario de un usuario")
-        print("6. Salir")
+        print("5. Salir")
 
         try: 
             
@@ -33,11 +32,7 @@ def ver_usuarios():
             
                 cambiar_apellido() #Método que cambia el apellido de la persona.
             
-            elif decision == 5: #Cambiar "usuario" de un usuario.
-            
-                print("Hola")
-            
-            elif decision == 6: #Salir de la pantalla.
+            elif decision == 5: #Salir de la pantalla.
             
                 print("Saliendo....")
             
@@ -133,6 +128,7 @@ def cambiar_correo():
 
             break;
 
+#Método para cambiar el nombre de la persona.
 def cambiar_nombre():
     #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
@@ -182,6 +178,7 @@ def cambiar_nombre():
 
             break;
 
+#Método para cambiar el apellido de la persona.
 def cambiar_apellido():
 
     #Conexión a la base de datos.
@@ -231,5 +228,6 @@ def cambiar_apellido():
             print("Apellido actualizado \n")
 
             break;
+
 
 ver_usuarios()
