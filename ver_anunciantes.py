@@ -14,10 +14,12 @@ def ver_anunciantes():
         print("6. Quitar contenido")
 
         try: 
-            eleccion = int(input("¿Qué opción elije?"))
+            eleccion = int(input("¿Qué opción elije? "))
             
             if eleccion == 1: #Agregar anunciantes.
-                print("Hola")
+                
+                agregar_anunciante() #Método que agrega anunciantes.
+
             elif eleccion == 2: #Modificar datos de anunciantes.
                 print("Hola")
             elif eleccion == 3: #Eliminar anunciantes.
@@ -36,5 +38,34 @@ def ver_anunciantes():
 
 #Método para agregar anunciante.
 def agregar_anunciante():
-    print("Hola")
+
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+    
+    nombre = input("Ingrese el nombre del anunciante ")#Pidiendo nombre del anunciante.
+
+    correo = input("Ingrese el correo del anunciante ")#Pidiendo el correo del anunciante.
+
+    #SQL para insertar los datos en una tabla.
+    sql = "INSERT INTO anunciante VALUES (%s, %s)"
+
+    #Corriendo el sql.
+    cursor1.execute(sql, (nombre, correo,))
+
+        #Haciendo commit de los queries.
+    conexion1.commit()
+
+    #Cerrando la conexión.
+    conexion1.close()
+
+    print("Anunciante agregado")
+
 ver_anunciantes()
