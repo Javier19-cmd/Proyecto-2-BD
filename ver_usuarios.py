@@ -45,6 +45,7 @@ def ver_usuarios():
 
 #Método para poder debaja a los usuarios.
 def dar_debaja():
+
     #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
             host=host(), #Host de la base de datos.
