@@ -54,7 +54,7 @@ def generos_mas_vistos_y_minutos_consumidos():
 
     fecha2 = input("Ingrese la fecha final (la fecha final debe tener un día de atraso para ver mejor los datos): ")
 
-    sql = "SELECT DISTINCT v.genero, TO_DATE(substring(tiempo, 0,11), 'YYYY/MM/DD') as fecha, sum(v.duracion) as minutos_consumidos FROM busquedas b JOIN videos v on b.busqueda = v.nombre WHERE tiempo >= %s and tiempo <= %s group by v.genero, b.tiempo"
+    sql = "SELECT DISTINCT v.genero, TO_DATE(substring(tiempo, 0,11), 'YYYY/MM/DD') as fecha, sum(v.duracion) as minutos_consumidos FROM busquedas b JOIN videos v on b.busqueda = v.nombre WHERE tiempo >= %s and tiempo <= %s group by v.genero, b.tiempo limit 10"
 
     #Ejecutando el query de búsqueda.
     cursor1.execute(sql, (fecha1, fecha2,))
@@ -72,6 +72,7 @@ def generos_mas_vistos_y_minutos_consumidos():
     #Cerrando la conexión.
     conexion1.close()
 
+#Método que sirve para ver la cantidad de reproducciones por tipo de cuenta en un rango de fechas.
 def cant_reproducciones_por_tipo_cuenta_por_fechas():
     
     #Conexión a la base de datos.
