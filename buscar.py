@@ -1,6 +1,7 @@
 from datos import * #Importando todos los datos de la base de datos. 
 from datetime import datetime #Librería para obtener la hora.
 import psycopg2 #Importando la librería para implementar la base de datos.
+from recomendacion import * #Importando todos los métodos usados en la clase de recomendación.
 
 def buscar(perfil):
 
@@ -56,7 +57,8 @@ def buscar(perfil):
                     sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
                     #Ejecutando el query de búsqueda.
                     cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
-
+                    
+                    recomendacion_nombre(buscar) #Algoritmo que recomienda cosas. Pertenece a la clase de recomendación.
                     print("Enviando película al historial")
 
                 #Insertando datos de búsqueda.    
@@ -119,6 +121,8 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+                
+                recomendacion_actor(buscar) #Recomendación del género en base al actor que participa en la película.
             
             elif eleccion == 3: #Búsquda por género.
             
@@ -135,6 +139,8 @@ def buscar(perfil):
 
                 #Variable que contiene al nombre de la película.
                 buscar = input("Ingrese el nombre del género que desea buscar: ")
+
+                recomendacion_genero(buscar) #Recomendación de en base a los géneros.
 
                 #Query a usar para buscar.
                 sql = "SELECT link FROM videos WHERE genero = %s"
@@ -208,6 +214,8 @@ def buscar(perfil):
                 #Variable que contiene al nombre de la película.
                 buscar = input("Ingrese el nombre del director que desea buscar: ")
 
+                recomendacion_director(buscar) #Recomendación en base al director.
+
                 #Query a usar para buscar.
                 sql = "SELECT link FROM videos WHERE director = %s"
 
@@ -263,6 +271,7 @@ def buscar(perfil):
 
                 #Cerrando la conexión.
                 conexion1.close()
+
             
             elif eleccion == 5: #Búsqueda por premio.
                 
@@ -279,6 +288,8 @@ def buscar(perfil):
 
                 #Variable que contiene al nombre de la película.
                 buscar = input("Ingrese el nombre del género que desea buscar: ")
+
+                recomendacion_premio(buscar) #Recomendación en base al premio.
 
                 #Query a usar para buscar.
                 sql = "SELECT link FROM videos WHERE premio = %s"
@@ -351,6 +362,8 @@ def buscar(perfil):
 
                 #Variable que contiene al nombre de la película.
                 buscar = input("Ingrese la longitud que desea buscar: ")
+
+                recomendacion_longitud(buscar) #Recomendación en base a la longitud.
 
                 #Query a usar para buscar.
                 sql = "SELECT link FROM videos WHERE duracion = %s"
