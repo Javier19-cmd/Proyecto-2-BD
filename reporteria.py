@@ -92,7 +92,9 @@ def cant_reproducciones_por_tipo_cuenta_por_fechas():
 
     fecha2 = input("Ingrese la fecha final (la fecha final debe tener un día de atraso para ver mejor los datos): ")
 
-    sql = "select distinct v.genero, TO_DATE(substring(b.tiempo, 0,11), 'YYYY/MM/DD') as fecha, count(b.busqueda) as minutos_consumidos, du.plan from busquedas b join videos v on b.busqueda = v.nombre join perfiles p on p.perfil = b.perfil join datos_usuario du on p.usuario = du.usuario where b.tiempo >= %s and b.tiempo <= %s group by v.genero, b.tiempo, du.plan, p.perfil"
+    #sql = "select distinct v.genero, TO_DATE(substring(b.tiempo, 0,11), 'YYYY/MM/DD') as fecha, count(b.busqueda) as minutos_consumidos, du.plan from busquedas b join videos v on b.busqueda = v.nombre join perfiles p on p.perfil = b.perfil join datos_usuario du on p.usuario = du.usuario where b.tiempo >= %s and b.tiempo <= %s group by v.genero, b.tiempo, du.plan, p.perfil"
+
+    sql = "select v.genero, count(b.busqueda) as cantidad_reprodicciones from busquedas b join videos v on b.busqueda = v.nombre join perfiles p on p.perfil = b.perfil join datos_usuario du on p.usuario = du.usuario where b.tiempo >= %s and b.tiempo <= %s group by v.genero"
 
     #Ejecutando el query de búsqueda.
     cursor1.execute(sql, (fecha1, fecha2,))

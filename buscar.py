@@ -88,7 +88,7 @@ def buscar(perfil):
                 buscar = input("Ingrese el nombre del actor que desea buscar: ")
 
                 #Query a usar para buscar.
-                sql = "SELECT link FROM videos WHERE actor = %s"
+                sql = "SELECT link FROM videos WHERE actor = %s AND estrella = 10"
 
                 #Ejecutando el query de búsqueda.
                 cursor1.execute(sql, (buscar,))
@@ -410,5 +410,8 @@ def buscar(perfil):
             
             elif eleccion == 7: #Salir.
                 break; #Saliendo de la pantalla.
+
+            else: 
+                print("No se ingresaron bien los datos.")
         except: 
-            print("Error")
+            print("Error al manipular los datos")
