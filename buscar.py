@@ -27,6 +27,11 @@ def buscar(perfil):
 
             if eleccion == 1: #Búsqueda por nombre de película.
 
+                #Buscar todos el nombre de la película y si hay varias películas con el mismo nombre, entonces preguntarle cual quiere ver, para así mandar al historial 
+                #la película que es y no todas.
+
+                #Revisar el lucid chart para agregar los criterios de la búsqueda con el actor.
+
                 #Conexión a la base de datos.
                 conexion1 = psycopg2.connect(
                         host=host(), #Host de la base de datos.
@@ -40,7 +45,8 @@ def buscar(perfil):
                 
                 #Variable que contiene al nombre de la película.
                 buscar = input("Ingrese el nombre de la película que desea buscar: ")
-
+                
+                #Usar like o ilke
                 #Query a usar para buscar con el nombre.
                 sql = "SELECT link FROM videos WHERE nombre = %s"
 
