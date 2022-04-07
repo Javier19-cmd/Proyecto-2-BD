@@ -27,9 +27,6 @@ def buscar(perfil):
 
             if eleccion == 1: #Búsqueda por nombre de película.
 
-                #Buscar todos el nombre de la película y si hay varias películas con el mismo nombre, entonces preguntarle cual quiere ver, para así mandar al historial 
-                #la película que es y no todas.
-
                 #Revisar el lucid chart para agregar los criterios de la búsqueda con el actor.
 
                 #Conexión a la base de datos.
@@ -83,7 +80,7 @@ def buscar(perfil):
 
                         #Imprimiendo el link de la película y el nombre.
                         for row in rows: 
-                            print(buscar)
+                            #print(buscar)
                             print(row[0])
                             visto = 1
                             sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
@@ -120,8 +117,10 @@ def buscar(perfil):
                 #Variable que contiene al nombre de la película.
                 buscar = input("Ingrese el nombre del actor que desea buscar: ")
 
+                recomendacion_genero(buscar) #Recomendación de en base a los géneros.
+
                 #Query a usar para buscar.
-                sql = "SELECT link FROM videos WHERE actor = %s AND estrella = 10"
+                sql = "SELECT v.nombre, v.link FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id WHERE va.nombre = %s"
 
                 #Ejecutando el query de búsqueda.
                 cursor1.execute(sql, (buscar,))
@@ -130,31 +129,51 @@ def buscar(perfil):
 
                 #Imprimiendo el link de la película.
                 for row in rows: 
-                    print(buscar)
+                    #print(buscar)
                     print(row[0])
 
-                    sql3 = "SELECT nombre FROM videos WHERE actor = %s"
-                    
-                    #Ejecutando el query de búsqueda.
+                    #Query para buscar el nombre de las películas.
+                    sql3 = "SELECT v.nombre FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id WHERE va.nombre = %s"
+                    #Ejecutando el query de búsqueda. Este busca el nombre de la película.
                     cursor1.execute(sql3, (buscar,))
                     rows2=cursor1.fetchall()
 
                     for row2 in rows2:
-                        print(row2[0])
+                        print(row2[0]) #Imprimiendo las películas del género.
+
+                        #Variable que contiene al nombre de la película.
+                        buscar = input("Ingrese el nombre de la película que desea buscar: ")
+
+                        #Query a usar para buscar con el nombre.
+                        sql = "SELECT link FROM videos WHERE nombre = %s"
+
+                        #Ejecutando el query de búsqueda.
+                        cursor1.execute(sql, (buscar,))
+
+                        rows=cursor1.fetchall()
+
+                        #Imprimiendo el link de la película y el nombre.
+                        for row in rows: 
+                            #print(buscar)
+                            print(row[0])
+                            visto = 1
+                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            #Ejecutando el query de búsqueda.
+                            cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                            print("Enviando película al historial")
 
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
                 
                 #Ejecutando el query de búsqueda.
-                cursor1.execute(sql2, (perfil, buscar,now,))
+                cursor1.execute(sql2, (perfil, buscar, now,))
 
                 #Commit del query.
                 conexion1.commit()
 
                 #Cerrando la conexión.
                 conexion1.close()
-                
-                recomendacion_actor(buscar) #Recomendación del género en base al actor que participa en la película.
             
             elif eleccion == 3: #Búsquda por género.
             
@@ -209,7 +228,7 @@ def buscar(perfil):
 
                         #Imprimiendo el link de la película y el nombre.
                         for row in rows: 
-                            print(buscar)
+                            #print(buscar)
                             print(row[0])
                             visto = 1
                             sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
@@ -258,7 +277,7 @@ def buscar(perfil):
 
                 #Imprimiendo el link de la película.
                 for row in rows: 
-                    print(buscar)
+                    #print(buscar)
                     print(row[0])
 
                     #Query para buscar el nombre de las películas.
@@ -358,7 +377,7 @@ def buscar(perfil):
 
                         #Imprimiendo el link de la película y el nombre.
                         for row in rows: 
-                            print(buscar)
+                            #print(buscar)
                             print(row[0])
                             visto = 1
                             sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
@@ -432,7 +451,7 @@ def buscar(perfil):
 
                         #Imprimiendo el link de la película y el nombre.
                         for row in rows: 
-                            print(buscar)
+                            #print(buscar)
                             print(row[0])
                             visto = 1
                             sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
