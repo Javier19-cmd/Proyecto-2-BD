@@ -115,9 +115,9 @@ def buscar(perfil):
                 cursor1 = conexion1.cursor() #Cursor de la conexión.
 
                 #Variable que contiene al nombre de la película.
-                buscar = input("Ingrese el nombre del actor que desea buscar: ")
+                buscar = input("Ingrese el nombre del género que desea buscar: ")
 
-                recomendacion_genero(buscar) #Recomendación de en base a los géneros.
+                recomendacion_actor(buscar) #Recomendación de en base a los géneros.
 
                 #Query a usar para buscar.
                 sql = "SELECT v.nombre, v.link FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id WHERE va.nombre = %s"

@@ -37,10 +37,15 @@ def recomendacion_actor(actor):
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
-    sql = "SELECT genero FROM videos WHERE actor = %s"
+    sql = "SELECT v.nombre FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id WHERE va.nombre = %s"
 
     cursor1.execute(sql, (actor,))
     rows2=cursor1.fetchall()
+    
+    #Imprimiendo anuncio.
+    for row2 in rows2: 
+        print("Las películas recomendadas son: ", row2[0])
+        print("\n")
 
 #Recomendación del género.
 def recomendacion_genero(genero):
