@@ -82,6 +82,27 @@ def buscar(perfil):
                         for row in rows: 
                             #print(buscar)
                             print(row[0])
+                            
+                            """                            
+                            a = ''.join(row[0])
+
+                            if buscar.lower() == a.lower():
+                                visto = 1
+                                sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                                #Ejecutando el query de búsqueda.
+                                cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                                print("Enviando película al historial")
+                            
+                            elif buscar.upper() == a.upper():
+                                visto = 1
+                                sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                                #Ejecutando el query de búsqueda.
+                                cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                                print("Enviando película al historial")
+                            """
+
                             visto = 1
                             sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
                             #Ejecutando el query de búsqueda.

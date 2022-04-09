@@ -14,14 +14,14 @@ def recomendacion_nombre(nombre):
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
-    sql = "SELECT genero FROM videos WHERE nombre = %s"
+    sql = "SELECT nombre FROM videos WHERE nombre = %s"
 
     cursor1.execute(sql, (nombre,))
     rows2=cursor1.fetchall()
 
     #Imprimiendo anuncio.
     for row2 in rows2: 
-        print("Los géneros que te recomendamos son: ", row2[0])
+        print("Las películas que te recomendamos son: ", row2[0])
         print("\n")
 
 #Recomendación del actor.

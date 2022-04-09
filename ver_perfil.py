@@ -64,7 +64,8 @@ def downgrade(usuario):
             #Cerrando la conexión.
             conexion1.close()
 
-            print("Hola")
+            print("Plan actualizado")
+
         elif eleccion == 2: #Si el usuario eligió la opción 2, es porque el usuario quiere el plan gratis.
             
             sql2 = "UPDATE datos_usuario SET plan = 'Básico' WHERE usuario = %s" #SQL para hacer update.
