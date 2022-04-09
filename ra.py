@@ -1,3 +1,11 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+Este archivo se usó para desencriptar las contraseñas de los usuarios de pruebas.
+"""
 import random
 import cryptocode
 

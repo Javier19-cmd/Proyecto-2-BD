@@ -1,3 +1,10 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+"""
 from datos import * #Importando los datos de la BD.
 import psycopg2 #Importando módulo para conectar a PostgreSQL
 

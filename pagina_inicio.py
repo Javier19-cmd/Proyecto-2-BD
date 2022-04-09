@@ -1,3 +1,10 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+"""
 #Importando archivos.
 from registro import *
 

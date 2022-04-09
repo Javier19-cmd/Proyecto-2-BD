@@ -3,6 +3,13 @@ Referencias:
 
 1. Librería de cryptocode: https://www.delftstack.com/es/howto/python/python-encrypt-string/
 
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+
+
 """
 import psycopg2 #Librería para la base de datos.
 from datos import * #Jalando el archivo que tiene los datos de la BD.

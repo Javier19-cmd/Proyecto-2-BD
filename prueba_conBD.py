@@ -1,3 +1,10 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+"""
 import psycopg2 #Librería para la base de datos.
 from datos import *
 

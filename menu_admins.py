@@ -1,3 +1,10 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+"""
 import psycopg2 #Librería para la base de datos.
 from datos import * #Trayendo la información de la Base Datos.
 from modificar_contenido import * #Trayendo la clase que servirá para modificar el contenido de las películas.

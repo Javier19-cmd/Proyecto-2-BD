@@ -1,3 +1,10 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+"""
 #Importando los datos de la BD.
 from datos import * 
 #Librería para la base de datos.

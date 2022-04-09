@@ -1,3 +1,11 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+"""
+
 #Host de la base de datos.
 def host():
     return 'project2db-do-user-11101874-0.b.db.ondigitalocean.com'

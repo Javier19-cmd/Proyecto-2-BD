@@ -1,3 +1,10 @@
+"""
+Nombres: Hansel López
+         Javier Valle
+
+Carnets: 19026
+         20159
+"""
 from datos import * #Importando todos los datos de la base de datos. 
 from datetime import datetime #Librería para obtener la hora.
 import psycopg2 #Importando la librería para implementar la base de datos.
