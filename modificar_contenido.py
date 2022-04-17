@@ -10,7 +10,7 @@ from datos import * #Importando los datos de la base de datos.
 import psycopg2 #Librería para abrir la base de datos.
 
 #Método que modifica el contenido.
-def modificar_contenido():
+def modificar_contenidoo():
     while True:
 
         print("Bienvenido al menú que modica el contenido de la plataforma. \n")
@@ -161,10 +161,10 @@ def modificar_contenido():
         print("Para modificar el nombre de la película, favor ingresar su nombre correctamente")
         
         #Pidiendo el nombre de la película.
-        nombre = input("Ingrese el nombre de la película ")
+        nombre = input("Ingrese el id del actor ")
 
         #Query a usar para buscar con el nombre.
-        sql = "SELECT nombre FROM videos WHERE nombre = %s"
+        sql = "SELECT nombre FROM videos_actores WHERE id_actor = %s"
 
         #Ejecutando el query de búsqueda.
         cursor1.execute(sql, (nombre,))
@@ -175,12 +175,14 @@ def modificar_contenido():
         for row in rows: 
 
             print(row[0])
+
+            nombre = input("Ingrese el nombre del actor a modificar ")
             
             if nombre == row[0]:
                 
-                act = input("Ingrese los nuevos nombres de los actores: ")
+                act = input("Ingrese el nuevo nombre del actor: ")
 
-                sql1 = "UPDATE videos SET actor = %s WHERE nombre = %s"
+                sql1 = "UPDATE videos_actores SET nombre = %s WHERE nombre = %s"
 
                 #Ejecutando el query de búsqueda.
                 cursor1.execute(sql1, (act, nombre,))
@@ -191,7 +193,7 @@ def modificar_contenido():
                 #Cerrando la conexión.
                 conexion1.close()
                 
-                print("Película actualizada \n")
+                print("Actor Actualizado \n")
 
                 break;
     

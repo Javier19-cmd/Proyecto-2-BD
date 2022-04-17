@@ -26,7 +26,8 @@ def favoritos(perfil):
         print("4) Director")
         print("5) Premio")
         print("6) Duración")
-        print("7) Salir")
+        print("7) Ver lista")
+        print("8) Salir")
 
 
         try: 
@@ -60,7 +61,6 @@ def favoritos(perfil):
 
                 #Imprimiendo el link de la película.
                 for row in rows: 
-                    print(buscar)
                     print(row[0])
 
                     #Query para buscar el nombre de las películas.
@@ -460,7 +460,37 @@ def favoritos(perfil):
                 #Cerrando la conexión.
                 conexion1.close()
             
-            elif eleccion == 7: #Salir.
+            elif eleccion == 7: #Ver lista de favoritos.
+                #Conexión a la base de datos.
+                conexion1 = psycopg2.connect(
+                        host=host(), #Host de la base de datos.
+                        user= user(), #Usuario de la base de datos.
+                        password=passw(), #Contraseña de la base de datos.
+                        database=BD(), #Base de datos que se usará.
+                        port=port() #Puerto de la base de datos.
+                )
+                
+                cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+                sql = "select nombre from favoritos f where perfil = %s" #Query que obtiene el nombre y el link de las películas que la persona mandó a favoritos.
+                
+                #Ejecutando el query de selección de favoritos.
+                cursor1.execute(sql, (perfil,))
+
+                rows=cursor1.fetchall()
+
+                #Imprimiendo el link de la película.
+                for row in rows: 
+                    print(row[0])
+                
+                #Commit del query.
+                conexion1.commit()
+
+                #Cerrando la conexión.
+                conexion1.close()
+
+
+            elif eleccion == 8: #Salir.
                 break; #Saliendo de la pantalla.
         except: 
             print("Error")
