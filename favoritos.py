@@ -48,7 +48,9 @@ def favoritos(perfil):
                 #Variable que contiene al nombre de la película.
                 buscar = input("Ingrese el nombre de la película que desea buscar: ")
 
-                #Query a usar para buscar con el nombre.
+                #recomendacion_nombre(buscar) #Recomendación de en base a los géneros.
+
+                #Query a usar para buscar.
                 sql = "SELECT link FROM videos WHERE nombre = %s"
 
                 #Ejecutando el query de búsqueda.
@@ -56,16 +58,42 @@ def favoritos(perfil):
 
                 rows=cursor1.fetchall()
 
-                #Imprimiendo el link de la película y el nombre.
+                #Imprimiendo el link de la película.
                 for row in rows: 
                     print(buscar)
                     print(row[0])
-                    visto = 0
-                    sql1 = "INSERT INTO favoritos VALUES (%s, %s, %s, %s, %s)"
-                    #Ejecutando el query de búsqueda.
-                    cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
 
-                    print("Enviando película al favoritos")     
+                    #Query para buscar el nombre de las películas.
+                    sql3 = "SELECT nombre FROM videos WHERE nombre = %s"
+                    #Ejecutando el query de búsqueda. Este busca el nombre de la película.
+                    cursor1.execute(sql3, (buscar,))
+                    rows2=cursor1.fetchall()
+
+                    for row2 in rows2:
+                        print(row2[0]) #Imprimiendo las películas del género.
+
+                        #Variable que contiene al nombre de la película.
+                        buscar = input("Ingrese el nombre de la película que desea buscar: ")
+
+                        #Query a usar para buscar con el nombre.
+                        sql = "SELECT link FROM videos WHERE nombre = %s"
+
+                        #Ejecutando el query de búsqueda.
+                        cursor1.execute(sql, (buscar,))
+
+                        rows=cursor1.fetchall()
+
+                        #Imprimiendo el link de la película y el nombre.
+                        for row in rows: 
+                            #print(buscar)
+                            print(row[0])
+                            
+                            visto = 0
+                            sql1 = "INSERT INTO favoritos VALUES (%s, %s, %s, %s, %s)"
+                            #Ejecutando el query de búsqueda.
+                            cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                            print("Enviando película a la lista de favoritos")     
 
                 #Commit del query.
                 conexion1.commit()
@@ -87,10 +115,12 @@ def favoritos(perfil):
                 cursor1 = conexion1.cursor() #Cursor de la conexión.
 
                 #Variable que contiene al nombre de la película.
-                buscar = input("Ingrese el nombre del actor que desea buscar: ")
+                buscar = input("Ingrese el nombre del género que desea buscar: ")
+
+                #recomendacion_actor(buscar) #Recomendación de en base a los géneros.
 
                 #Query a usar para buscar.
-                sql = "SELECT link FROM videos WHERE actor = %s"
+                sql = "SELECT v.nombre, v.link FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id WHERE va.nombre = %s"
 
                 #Ejecutando el query de búsqueda.
                 cursor1.execute(sql, (buscar,))
@@ -99,19 +129,39 @@ def favoritos(perfil):
 
                 #Imprimiendo el link de la película.
                 for row in rows: 
-                    print(buscar)
+                    #print(buscar)
                     print(row[0])
 
-                    sql3 = "SELECT nombre FROM videos WHERE actor = %s"
-                    #Ejecutando el query de búsqueda.
+                    #Query para buscar el nombre de las películas.
+                    sql3 = "SELECT v.nombre FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id WHERE va.nombre = %s"
+                    #Ejecutando el query de búsqueda. Este busca el nombre de la película.
                     cursor1.execute(sql3, (buscar,))
                     rows2=cursor1.fetchall()
 
                     for row2 in rows2:
-                        print(row2[0])
+                        print(row2[0]) #Imprimiendo las películas del género.
 
-                #Insertando datos de búsqueda.    
-                sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
+                        #Variable que contiene al nombre de la película.
+                        buscar = input("Ingrese el nombre de la película que desea buscar: ")
+
+                        #Query a usar para buscar con el nombre.
+                        sql = "SELECT link FROM videos WHERE nombre = %s"
+
+                        #Ejecutando el query de búsqueda.
+                        cursor1.execute(sql, (buscar,))
+
+                        rows=cursor1.fetchall()
+
+                        #Imprimiendo el link de la película y el nombre.
+                        for row in rows: 
+                            #print(buscar)
+                            print(row[0])
+                            visto = 1
+                            sql1 = "INSERT INTO historial VALUES (%s, %s, %s, %s, %s)"
+                            #Ejecutando el query de búsqueda.
+                            cursor1.execute(sql1, (perfil, buscar, row[0], visto, now,))
+
+                            print("Enviando película al historial")
                 
                 #Ejecutando el query de búsqueda.
                 cursor1.execute(sql2, (perfil, buscar,now,))
