@@ -16,6 +16,7 @@ def reporteria():
     print("3. Top 10 de los directores y actores principales de las películas que los perfiles estándar y avanzados han visto")
     print("4. La cantidad de cuentas avanzadas que se han creado en los últimos 6 meses")
     print("5. Ver la hora pico donde el servicio es más usado para una fecha dada.")
+    print("6. Top 10 términos más buscados.")
 
 
     
@@ -40,6 +41,11 @@ def reporteria():
     elif eleccion == 5: #Ver la hora pico donde el servicio es más usado para una fecha dada.
         
         hora_pico() #Método que determina la hora pico de una cierta fecha.
+
+    elif eleccion == 6: #Ver el top 10 términos más buscados en la plataforma.
+
+        top_terminos_buscados() #Llamando al método para los términos más buscados en la plataforma.
+
 
 #Método para ver los géneros más vistos y los minutos consumidos.
 def generos_mas_vistos_y_minutos_consumidos():
@@ -228,6 +234,35 @@ def hora_pico():
         print(row)
     
     #Commit del query.
+    conexion1.commit()
+
+    #Cerrando la conexión.
+    conexion1.close()
+
+#Función para poder ver el top de términos más buscados en la plataforma de streaming.
+def top_terminos_buscados():
+    
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+    print("A continuación se le presentarán los términos más buscados en la plataforma.")
+
+    cursor1.execute("select * from buscar")
+
+    rows = cursor1.fetchall()
+
+    for row in rows:
+        print(row[0])
+
+        #Commit del query.
     conexion1.commit()
 
     #Cerrando la conexión.
