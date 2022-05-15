@@ -66,9 +66,8 @@ def buscar(perfil):
                     print(row[0])
 
                     #Query para buscar el nombre de las películas.
-                    sql3 = "SELECT nombre, id FROM videos WHERE nombre = %s"
                     #Ejecutando el query de búsqueda. Este busca el nombre de la película.
-                    cursor1.execute(sql3, (buscar,))
+                    cursor1.execute("SELECT nombre, id FROM videos WHERE nombre ILIKE '%{}%'".format(buscar))
                     rows2=cursor1.fetchall()
                     print(rows2)
 
@@ -518,5 +517,5 @@ def buscar(perfil):
 
             else: 
                 print("No se ingresaron bien los datos.")
-        except: 
-            print("Error al manipular los datos")
+        except (Exception, psycopg2.DatabaseError) as error: 
+            print(error)
