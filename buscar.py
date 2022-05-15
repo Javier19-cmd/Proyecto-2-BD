@@ -81,12 +81,6 @@ def buscar(perfil):
                         buscar = input("Ingrese el nombre de la película que desea buscar: ")
                         confi = int(input("Ingrese el código de verificación que aparece debajo del nombre: "))
                         
-                        #Si el código es inválido, entonces se le indica a la persona que no estuvo bien lo que metió
-                        #y se regresa a la pantalla anterior.
-                        if confi != row[0]:
-                            print("Código inválido")
-                            break
-
                         #Query a usar para buscar con el nombre.
                         sql = "SELECT link FROM videos WHERE nombre = %s"
 
@@ -526,5 +520,3 @@ def buscar(perfil):
                 print("No se ingresaron bien los datos.")
         except: 
             print("Error al manipular los datos")
-
-buscar("Javier")
