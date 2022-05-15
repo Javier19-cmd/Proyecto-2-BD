@@ -44,7 +44,7 @@ def recomendacion_actor(actor):
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
-    sql = "SELECT v.nombre FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id WHERE va.nombre = %s"
+    sql = "SELECT v.nombre FROM videos v JOIN videos_actores va ON va.id_pelicula = v.id JOIN actores a ON a.id = va.id WHERE v.nombre = %s"
 
     cursor1.execute(sql, (actor,))
     rows2=cursor1.fetchall()
