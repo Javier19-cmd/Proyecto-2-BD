@@ -30,12 +30,6 @@ def generador():
 
     sql1 = "SELECT id FROM videos"
 
-    num = cursor1.execute(sql1)
-
-    ruleta = random.randint(0, num)
-
-    print(ruleta)
-    
     #Haciendo loop de prueba.
     for i in range(cantidad): 
         print(fecha)

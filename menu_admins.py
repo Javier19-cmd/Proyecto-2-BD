@@ -11,6 +11,7 @@ from modificar_contenido import * #Trayendo la clase que servirá para modificar
 from ver_usuarios import * #Trayendo todo lo que servirá para modificar el contenido de la base de datos.
 from ver_anunciantes import * #Trayendo todo lo que servirá para modificar a los anunciantes y a su contenido.
 from reporteria import * #Importando todo lo que sirve para la reportería.
+from registro_admins import * #Importando el registro de administradores.
 
 #Este menú se va a enseñar una vez ya se haya iniciado sesión como administrador.
 def menu_admin():
@@ -19,7 +20,8 @@ def menu_admin():
         print("2. Ver usuarios")
         print("3. Ver contenido de anuncios")
         print("4. Módulo de reportería")
-        print("5. Salir \n")
+        print("5. Agregar nuevo usuario administrador") #Nuevo
+        print("6. Salir \n")
         
         #Try-catch del menú.
         try: 
@@ -33,7 +35,9 @@ def menu_admin():
                 ver_anunciantes() #Perteneciente a la clase ver_anunciantes.
             elif decision == 4:
                 reporteria() #Perteneciente a la clase de reportería.
-            elif decision == 5: 
+            elif decision == 5: #Nuevo.
+                registrar_admin() #Llamando al registro de administradores.
+            elif decision == 6: #Saliendo de la pantalla. 
                 #Salir al menú principal.
                 print("Saliendo....")
                 break;

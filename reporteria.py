@@ -16,6 +16,7 @@ def reporteria():
     print("3. Top 10 de los directores y actores principales de las películas que los perfiles estándar y avanzados han visto")
     print("4. La cantidad de cuentas avanzadas que se han creado en los últimos 6 meses")
     print("5. Ver la hora pico donde el servicio es más usado para una fecha dada.")
+    #Nuevo.
     print("6. Top 10 términos más buscados.")
     print("7. Ver el contenido más visto entre las 9:00 a.m. y la 1:00 a.m. para un mes dado")
     print("8. Top 20 películas que comenzaron a verse pero que llevan más de 20 días sin verse")
@@ -44,17 +45,17 @@ def reporteria():
         
         hora_pico() #Método que determina la hora pico de una cierta fecha.
 
-    elif eleccion == 6: #Ver el top 10 términos más buscados en la plataforma.
+    elif eleccion == 6: #Ver el top 10 términos más buscados en la plataforma. (Nuevo)
 
         top_terminos_buscados() #Llamando al método para los términos más buscados en la plataforma.
     
     elif eleccion == 7:
 
-        top5_contenido_mas_visto_en_un_mes() #Llamando al método que recoge los datos de las vistas para un mes dado.
+        top5_contenido_mas_visto_en_un_mes() #Llamando al método que recoge los datos de las vistas para un mes dado. (Nuevo)
     
     elif eleccion == 8:
 
-        top20_peliculas_sin_finalizar() #Método que ve cual es el top 20 películas que llevan más de 20 días sin terminarse.
+        top20_peliculas_sin_finalizar() #Método que ve cual es el top 20 películas que llevan más de 20 días sin terminarse. (Nuevo)
 
 
 #Método para ver los géneros más vistos y los minutos consumidos.
