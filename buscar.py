@@ -67,7 +67,8 @@ def buscar(perfil):
 
                     #Query para buscar el nombre de las películas.
                     #Ejecutando el query de búsqueda. Este busca el nombre de la película.
-                    cursor1.execute("SELECT nombre, id FROM videos WHERE nombre = %s")
+                    sql = "SELECT nombre, id FROM videos WHERE nombre = %s"
+                    cursor1.execute(sql, (buscar,))
                     rows2=cursor1.fetchall()
                     print(rows2)
 

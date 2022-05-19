@@ -3,6 +3,7 @@ Por parte del programa se tiene que solicitar la fecha y la cantidad de visualiz
 """
 from datos import * #Importando los datos de la BD.
 import psycopg2     #Importando la librería de la BD.
+import random 
 
 def generador():
 
@@ -27,6 +28,14 @@ def generador():
 
     sql = "INSERT INTO prueba VALUES(%s)"
 
+    sql1 = "SELECT id FROM videos"
+
+    num = cursor1.execute(sql1)
+
+    ruleta = random.randint(0, num)
+
+    print(ruleta)
+    
     #Haciendo loop de prueba.
     for i in range(cantidad): 
         print(fecha)
