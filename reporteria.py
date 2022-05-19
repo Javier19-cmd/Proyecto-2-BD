@@ -18,6 +18,7 @@ def reporteria():
     print("5. Ver la hora pico donde el servicio es más usado para una fecha dada.")
     print("6. Top 10 términos más buscados.")
     print("7. Ver el contenido más visto entre las 9:00 a.m. y la 1:00 a.m. para un mes dado")
+    print("8. Top 20 películas que comenzaron a verse pero que llevan más de 20 días sin verse")
 
 
     
@@ -50,6 +51,10 @@ def reporteria():
     elif eleccion == 7:
 
         top5_contenido_mas_visto_en_un_mes() #Llamando al método que recoge los datos de las vistas para un mes dado.
+    
+    elif eleccion == 8:
+
+        top20_peliculas_sin_finalizar() #Método que ve cual es el top 20 películas que llevan más de 20 días sin terminarse.
 
 
 #Método para ver los géneros más vistos y los minutos consumidos.
@@ -275,6 +280,7 @@ def top_terminos_buscados():
 
 #Método para poder ver el contenido más visto en cada hora entre 9:00 a.m. a 1:00 a.m. para un mes dado. 
 def top5_contenido_mas_visto_en_un_mes():
+    
     #Conexión a la base de datos.
     conexion1 = psycopg2.connect(
             host=host(), #Host de la base de datos.
@@ -302,6 +308,38 @@ def top5_contenido_mas_visto_en_un_mes():
     print("Mes       Hora        Título")
     for row in rows:
         print(row[0], row[1], row[2])
+
+    #Haciendo commit del query.
+    conexion1.commit()
+
+    #Cerrando la conexión.
+    conexion1.close()
+
+#Método que jala el top 20 de películas que comenzaron a verse pero que llevan más de 20 días son finalizarse, para un rango de fechas dado.
+def top20_peliculas_sin_finalizar():
+    
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+    fecha1 = input("Ingrese la fecha inicial (esta debe ir de esta forma MM-DD-YYYY) ") #Ingresando la fecha inicial del reporte.
+    fecha2 = input("Ingrese la fecha final (esta debe ir de esta forma MM-DD-YYYY) esta tiene que ir con un día de atraso ") #Ingresando la fecha inicial del reporte.
+
+    sql = "SELECT * FROM get_rangos(%s, %s)"
+
+    cursor1.execute(sql, (fecha1,fecha2,))
+
+    rows = cursor1.fetchall()
+
+    for row in rows:
+        print(row[0], row[1])
 
     #Haciendo commit del query.
     conexion1.commit()
