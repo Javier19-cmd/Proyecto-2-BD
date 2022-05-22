@@ -36,7 +36,7 @@ def generador():
     print(startDate)
     print(cantidad)
 
-    sql = "INSERT INTO prueba VALUES(%s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO historial VALUES(%s, %s, %s, %s, %s, %s)"
 
     #Haciendo loop de prueba. Este loop se corre en base a la cantidad de 
     #vistas que se quieren generar.
@@ -54,7 +54,7 @@ def generador():
 
         listaP = [a[0][1], a[0][2], a[0][3]] #Lista de las películas aleatorias a ver.
 
-        print("Lista", listaP[0], listaP[1], listaP[2]) #Aquí se está imprimiendo la película aleatoria con su id, nombre y link.
+        print("Película obtenida", listaP[0], listaP[1], listaP[2]) #Aquí se está imprimiendo la película aleatoria con su id, nombre y link.
 
         #print(a[0][1])
 
@@ -73,7 +73,7 @@ def generador():
 
         listaU = [b[0][1]] #Se guarda en la listaU solamente el nombre del perfil que se quiere meter a la BD.
         
-        print(listaU[0]) #Imprimiendo al perfil que verá aleatoriamente la película.
+        print("Perfil ", listaU[0]) #Imprimiendo al perfil que verá aleatoriamente la película.
 
         perfil = listaU[0] #Obteniendo el perfil que verá las películas.
 
@@ -89,4 +89,4 @@ def generador():
 
     conexion1.close()
 
-generador()
+#generador()

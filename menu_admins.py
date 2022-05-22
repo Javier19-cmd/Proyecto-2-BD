@@ -12,6 +12,7 @@ from ver_usuarios import * #Trayendo todo lo que servirá para modificar el cont
 from ver_anunciantes import * #Trayendo todo lo que servirá para modificar a los anunciantes y a su contenido.
 from reporteria import * #Importando todo lo que sirve para la reportería.
 from registro_admins import * #Importando el registro de administradores.
+from simulacion import * #Importando el método que se encarga de la simulación.
 
 #Este menú se va a enseñar una vez ya se haya iniciado sesión como administrador.
 def menu_admin():
@@ -21,7 +22,8 @@ def menu_admin():
         print("3. Ver contenido de anuncios")
         print("4. Módulo de reportería")
         print("5. Agregar nuevo usuario administrador") #Nuevo
-        print("6. Salir \n")
+        print("6. Simular día de operaciones") #Nuevo
+        print("7. Salir \n")
         
         #Try-catch del menú.
         try: 
@@ -37,7 +39,9 @@ def menu_admin():
                 reporteria() #Perteneciente a la clase de reportería.
             elif decision == 5: #Nuevo.
                 registrar_admin() #Llamando al registro de administradores.
-            elif decision == 6: #Saliendo de la pantalla. 
+            elif decision == 6: #Nuevo.
+                generador() #Llamando al simulador de las visualizaciones.
+            elif decision == 7: #Saliendo de la pantalla. 
                 #Salir al menú principal.
                 print("Saliendo....")
                 break;
