@@ -1,6 +1,10 @@
 """
 Por parte del programa se tiene que solicitar la fecha y la cantidad de visualizaciones que se desean hacer.
-Referencia de como obtener un registro aleatorio: https://como.help/programacion/postgresql/como-seleccionarordenar-aleatoriamente-elementos-en-postgresql#:~:text=Si%20queremos%20solo%20obtener%20un,la%20mayoría%20de%20los%20casos.
+Referencias:
+1. Como obtener un registro aleatorio: https://como.help/programacion/postgresql/como-seleccionarordenar-aleatoriamente-elementos-en-postgresql#:~:text=Si%20queremos%20solo%20obtener%20un,la%20mayoría%20de%20los%20casos.
+2. Generar números aleatorios: https://j2logo.com/python/generar-numeros-aleatorios-en-python/
+3. Generador de horas aleatorias: https://stackoverflow.com/questions/26740227/create-random-time-stamp-list-in-python
+4. Dar formato a fechas: https://www.ipswitch.com/es/blog/formato-de-fecha-en-python#:~:text=El%20método%20strptime%20()%20le,el%20mes%20y%20el%20año.&text=Ahora%20que%20Python%20sabe%20que,otra%20cadena%20con%20formato%20diferente.
 """
 from datos import * #Importando los datos de la BD.
 import psycopg2     #Importando la librería de la BD.
