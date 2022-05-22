@@ -1,5 +1,6 @@
 """
 Por parte del programa se tiene que solicitar la fecha y la cantidad de visualizaciones que se desean hacer.
+Referencia de como obtener un registro aleatorio: https://como.help/programacion/postgresql/como-seleccionarordenar-aleatoriamente-elementos-en-postgresql#:~:text=Si%20queremos%20solo%20obtener%20un,la%20mayoría%20de%20los%20casos.
 """
 from datos import * #Importando los datos de la BD.
 import psycopg2     #Importando la librería de la BD.
