@@ -28,7 +28,14 @@ def generador():
 
     sql = "INSERT INTO prueba VALUES(%s)"
 
-    sql1 = "SELECT id FROM videos"
+    #Selección random de una película.
+    sql1 = "SELECT RANDOM() AS orden, id, nombre, link FROM videos ORDER BY orden limit 1"
+    
+    cursor1.execute(sql1)
+
+    a = cursor1.fetchall()
+
+    print(a)
 
     #Haciendo loop de prueba.
     for i in range(cantidad): 
