@@ -20,6 +20,7 @@ def reporteria():
     print("6. Top 10 términos más buscados.")
     print("7. Ver el contenido más visto entre las 9:00 a.m. y la 1:00 a.m. para un mes dado")
     print("8. Top 20 películas que comenzaron a verse pero que llevan más de 20 días sin verse")
+    print("9. Top 5 administradores que más modificaciones han realizado en las cuentas de usuarios para un rango de fechas dado")
 
 
     
@@ -56,6 +57,9 @@ def reporteria():
     elif eleccion == 8:
 
         top20_peliculas_sin_finalizar() #Método que ve cual es el top 20 películas que llevan más de 20 días sin terminarse. (Nuevo)
+    
+    elif eleccion == 9: #Método que ve cuales son los administradores que tienen más modificaciones en los usuarios. (Nuevo)
+        top_adminis_modificaciones()
 
 
 #Método para ver los géneros más vistos y los minutos consumidos.
@@ -334,6 +338,37 @@ def top20_peliculas_sin_finalizar():
     fecha2 = input("Ingrese la fecha final (esta debe ir de esta forma MM-DD-YYYY) esta tiene que ir con un día de atraso ") #Ingresando la fecha inicial del reporte.
 
     sql = "SELECT * FROM get_rangos(%s, %s)"
+
+    cursor1.execute(sql, (fecha1,fecha2,))
+
+    rows = cursor1.fetchall()
+
+    for row in rows:
+        print(row[0], row[1])
+
+    #Haciendo commit del query.
+    conexion1.commit()
+
+    #Cerrando la conexión.
+    conexion1.close()
+
+#Método que jala el top de administradores que más modificaciones para un rango de fechas dado.
+def top_adminis_modificaciones():
+        #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
+    fecha1 = input("Ingrese la fecha inicial (esta debe ir de esta forma MM-DD-YYYY) ") #Ingresando la fecha inicial del reporte.
+    fecha2 = input("Ingrese la fecha final (esta debe ir de esta forma MM-DD-YYYY) esta tiene que ir con un día de atraso ") #Ingresando la fecha inicial del reporte.
+
+    sql = "SELECT * FROM get_mods(%s, %s)" #SQL que invoca a la función que trae al top de administradores con más modificaciones.
 
     cursor1.execute(sql, (fecha1,fecha2,))
 
