@@ -1,3 +1,5 @@
 node_modules/
 .env
 usuarios.xlsx
+nuevos.py
+va.py
