@@ -30,14 +30,10 @@ def generador():
     mes = int(input("Ingrese el mes en el que desea hacer la simulación "))
     dia = int(input("Ingrese el día en el que desea hacer la simulación "))
     cantidad = int(input("ingrese la cantidad de visualizaciones que desea generar en el sistema "))
-    
-    #Horas aleatorias.
-    hora = random.randint(1,24)
-    mins = random.randint(0, 60)
-    startDate = datetime.datetime(año, mes, dia, hora, mins)
+
 
     #Print de verificación.
-    print(startDate)
+    #print(startDate)
     print(cantidad)
 
     sql = "INSERT INTO historial VALUES(%s, %s, %s, %s, %s, %s)"
@@ -46,6 +42,11 @@ def generador():
     #vistas que se quieren generar.
     for i in range(cantidad): 
         #print(fecha)
+
+            #Horas aleatorias.
+        hora = random.randint(0,23)
+        mins = random.randint(0, 59)
+        startDate = datetime.datetime(año, mes, dia, hora, mins)
 
         #Selección random de una película.
         sql1 = "SELECT RANDOM() AS orden, id, nombre, link FROM videos ORDER BY orden limit 1"
@@ -83,11 +84,12 @@ def generador():
 
         visto = 1 #Variable para el visto.
 
+        """
         #Dando formato a las fechas y a las horas
         for x in random_date(startDate, cantidad):
             fecha1 = x.strftime("%Y-%m-%d %H:%M:%S")
-
-        cursor1.execute(sql, (perfil, nombre, link, visto, fecha1, id,))
+        """
+        cursor1.execute(sql, (perfil, nombre, link, visto, startDate, id,))
 
     conexion1.commit()
 
