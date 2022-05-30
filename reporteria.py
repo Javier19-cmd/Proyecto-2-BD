@@ -312,7 +312,7 @@ def top5_contenido_mas_visto_en_un_mes():
     #Imprimiendo todo lo que se jaló.
     print("Mes       Hora        Título")
     for row in rows:
-        print(row[0], row[1], row[2])
+        print(row[0], row[1])
 
     #Haciendo commit del query.
     conexion1.commit()
