@@ -21,45 +21,51 @@ def reporteria():
     print("7. Ver el contenido más visto entre las 9:00 a.m. y la 1:00 a.m. para un mes dado")
     print("8. Top 20 películas que comenzaron a verse pero que llevan más de 20 días sin verse")
     print("9. Top 5 administradores que más modificaciones han realizado en las cuentas de usuarios para un rango de fechas dado")
+    print("10. Salir")
 
 
-    
-    eleccion = int(input("¿Qué opción desea elegir? "))
+    while True:
+        eleccion = int(input("¿Qué opción desea elegir? "))
 
-    if eleccion == 1: #Ver el top 10 de géneros más vistos y los minutos consumidos para un rango de fechas dado.
+        if eleccion == 1: #Ver el top 10 de géneros más vistos y los minutos consumidos para un rango de fechas dado.
+            
+            generos_mas_vistos_y_minutos_consumidos() #Método para ver los géneros más vistos y los minutos consumidos.
+
+        elif eleccion == 2: #Cantidad de reproducciones por cada categoría, por tipo de cuenta para un rango de fechas dado.
+            
+            cant_reproducciones_por_tipo_cuenta_por_fechas() #Método que ve la cantida de reproducciones por tipo de cuenta en un rago de fechas dado.
+
+        elif eleccion == 3: #Top 10 de los directores y actores principales de las películas que los perfiles estándar y avanzados han visto.
+            
+            top_10_directores_y_actores_por_perfiles_estandar_avanzados() #Método que ve el top 10 de los directores y actores principales de las películas que han visto los perfiles estándar y avanzado.
+            
+        elif eleccion == 4: #La cantidad de cuentas avanzadas que se han creado en los últimos seis meses.
+            
+            cant_cuentas_avanzadas() #Mëtodo que cuenta la cantidad de cuentas avanzadas que se crearon en los últimos seis meses.
+
+        elif eleccion == 5: #Ver la hora pico donde el servicio es más usado para una fecha dada.
+            
+            hora_pico() #Método que determina la hora pico de una cierta fecha.
+
+        elif eleccion == 6: #Ver el top 10 términos más buscados en la plataforma. (Nuevo)
+
+            top_terminos_buscados() #Llamando al método para los términos más buscados en la plataforma.
         
-        generos_mas_vistos_y_minutos_consumidos() #Método para ver los géneros más vistos y los minutos consumidos.
+        elif eleccion == 7:
 
-    elif eleccion == 2: #Cantidad de reproducciones por cada categoría, por tipo de cuenta para un rango de fechas dado.
+            top5_contenido_mas_visto_en_un_mes() #Llamando al método que recoge los datos de las vistas para un mes dado. (Nuevo)
         
-        cant_reproducciones_por_tipo_cuenta_por_fechas() #Método que ve la cantida de reproducciones por tipo de cuenta en un rago de fechas dado.
+        elif eleccion == 8:
 
-    elif eleccion == 3: #Top 10 de los directores y actores principales de las películas que los perfiles estándar y avanzados han visto.
+            top20_peliculas_sin_finalizar() #Método que ve cual es el top 20 películas que llevan más de 20 días sin terminarse. (Nuevo)
         
-        top_10_directores_y_actores_por_perfiles_estandar_avanzados() #Método que ve el top 10 de los directores y actores principales de las películas que han visto los perfiles estándar y avanzado.
+        elif eleccion == 9: #Método que ve cuales son los administradores que tienen más modificaciones en los usuarios. (Nuevo)
+            top_adminis_modificaciones()
         
-    elif eleccion == 4: #La cantidad de cuentas avanzadas que se han creado en los últimos seis meses.
+        elif eleccion == 10:
+            print("Salendo")
+            break;
         
-        cant_cuentas_avanzadas() #Mëtodo que cuenta la cantidad de cuentas avanzadas que se crearon en los últimos seis meses.
-
-    elif eleccion == 5: #Ver la hora pico donde el servicio es más usado para una fecha dada.
-        
-        hora_pico() #Método que determina la hora pico de una cierta fecha.
-
-    elif eleccion == 6: #Ver el top 10 términos más buscados en la plataforma. (Nuevo)
-
-        top_terminos_buscados() #Llamando al método para los términos más buscados en la plataforma.
-    
-    elif eleccion == 7:
-
-        top5_contenido_mas_visto_en_un_mes() #Llamando al método que recoge los datos de las vistas para un mes dado. (Nuevo)
-    
-    elif eleccion == 8:
-
-        top20_peliculas_sin_finalizar() #Método que ve cual es el top 20 películas que llevan más de 20 días sin terminarse. (Nuevo)
-    
-    elif eleccion == 9: #Método que ve cuales son los administradores que tienen más modificaciones en los usuarios. (Nuevo)
-        top_adminis_modificaciones()
 
 
 #Método para ver los géneros más vistos y los minutos consumidos.
@@ -310,7 +316,7 @@ def top5_contenido_mas_visto_en_un_mes():
     rows = cursor1.fetchall()
 
     #Imprimiendo todo lo que se jaló.
-    print("Mes       Hora        Título")
+    print("Título | Ranking")
     for row in rows:
         print(row[0], row[1])
 
