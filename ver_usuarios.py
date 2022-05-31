@@ -86,7 +86,7 @@ def dar_debaja():
 
     print("Usuario dado de baja")
 
-    mod1() #Método para meter las modficiaciones que hizo el administrador.
+    #mod1() #Método para meter las modficiaciones que hizo el administrador.
 
 #Método para cambiar el correo de las personas.
 def cambiar_correo():
@@ -137,7 +137,7 @@ def cambiar_correo():
             
             print("Correo actualizado \n")
 
-            mod2() #Método para meter las modficiaciones que hizo el administrador.
+            #mod2() #Método para meter las modficiaciones que hizo el administrador.
 
             break;
 
@@ -189,7 +189,7 @@ def cambiar_nombre():
             
             print("Nombre actualizado \n")
 
-            mod3() #Método para registrar la modificación del administrador.
+            #mod3() #Método para registrar la modificación del administrador.
 
             break;
 
@@ -242,10 +242,11 @@ def cambiar_apellido():
             
             print("Apellido actualizado \n")
 
-            mod4() #Método para registrar la modificación del administrador.
+            #mod4() #Método para registrar la modificación del administrador.
 
             break;
 
+"""
 def mod1(): #Insertando la modificación que se hizo. En este caso borrar cuenta.
     
         #Conexión a la base de datos.
@@ -361,3 +362,4 @@ def mod4(): #Insertando la modificación que se hizo. En este caso modificiacón
 
     #Cerrando la conexión.
     conexion1.close()
+"""
