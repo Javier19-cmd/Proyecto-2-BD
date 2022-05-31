@@ -371,8 +371,8 @@ def top_adminis_modificaciones():
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
-    fecha1 = input("Ingrese la fecha inicial (esta debe ir de esta forma MM-DD-YYYY) ") #Ingresando la fecha inicial del reporte.
-    fecha2 = input("Ingrese la fecha final (esta debe ir de esta forma MM-DD-YYYY) esta tiene que ir con un día de atraso ") #Ingresando la fecha inicial del reporte.
+    fecha1 = input("Ingrese la fecha inicial (esta debe ir de esta forma YYYY-MM-DD) ") #Ingresando la fecha inicial del reporte.
+    fecha2 = input("Ingrese la fecha final (esta debe ir de esta forma YYYY-MM-DD) esta tiene que ir con un día de atraso ") #Ingresando la fecha inicial del reporte.
 
     sql = "SELECT * FROM get_mods(%s, %s)" #SQL que invoca a la función que trae al top de administradores con más modificaciones.
 
