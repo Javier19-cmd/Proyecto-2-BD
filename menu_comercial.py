@@ -7,7 +7,7 @@ Carnets: 19026
 """
 
 import psycopg2 #Librería para la base de datos.
-import datetime; #Librería para poder usar fechas.
+import datetime #Librería para poder usar fechas.
 from datos import * #Trayendo la información de la Base Datos.
 from ver_perfil import * #Trayendo las opciones para ver el perfil.
 from buscar import * #Trayendo las opciones de buscar.
@@ -251,7 +251,6 @@ def menu_comercial(usuario, perfil):
             elif eleccion == 4: 
                 #Salir de la pantalla.
                 print("Saliendo....")
-                break;
                 #Actualizar el ingreso del perfil.
                 ingre = 0
                 sql = "UPDATE perfiles SET ingreso = %s WHERE perfil = %s"
