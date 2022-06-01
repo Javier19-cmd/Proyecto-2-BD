@@ -27,28 +27,28 @@ def pagina():
         print("3) Salir \n")
 
         #Try-catch para evitar que el usuario no meta letras en vez de números.
-        try: 
-            eleccion = int(input("Ingresa la opción que desees: "))
+        #try: 
+        eleccion = int(input("Ingresa la opción que desees: "))
 
-            if eleccion == 1:
-                #Opción para iniciar sesión con cuenta normal.
-                print("Iniciar sesión con cuenta normal")
+        if eleccion == 1:
+            #Opción para iniciar sesión con cuenta normal.
+            print("Iniciar sesión con cuenta normal")
 
-                normal() #Método para iniciar sesión con cuenta normal.
+            normal() #Método para iniciar sesión con cuenta normal.
 
-            elif eleccion == 2: 
-                #Opción para iniciar sesión como administrador.
-                print("Iniciar sesión como administrador")
-                administrador() #Método para iniciar sesión con cuenta de administrador.
-            elif eleccion == 3: 
-                #Opción para no salir.
-                print("Salir")
-                break;
-            else: 
-                print("Opción no válida.")
+        elif eleccion == 2: 
+            #Opción para iniciar sesión como administrador.
+            print("Iniciar sesión como administrador")
+            administrador() #Método para iniciar sesión con cuenta de administrador.
+        elif eleccion == 3: 
+            #Opción para no salir.
+            print("Salir")
+            break;
+        else: 
+            print("Opción no válida.")
         
-        except: 
-            print("Has ingresado una letra en vez de números")
+        #except: 
+         #   print("Has ingresado una letra en vez de números")
 
 #Método para iniciar sesión con cuenta normal.
 def normal():
@@ -178,13 +178,13 @@ def administrador():
     for row1 in rows2:
         a = row1[0] #Guardando la contraseña en una variable.
         decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-        #print(decode) #Imprimiendo la variable.
+        print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
             if confir in entrada:
                 sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
-                cursor1.execute(sqlsa, (confr, usuario,))
                 confr = 1
+                cursor1.execute(sqlsa, (confr, usuario,))
                 conexion1.commit()
                 # execute SET myapp.username = 'usuario' query;
                 sql6 = "SET myapp.username = %s"
@@ -208,3 +208,5 @@ def administrador():
 
             #Cerrando la conexión.
             disconnect(conexion1)
+
+pagina()
