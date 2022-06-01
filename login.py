@@ -209,5 +209,3 @@ def administrador():
 
             #Cerrando la conexión.
             disconnect(conexion1)
-
-pagina()
