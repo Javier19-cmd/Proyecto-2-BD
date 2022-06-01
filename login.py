@@ -189,7 +189,7 @@ def administrador():
             if confir in entrada:
                 sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
                 confr = 1
-                cursor1.execute(sqlsa, (confr, usuario))
+                cursor1.execute(sqlsa, (confr, usuario,))
                 conexion1.commit()
                 menu_admin(usuario) #Trayendo menú de opciones.
             else: 
