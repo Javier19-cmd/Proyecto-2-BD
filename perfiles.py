@@ -30,10 +30,13 @@ def basico(usuario):
     perfil = input("Ingrese el nombre del perfil: ")
 
     #Query para insertar el perfil de la persona que eligió el plan básico.
-    sql = "INSERT INTO perfiles VALUES (%s, %s)"
+    sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+    #Indicando que el perfil no ha ingresado.
+    ingreso = 0
 
     #Insertando los datos en la base de datos.
-    cursor1.execute(sql,(usuario,perfil,))
+    cursor1.execute(sql,(usuario,perfil, ingreso,))
 
     #Commit del query.
     conexion1.commit()
@@ -66,10 +69,13 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 perfil = input("Ingrese el nombre del usuario: ")
                 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+                
+                #Indicando que el perfil no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil,))
+                cursor1.execute(sql,(usuario,perfil, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -84,11 +90,13 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 perfil2 = input("Ingrese el nombre del usuario: ")
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+                
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -104,12 +112,12 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 perfil3 = input("Ingrese el nombre del usuario: ")
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2,ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -126,13 +134,16 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 perfil4 = input("Ingrese el nombre del usuario: ")
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+                #Indicando que el usuario no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
-                cursor1.execute(sql,(usuario,perfil4,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
+                cursor1.execute(sql,(usuario,perfil4, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -175,10 +186,14 @@ def avanzado(usuario):
                 perfil = input("Ingrese el nombre del usuario: ")
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+
+                #Indicando que el perfil no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil,))
+                cursor1.execute(sql,(usuario,perfil, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -192,12 +207,15 @@ def avanzado(usuario):
                 perfil1 = input("Ingrese el nombre del usuario: ")
                 perfil2 = input("Ingrese el nombre del usuario: ")
 
+                #Indicando que el perfil no ha ingresado.
+                ingreso = 0
+
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -212,13 +230,16 @@ def avanzado(usuario):
                 perfil2 = input("Ingrese el nombre del usuario: ")
                 perfil3 = input("Ingrese el nombre del usuario: ")
 
+                #Indicando que el perfil no ha ingresado
+                ingreso = 0
+
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -236,13 +257,16 @@ def avanzado(usuario):
                 perfil4 = input("Ingrese el nombre del usuario: ")
                 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+                #Indicando que el perfil no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
-                cursor1.execute(sql,(usuario,perfil4,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
+                cursor1.execute(sql,(usuario,perfil4, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -260,14 +284,17 @@ def avanzado(usuario):
                 perfil5 = input("Ingrese el nombre del usuario: ")
 
                 #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+                #Indicando que el perfil no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
-                cursor1.execute(sql,(usuario,perfil4,))
-                cursor1.execute(sql,(usuario,perfil5,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
+                cursor1.execute(sql,(usuario,perfil4, ingreso,))
+                cursor1.execute(sql,(usuario,perfil5, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -286,15 +313,18 @@ def avanzado(usuario):
                 perfil6 = input("Ingrese el nombre del usuario: ")
 
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+                #indicando que el perfil no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
-                cursor1.execute(sql,(usuario,perfil4,))
-                cursor1.execute(sql,(usuario,perfil5,))
-                cursor1.execute(sql,(usuario,perfil6,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
+                cursor1.execute(sql,(usuario,perfil4, ingreso,))
+                cursor1.execute(sql,(usuario,perfil5, ingreso,))
+                cursor1.execute(sql,(usuario,perfil6, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -314,16 +344,19 @@ def avanzado(usuario):
                 perfil7 = input("Ingrese el nombre del usuario: ")
 
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+                #Indicando que el perfil no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
-                cursor1.execute(sql,(usuario,perfil4,))
-                cursor1.execute(sql,(usuario,perfil5,))
-                cursor1.execute(sql,(usuario,perfil6,))
-                cursor1.execute(sql,(usuario,perfil7,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
+                cursor1.execute(sql,(usuario,perfil4, ingreso,))
+                cursor1.execute(sql,(usuario,perfil5, ingreso,))
+                cursor1.execute(sql,(usuario,perfil6, ingreso,))
+                cursor1.execute(sql,(usuario,perfil7, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()
@@ -344,17 +377,20 @@ def avanzado(usuario):
                 perfil8 = input("Ingrese el nombre del usuario: ")
 
             #Query para insertar el perfil de la persona que eligió el plan estándar con 1 usuario.
-                sql = "INSERT INTO perfiles VALUES (%s, %s)"
+                sql = "INSERT INTO perfiles VALUES (%s, %s, %s)"
+
+                #indicando que el perfil no ha ingresado.
+                ingreso = 0
 
                 #Insertando los datos en la base de datos.
-                cursor1.execute(sql,(usuario,perfil1,))
-                cursor1.execute(sql,(usuario,perfil2,))
-                cursor1.execute(sql,(usuario,perfil3,))
-                cursor1.execute(sql,(usuario,perfil4,))
-                cursor1.execute(sql,(usuario,perfil5,))
-                cursor1.execute(sql,(usuario,perfil6,))
-                cursor1.execute(sql,(usuario,perfil7,))
-                cursor1.execute(sql,(usuario,perfil8,))
+                cursor1.execute(sql,(usuario,perfil1, ingreso,))
+                cursor1.execute(sql,(usuario,perfil2, ingreso,))
+                cursor1.execute(sql,(usuario,perfil3, ingreso,))
+                cursor1.execute(sql,(usuario,perfil4, ingreso,))
+                cursor1.execute(sql,(usuario,perfil5, ingreso,))
+                cursor1.execute(sql,(usuario,perfil6, ingreso,))
+                cursor1.execute(sql,(usuario,perfil7, ingreso,))
+                cursor1.execute(sql,(usuario,perfil8, ingreso,))
 
                 #Commit del query.
                 conexion1.commit()

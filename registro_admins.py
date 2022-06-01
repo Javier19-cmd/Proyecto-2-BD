@@ -61,7 +61,7 @@ def insertar(nombre, apellido, usuario, contraseña):
     cursor1.execute("SELECT usuario FROM admins")
     rows=cursor1.fetchall()
     for row in rows:
-        print(row[0])
+        #print(row[0])
         if usuario == row[0]:
             print("Usuario existente, favor regresar a ingresar bien los datos")
             registrar_admin() #Si el usuario ya existe, entonces se regresa a poner bien los datos otra vez.
@@ -74,12 +74,17 @@ def insertar(nombre, apellido, usuario, contraseña):
     print(contraseña)
 
     #SQL para insertar los datos en una tabla.
-    sql = "INSERT INTO admins VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO admins VALUES (%s, %s, %s, %s, %s)"
+
+    #Variable que inicializa el ingreso del usuario.
+    ingreso = 0
     
-    cursor1.execute(sql, (nombre, apellido, usuario, contraseña)) #Insertando formalmente los datos.
+    cursor1.execute(sql, (nombre, apellido, usuario, contraseña, ingreso,)) #Insertando formalmente los datos.
 
     #Commit del query.
     conexion1.commit()
 
     #Cerrando la conexión.
     conexion1.close()
+
+#registrar_admin()
