@@ -6,7 +6,6 @@ Carnets: 19026
          20159
 """
 #Archivo que modifica el contenido que ven los usuarios.
-from ast import mod
 from datos import * #Importando los datos de la base de datos.
 import psycopg2 #Librería para abrir la base de datos.
 
