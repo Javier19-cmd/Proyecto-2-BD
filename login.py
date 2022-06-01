@@ -97,7 +97,7 @@ def normal():
     for row1 in rows2:
         a = row1[0] #Guardando la contraseña en una variable.
         decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-        print(decode) #Imprimiendo la variable.
+        #print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
             traer_perfiles(usuario) #Trayendo menú de opciones.
@@ -162,7 +162,7 @@ def administrador():
     for row1 in rows2:
         a = row1[0] #Guardando la contraseña en una variable.
         decode = cryptocode.decrypt(a, "UVG") #Desencriptando la varialbe.
-        print(decode) #Imprimiendo la variable.
+        #print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
             menu_admin() #Trayendo menú de opciones.

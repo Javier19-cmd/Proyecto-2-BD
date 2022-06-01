@@ -7,6 +7,7 @@ Carnets: 19026
 """
 
 import psycopg2 #Librería para la base de datos.
+import datetime; #Librería para poder usar fechas.
 from datos import * #Trayendo la información de la Base Datos.
 from ver_perfil import * #Trayendo las opciones para ver el perfil.
 from buscar import * #Trayendo las opciones de buscar.
@@ -47,45 +48,155 @@ def traer_perfiles(usuario):
     cursor1.execute(plan, (usuario,))
     rows1 = cursor1.fetchall()
 
+    #print(rows1)
+
     for row1 in rows1: 
         if row1[0] == 'Básico':
             cursor1.execute(sql2,(usuario,))
             rows2 = cursor1.fetchall()
-            for row in rows2:
-                print(row[0]) #Imprimiendo los perfiles.
-                perf = input("Ingrese el perfil que desee usar ")
-                if perf == row[0]:
-                    print("¡Bienvendio " + row[0] + "!")
+
+            a = [] #Lista para guardar los perfiles que se van a imprimir.
+
+            #Guardando los perfiles que se trajeron.
+            for cosa in rows2:
+                a.append(cosa[0])
+            
+            print(a) #Imprimiendo los perfiles.
+
+            perf = input("Ingrese el perfil que desee usar ") #Pidiendo el perfil que desea usar.
+
+            #Viendo si el perfil ya ingresó o no. Se jala el ingreso del perfil.
+            sql = "SELECT ingreso FROM perfiles WHERE perfil = %s"
+            cursor1.execute(sql, (perf,))
+            rowss = cursor1.fetchall()
+
+            entrada = [] #Lista para ver si el perfil ya ingresó o no.
+            
+            #Guardando la propiedad de que entró o no.
+            for ent in rowss:
+                entrada.append(ent[0])
+            
+            #Variable para ver si el perfil ya ingresó o no.
+            confir = 0
+            
+            #Recorriendo la lista y comprobando que el perfil sí exista.
+            if perf in a:
+                if confir in entrada:
+                    print("¡Bienvendio " + perf + "!")
+                    #Actuaizando el ingreso de la persona.
+                    sql = "UPDATE perfiles SET ingreso = %s WHERE perfil = %s"
+                    ing = 1
+                    cursor1.execute(sql, (ing, perf,))
+                    conexion1.commit()
                     menu_comercial(usuario, perf) #Trayendo el menú comercial a la pantalla del usuario.
-                else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
-                    print("Usuario mal redactado.")
-                    traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+                else:
+                    print("Usuario activo.")
+            else:
+                print("Usuario mal redactado.")
+                traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
         
         elif row1[0] == 'Estándar':
             cursor1.execute(sql3,(usuario,))
             rows2 = cursor1.fetchall()
-            for row1 in rows2:
-                print(row1[0]) #Imprimiendo los perfiles.
-                perf = input("Ingrese el perfil que desee usar ")
-                if perf == row1[0]:
-                    print("¡Bienvendio " + row1[0] + "!")
+
+            a = [] #Lista para guardar los perfiles que se van a imprimir.
+
+            #Guardando los perfiles que se trajeron.
+            for cosa in rows2:
+                a.append(cosa[0])
+            
+            print(a) #Imprimiendo los perfiles.
+
+            perf = input("Ingrese el perfil que desee usar ") #Pidiendo el perfil que desea usar.
+
+            #Viendo si el perfil ya ingresó o no. Se jala el ingreso del perfil.
+            sql = "SELECT ingreso FROM perfiles WHERE perfil = %s"
+            cursor1.execute(sql, (perf,))
+            rowss = cursor1.fetchall()
+
+            entrada = [] #Lista para ver si el perfil ya ingresó o no.
+            
+            #Guardando la propiedad de que entró o no.
+            for ent in rowss:
+                entrada.append(ent[0])
+            
+            #Variable para ver si el perfil ya ingresó o no.
+            confir = 0
+            
+            #Recorriendo la lista y comprobando que el perfil sí exista.
+            if perf in a:
+                if confir in entrada:
+                    print("¡Bienvendio " + perf + "!")
+                    #Actuaizando el ingreso de la persona.
+                    sql = "UPDATE perfiles SET ingreso = %s WHERE perfil = %s"
+                    ing = 1
+                    cursor1.execute(sql, (ing, perf,))
+                    conexion1.commit()
                     menu_comercial(usuario, perf) #Trayendo el menú comercial a la pantalla del usuario.
-                else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
-                    print("Usuario mal redactado.")
-                    traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+                else:
+                    print("Usuario activo.")
+            else:
+                print("Usuario mal redactado.")
+                traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
         
         elif row1[0] == 'Avanzado':
             cursor1.execute(sql4,(usuario,))
             rows2 = cursor1.fetchall()
+            #print(rows2[0][0])
+
+            a = [] #Lista para guardar los perfiles que se van a imprimir.
+
+            #Guardando los perfiles que se trajeron.
+            for cosa in rows2:
+                a.append(cosa[0])
+            
+            print(a) #Imprimiendo los perfiles.
+
+            perf = input("Ingrese el perfil que desee usar ") #Pidiendo el perfil que desea usar.
+
+            #Viendo si el perfil ya ingresó o no. Se jala el ingreso del perfil.
+            sql = "SELECT ingreso FROM perfiles WHERE perfil = %s"
+            cursor1.execute(sql, (perf,))
+            rowss = cursor1.fetchall()
+
+            entrada = [] #Lista para ver si el perfil ya ingresó o no.
+            
+            #Guardando la propiedad de que entró o no.
+            for ent in rowss:
+                entrada.append(ent[0])
+            
+            #Variable para ver si el perfil ya ingresó o no.
+            confir = 0
+            
+            #Recorriendo la lista y comprobando que el perfil sí exista.
+            if perf in a:
+                if confir in entrada:
+                    print("¡Bienvendio " + perf + "!")
+                    #Actuaizando el ingreso de la persona.
+                    sql = "UPDATE perfiles SET ingreso = %s WHERE perfil = %s"
+                    ing = 1
+                    cursor1.execute(sql, (ing, perf,))
+                    conexion1.commit()
+                    menu_comercial(usuario, perf) #Trayendo el menú comercial a la pantalla del usuario.
+                else:
+                    print("Usuario activo.")
+            else:
+                print("Usuario mal redactado.")
+                traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+
+            """
+
             for row2 in rows2:
-                print(row2[0]) #Imprimiendo los perfiles.
+                #print(row2[0]) #Imprimiendo los perfiles.
                 perf = input("Ingrese el perfil que desee usar ")
                 if perf == row2[0]:
                     print("¡Bienvendio " + row2[0] + "!")
+                    
                     menu_comercial(usuario, perf) #Trayendo el menú comercial a la pantalla del usuario.
                 else: #Si la persona elige mal el perfil, entoces se le dice que no está bien.
                     print("Usuario mal redactado.")
                     traer_perfiles(usuario) #Se pone a elegir otra vez para que redacte bien el perfil.
+                    """
 
     """
     #Trayendo los perfiles.
@@ -104,6 +215,17 @@ def traer_perfiles(usuario):
 
 #Este es el menú que tendrá el usuario una vez pueda acceder a su perfil.
 def menu_comercial(usuario, perfil):
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
     while True: 
         print("Las opciones que hay son: \n")
         print("1. Ver perfil")
@@ -129,9 +251,15 @@ def menu_comercial(usuario, perfil):
             elif eleccion == 4: 
                 #Salir de la pantalla.
                 print("Saliendo....")
+                #Actualizar el ingreso del perfil.
+                ingre = 0
+                sql = "UPDATE perfiles SET ingreso = %s WHERE perfil = %s"
+                cursor1.execute(sql, (ingre, perfil,))
+                conexion1.commit()
                 break;
             else: #Se eligió una opción mayor o menor a 4.
                 print("Opción no válida")
         except:
             #Se puso una opción que no era número.
             print("Se eligió una opción no numérica")
+
