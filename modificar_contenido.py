@@ -477,5 +477,3 @@ def eliminar_contenido():
             print("Película eliminada \n")
 
             break;
-
-modificar_contenidos()
