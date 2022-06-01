@@ -251,6 +251,7 @@ def menu_comercial(usuario, perfil):
             elif eleccion == 4: 
                 #Salir de la pantalla.
                 print("Saliendo....")
+                break;
                 #Actualizar el ingreso del perfil.
                 ingre = 0
                 sql = "UPDATE perfiles SET ingreso = %s WHERE perfil = %s"

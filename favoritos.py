@@ -72,42 +72,42 @@ def favoritos(perfil):
                 #Revisar si la película existe.
                 if nombre in lista:
                         
-                        #Query para obtener el id de la película.
-                        sql = "SELECT nombre, link, id FROM videos WHERE nombre = %s"
+                    #Query para obtener el id de la película.
+                    sql = "SELECT nombre, link, id FROM videos WHERE nombre = %s"
 
-                        #Ejecutando el query.
-                        cursor1.execute(sql, (nombre,))
+                    #Ejecutando el query.
+                    cursor1.execute(sql, (nombre,))
 
-                        rows=cursor1.fetchall()
+                    rows=cursor1.fetchall()
 
 
-                        #Imprimiendo el id de la película.
-                        for row in rows:
-                            print("\nEl nombre de la película es: " + str(row[0]))
-                            print("\nEl link de la película es: " + str(row[1]))
-                            print("\nEl id de la película es: " + str(row[2]))
+                    #Imprimiendo el id de la película.
+                    for row in rows:
+                        print("\nEl nombre de la película es: " + str(row[0]))
+                        print("\nEl link de la película es: " + str(row[1]))
+                        print("\nEl id de la película es: " + str(row[2]))
 
-                            #Variables que mandarán los datos al historial.
-                            perf = perfil
-                            nombres = row[0]
-                            links = row[1]
-                            visto = 0
-                            #Now
-                            ahorita = datetime.now() 
-                            ide = row[2]
+                        #Variables que mandarán los datos al historial.
+                        perf = perfil
+                        nombres = row[0]
+                        links = row[1]
+                        visto = 0
+                        #Now
+                        ahorita = datetime.now() 
+                        ide = row[2]
 
-                            print(perf)
-                            print(nombres)
-                            print(links)
-                            print(visto)
-                            print(ahorita)
-                            print(ide)
+                        print(perf)
+                        print(nombres)
+                        print(links)
+                        print(visto)
+                        print(ahorita)
+                        print(ide)
 
-                            #Insertando los datos en la base de datos.
-                            sql = "INSERT INTO favoritos (perfil, nombre, link, visto, tiempo, id_pelicula) VALUES (%s, %s, %s, %s, %s, %s)"
+                        #Insertando los datos en la base de datos.
+                        sql = "INSERT INTO favoritos (perfil, nombre, link, visto, tiempo, id_pelicula) VALUES (%s, %s, %s, %s, %s, %s)"
 
-                            #Ejecutando el query para insertar en el historial.
-                            cursor1.execute(sql, (perf, nombres, links, visto, ahorita, ide,))
+                        #Ejecutando el query para insertar en el historial.
+                        cursor1.execute(sql, (perf, nombres, links, visto, ahorita, ide,))
                
                 #Insertando datos de búsqueda.    
                 sql2 = "INSERT INTO busquedas VALUES (%s, %s, %s)"
