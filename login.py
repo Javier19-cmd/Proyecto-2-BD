@@ -182,6 +182,7 @@ def administrador():
         if contraseña == decode: 
             print("Contraseña correcta")
             if confir in entrada:
+                setConnection(conexion1)
                 sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
                 confr = 1
                 cursor1.execute(sqlsa, (confr, usuario,))
