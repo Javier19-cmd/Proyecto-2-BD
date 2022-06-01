@@ -41,7 +41,7 @@ def menu_admin(usuario):
         try: 
             decision = int(input("¿Cuál opción elige? "))
             if decision == 1:#Ver contenido.
-                modificar_contenidoo() #Perteneciente a la clase de modificar_contenido.
+                modificar_contenidos() #Perteneciente a la clase de modificar_contenido.
             elif decision == 2:#Ver usuarios.
                 ver_usuarios() #Perteneciente a la clase de modificar_contenido.
             elif decision == 3:

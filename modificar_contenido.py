@@ -6,17 +6,18 @@ Carnets: 19026
          20159
 """
 #Archivo que modifica el contenido que ven los usuarios.
+from ast import mod
 from datos import * #Importando los datos de la base de datos.
 import psycopg2 #Librería para abrir la base de datos.
 
 #Método que modifica el contenido.
-def modificar_contenidoo():
+def modificar_contenidos():
     while True:
 
         print("Bienvenido al menú que modica el contenido de la plataforma. \n")
         print("Las opciones disponibles son: \n")
         print("1. Agregar contenido")
-        print("2. Modificar")
+        print("2. Modificar contenido")
         print("3. Eliminar contenido")
         print("4. Salir")
 
@@ -69,20 +70,19 @@ def agregar_contenido():
 
     #Pidiendo datos.
     nombre = input("Ingrese el nombre de la película ")
-    actores = input("Ingrese a los actores ")
     genero = input("Ingrese el género ")
     director = input("Ingrese el nombre del director ")
-    premio = input("Ingrese un premio de la película ")
+    premio = input("Ingrese un premio de la película (el formato de la fecha debe ser MM-DD-YYYY) ")
     fecha = input("Ingrese la fecha de estreno ")
     link = input("Ingrese el link de la película ")
     duracion = input("Ingrese la duración de la película ")
 
     #SQL que servirá para insertar los datos.
-    sql = "INSERT INTO videos VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO videos(nombre, genero, director, premio, fecha_streno, link, duracion) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 
     #Insertando los datos.
     #El formato de la fecha tiene que ser mes/día/año.
-    cursor1.execute(sql,(nombre, actores, genero, director, premio, fecha, link, duracion,))
+    cursor1.execute(sql,(nombre, genero, director, premio, fecha, link, duracion,))
 
     #Commit del query.
     conexion1.commit()
@@ -164,7 +164,7 @@ def modificar_contenido():
         nombre = input("Ingrese el id del actor ")
 
         #Query a usar para buscar con el nombre.
-        sql = "SELECT nombre FROM videos_actores WHERE id_actor = %s"
+        sql = "SELECT nombre FROM actores WHERE id = %s"
 
         #Ejecutando el query de búsqueda.
         cursor1.execute(sql, (nombre,))
@@ -182,7 +182,7 @@ def modificar_contenido():
                 
                 act = input("Ingrese el nuevo nombre del actor: ")
 
-                sql1 = "UPDATE videos_actores SET nombre = %s WHERE nombre = %s"
+                sql1 = "UPDATE actores SET nombre = %s WHERE nombre = %s"
 
                 #Ejecutando el query de búsqueda.
                 cursor1.execute(sql1, (act, nombre,))
@@ -335,7 +335,7 @@ def modificar_contenido():
             
             if nombre == row[0]:
                 
-                act = input("Ingrese la nueva fecha de estreno (esta se debe colocar de la siguiente manera: mes/día/año): ")
+                act = input("Ingrese la nueva fecha de estreno (el formato de la fecha debe ser MM-DD-YYYY): ")
 
                 sql1 = "UPDATE videos SET fecha_streno = %s WHERE nombre = %s"
 
@@ -477,3 +477,5 @@ def eliminar_contenido():
             print("Película eliminada \n")
 
             break;
+
+modificar_contenidos()
