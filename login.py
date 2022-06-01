@@ -97,6 +97,9 @@ def normal():
         #print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
+            sql6 = "SET myapp.username = %s"
+            cursor1.execute(sql6, (usuario,))
+            conexion1.commit()
             traer_perfiles(usuario) #Trayendo menú de opciones.
             
         else: #La contraseña no es igual.
@@ -182,6 +185,10 @@ def administrador():
                 sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
                 cursor1.execute(sqlsa, (confr, usuario,))
                 confr = 1
+                conexion1.commit()
+                # execute SET myapp.username = 'usuario' query;
+                sql6 = "SET myapp.username = %s"
+                cursor1.execute(sql6, (usuario,))
                 conexion1.commit()
                 menu_admin(usuario) #Trayendo menú de opciones.
             else: 
