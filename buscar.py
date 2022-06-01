@@ -407,7 +407,7 @@ def buscar(perfil):
             cursor1 = conexion1.cursor() #Cursor de la conexión.
 
             #Variable que contiene al nombre de la película.
-            buscar = input("Ingrese el nombre del género que desea buscar: ")
+            buscar = input("Ingrese el nombre del premio que desea buscar: ")
 
             recomendacion_premio(buscar) #Recomendación en base al premio.
 
@@ -419,7 +419,7 @@ def buscar(perfil):
 
             rows=cursor1.fetchall()
 
-                   #Imprimiendo los resultados de la búsqueda.
+            #Imprimiendo los resultados de la búsqueda.
             lista = []
 
             for row in rows:
@@ -580,5 +580,3 @@ def buscar(perfil):
             print("No se ingresaron bien los datos.")
         #except: 
          #   print("Hubo un error al manipular los datos")
-
-buscar("Javier")
