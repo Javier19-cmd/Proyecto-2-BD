@@ -146,12 +146,33 @@ def administrador():
     #Verificando que el usuario sí exista en la tabla.
     cursor1.execute(sql, (usuario,))
     rows=cursor1.fetchall()
-    for row in rows:
-        if usuario == row[0]: 
-            print("Usuario encontrado")
-        else: 
-            print("Error")
     
+    a = []
+
+    #Guardando el usuario que se trajo.
+    for cosa in rows:
+        a.append(cosa[0])
+
+    print(a)
+
+    if usuario in a: #Si el usuario existe.
+        print("Usuario encontrado")
+
+    #Viendo si el usuario ya entró o no.
+    sqls = "SELECT ingreso FROM admins WHERE usuario = %s"
+
+    cursor1.execute(sqls, (usuario,))
+    rowss=cursor1.fetchall()
+
+    #Lista para el parámetro ingreso.
+    entrada = []
+
+    #Guardando el ingreso que se trajo.
+    for cosas in rowss:
+        entrada.append(cosas[0])
+    
+    confir = 0
+
     #Verificando que la contraseña exista en la base de datos.
     #Buscando contraseña.
     sql2 = "SELECT contrasña FROM admins WHERE usuario = %s"
@@ -165,13 +186,21 @@ def administrador():
         #print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
-            menu_admin() #Trayendo menú de opciones.
+            if confir in entrada:
+                sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
+                confr = 1
+                cursor1.execute(sqlsa, (confr, usuario))
+                conexion1.commit()
+                menu_admin(usuario) #Trayendo menú de opciones.
+            else: 
+                print("Usuario activo")
+                break
         else: #La contraseña no es igual.
             print("Contraseña incorrecta")
             #Enviando el usuario de la persona a una tabla de fracaso.
             sql3 = "INSERT INTO fracaso VALUES (%s)"
             
-            menu_comercial() #Trayendo menú comercial para los usuarios avanzados. 
+            pagina()  
 
             #Enviando datos a la tabla de fracaso.
             cursor1.execute(sql3, (usuario,))
@@ -180,3 +209,4 @@ def administrador():
 
             #Cerrando la conexión.
             conexion1.close()
+    

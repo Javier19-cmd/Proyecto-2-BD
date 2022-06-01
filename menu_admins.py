@@ -15,7 +15,19 @@ from registro_admins import * #Importando el registro de administradores.
 from simulacion import * #Importando el método que se encarga de la simulación.
 
 #Este menú se va a enseñar una vez ya se haya iniciado sesión como administrador.
-def menu_admin():
+def menu_admin(usuario):
+    
+    #Conexión a la base de datos.
+    conexion1 = psycopg2.connect(
+            host=host(), #Host de la base de datos.
+            user= user(), #Usuario de la base de datos.
+            password=passw(), #Contraseña de la base de datos.
+            database=BD(), #Base de datos que se usará.
+            port=port() #Puerto de la base de datos.
+    )
+
+    cursor1 = conexion1.cursor() #Cursor de la conexión.
+
     while True: 
         print("1. Ver contenido")
         print("2. Ver usuarios")
@@ -44,6 +56,11 @@ def menu_admin():
             elif decision == 7: #Saliendo de la pantalla. 
                 #Salir al menú principal.
                 print("Saliendo....")
+
+                ingre = 0
+                sql = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
+                cursor1.execute(sql, (ingre, usuario,))
+                conexion1.commit()
                 break;
             else: #Opción no válida.
                 print("Opción no válida.") 
