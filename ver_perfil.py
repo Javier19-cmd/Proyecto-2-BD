@@ -8,6 +8,7 @@ Carnets: 19026
 #Importando todos los datos del perfil.
 from datos import *
 import psycopg2 #Librería para la base de datos.
+from conexion import *
 
 #Método para ver el perfil.
 def ver(usuario):
@@ -38,13 +39,7 @@ def ver(usuario):
 def downgrade(usuario):
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -68,9 +63,6 @@ def downgrade(usuario):
             #Commit del query.
             conexion1.commit()
 
-            #Cerrando la conexión.
-            conexion1.close()
-
             print("Plan actualizado")
 
         elif eleccion == 2: #Si el usuario eligió la opción 2, es porque el usuario quiere el plan gratis.
@@ -82,9 +74,6 @@ def downgrade(usuario):
             
             #Commit del query.
             conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
 
             print("Plan actualizado")
         else: #El usuario eligió una opción no válida.

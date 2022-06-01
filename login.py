@@ -7,6 +7,7 @@ Carnets: 19026
 """
 #Importando los datos de la BD.
 from datos import * 
+from conexion import *
 #Librería para la base de datos.
 import psycopg2 
 #Librería para encriptar las contraseñas.
@@ -65,13 +66,9 @@ def normal():
     #print(conn)
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = connect()
+
+    setConnection(conexion1) #Conexión a la base de datos.
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -101,6 +98,7 @@ def normal():
         if contraseña == decode: 
             print("Contraseña correcta")
             traer_perfiles(usuario) #Trayendo menú de opciones.
+            
         else: #La contraseña no es igual.
             print("Contraseña incorrecta")
             #Enviando el usuario de la persona a una tabla de fracaso.
@@ -111,7 +109,7 @@ def normal():
             conexion1.commit()
 
             #Cerrando la conexión.
-            conexion1.close()
+            disconnect(conexion1)
 
 #Método para validar los datos de los administradores.
 def administrador():
@@ -130,13 +128,7 @@ def administrador():
     #print(conn)
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = connect()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -188,8 +180,8 @@ def administrador():
             print("Contraseña correcta")
             if confir in entrada:
                 sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
-                confr = 1
                 cursor1.execute(sqlsa, (confr, usuario,))
+                confr = 1
                 conexion1.commit()
                 menu_admin(usuario) #Trayendo menú de opciones.
             else: 
@@ -208,5 +200,4 @@ def administrador():
             conexion1.commit()
 
             #Cerrando la conexión.
-            conexion1.close()
-    
+            disconnect(conexion1)

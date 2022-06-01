@@ -13,17 +13,12 @@ from ver_perfil import * #Trayendo las opciones para ver el perfil.
 from buscar import * #Trayendo las opciones de buscar.
 from favoritos import * #Trayendo las opciones para agregar contenido a su lista de favoritos.
 from anuncios import * #Trayendo la clase para agregar anuncios.
+from conexion import *
 
 def traer_perfiles(usuario):
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     print("Los usuarios disponibles son: ")
 
@@ -216,13 +211,7 @@ def traer_perfiles(usuario):
 #Este es el menú que tendrá el usuario una vez pueda acceder a su perfil.
 def menu_comercial(usuario, perfil):
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -256,6 +245,8 @@ def menu_comercial(usuario, perfil):
                 sql = "UPDATE perfiles SET ingreso = %s WHERE perfil = %s"
                 cursor1.execute(sql, (ingre, perfil,))
                 conexion1.commit()
+                print("cerrando conexion...")
+                disconnect(conexion1)
                 break;
             else: #Se eligió una opción mayor o menor a 4.
                 print("Opción no válida")

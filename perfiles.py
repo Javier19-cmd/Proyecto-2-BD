@@ -9,6 +9,7 @@ Carnets: 19026
 from datos import *
 #Librería para la base de datos.
 import psycopg2 
+from conexion import *
 
 
 #Opciones para registrar a los perfiles del sistema.
@@ -16,13 +17,7 @@ import psycopg2
 def basico(usuario):
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -41,19 +36,10 @@ def basico(usuario):
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -80,9 +66,6 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 #Commit del query.
                 conexion1.commit()
 
-                #Cerrando la conexión.
-                conexion1.close()
-
             elif decision == 2: 
                 #Insertar el usuario y los perfiles.
                 #El usuario eligió a dos perfiles.
@@ -100,9 +83,6 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
             
             elif decision == 3: 
                 #Insertar el usuario y los perfiles.
@@ -121,9 +101,6 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
             
             elif decision == 4: 
                 #Insertar el usuario y los perfiles.
@@ -148,9 +125,6 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
                 #Commit del query.
                 conexion1.commit()
 
-                #Cerrando la conexión.
-                conexion1.close()
-
             else: 
                 #Se eligieron más perfiles.
                 print("No se pueden elegir más perfiles.")
@@ -163,13 +137,7 @@ def estandar(usuario): #Se insertarán los perfiles elegidos más el usuario.
 
 def avanzado(usuario):
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -198,9 +166,6 @@ def avanzado(usuario):
                 #Commit del query.
                 conexion1.commit()
 
-                #Cerrando la conexión.
-                conexion1.close()
-
             elif decision == 2: 
                 #Insertar el usuario y los perfiles.
                 #El usuario eligió a dos perfiles.
@@ -219,9 +184,6 @@ def avanzado(usuario):
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
             
             elif decision == 3: 
                 #Insertar el usuario y los perfiles.
@@ -243,9 +205,6 @@ def avanzado(usuario):
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
 
             
             elif decision == 4: 
@@ -271,9 +230,6 @@ def avanzado(usuario):
                 #Commit del query.
                 conexion1.commit()
 
-                #Cerrando la conexión.
-                conexion1.close()
-
             elif decision == 5: 
                 #Insertar el usuario y los perfiles.
                 #El usuario eligió a cinco perfiles.
@@ -298,9 +254,6 @@ def avanzado(usuario):
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
             
             elif decision == 6: 
                 #Insertar el usuario y los perfiles.
@@ -328,9 +281,6 @@ def avanzado(usuario):
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
 
             elif decision == 7: 
                 #Insertar el usuario y los perfiles.
@@ -360,9 +310,6 @@ def avanzado(usuario):
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
             
             elif decision == 8: 
                 #Insertar el usuario y los perfiles.
@@ -394,9 +341,6 @@ def avanzado(usuario):
 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
             
             else: 
                 #Se puso una cantidad que no se puede.

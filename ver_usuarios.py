@@ -8,6 +8,7 @@ Carnets: 19026
 from datos import * #Importando todos los datos de la base de datos.
 import psycopg2 #Librería para abrir la base de datos.
 from datetime import datetime #Librería para obtener la hora.
+from conexion import *
 
 #Menú principal para ver las opciones para ver los estados y cambios de los usuarios.
 def ver_usuarios():
@@ -55,13 +56,7 @@ def ver_usuarios():
 def dar_debaja():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
     
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -81,9 +76,6 @@ def dar_debaja():
     #Haciendo commit de los queries.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
     print("Usuario dado de baja")
 
     #mod1() #Método para meter las modficiaciones que hizo el administrador.
@@ -92,13 +84,7 @@ def dar_debaja():
 def cambiar_correo():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -131,9 +117,6 @@ def cambiar_correo():
             
             #Commit del query.
             conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
             
             print("Correo actualizado \n")
 
@@ -144,13 +127,7 @@ def cambiar_correo():
 #Método para cambiar el nombre de la persona.
 def cambiar_nombre():
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -183,9 +160,6 @@ def cambiar_nombre():
             
             #Commit del query.
             conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
             
             print("Nombre actualizado \n")
 
@@ -197,13 +171,7 @@ def cambiar_nombre():
 def cambiar_apellido():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -236,9 +204,6 @@ def cambiar_apellido():
             
             #Commit del query.
             conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
             
             print("Apellido actualizado \n")
 
@@ -250,14 +215,7 @@ def cambiar_apellido():
 def mod1(): #Insertando la modificación que se hizo. En este caso borrar cuenta.
     
         #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
-
+    conexion1 = getConnection()
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
     now = datetime.now() #Momento actual en donde se está eliminando al usuario.
@@ -273,19 +231,10 @@ def mod1(): #Insertando la modificación que se hizo. En este caso borrar cuenta
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 def mod2(): #Insertando la modificación que se hizo. En este caso modificiacón de correo.
     
         #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -302,19 +251,10 @@ def mod2(): #Insertando la modificación que se hizo. En este caso modificiacón
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 def mod3(): #Insertando la modificación que se hizo. En este caso modificiacón del nombre.
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -331,19 +271,10 @@ def mod3(): #Insertando la modificación que se hizo. En este caso modificiacón
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 def mod4(): #Insertando la modificación que se hizo. En este caso modificiacón del apellido.
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -359,7 +290,4 @@ def mod4(): #Insertando la modificación que se hizo. En este caso modificiacón
 
     #Commit del query.
     conexion1.commit()
-
-    #Cerrando la conexión.
-    conexion1.close()
 """

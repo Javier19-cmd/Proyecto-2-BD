@@ -7,6 +7,7 @@ Carnets: 19026
 """
 from datos import * #Importando todos los datos de la base de datos.
 import psycopg2 #Librería para abrir la base de datos.
+from conexion import *
 
 #Método principal del archivo.
 def ver_anunciantes():
@@ -60,13 +61,7 @@ def ver_anunciantes():
 def agregar_anunciante():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -83,22 +78,13 @@ def agregar_anunciante():
         #Haciendo commit de los queries.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
     print("Anunciante agregado")
 
 #Método para modificar anunciantes.
 def modificar_anunciante():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -131,9 +117,6 @@ def modificar_anunciante():
             
             #Commit del query.
             conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
             
             print("Correo actualizado \n")
 
@@ -142,13 +125,7 @@ def modificar_anunciante():
 def eliminar_anunciante():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
     
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -168,22 +145,13 @@ def eliminar_anunciante():
     #Haciendo commit de los queries.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
     print("Anunciante eliminado")
 
 #Método para agregar contenido.
 def agregar_contenido():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -202,22 +170,13 @@ def agregar_contenido():
         #Haciendo commit de los queries.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
     print("Anunciante agregado")
 
 #Método para modificar contenido.
 def modificar_contenidoo():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -257,9 +216,6 @@ def modificar_contenidoo():
                     
                     #Commit del query.
                     conexion1.commit()
-
-                    #Cerrando la conexión.
-                    conexion1.close()
                     
                     print("Link actualizado \n")
 
@@ -294,9 +250,6 @@ def modificar_contenidoo():
                     
                     #Commit del query.
                     conexion1.commit()
-
-                    #Cerrando la conexión.
-                    conexion1.close()
                     
                     print("Género actualizado \n")
 
@@ -311,13 +264,7 @@ def modificar_contenidoo():
 def quitar_auncio():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
     
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -331,8 +278,5 @@ def quitar_auncio():
 
     #Haciendo commit de los queries.
     conexion1.commit()
-
-    #Cerrando la conexión.
-    conexion1.close()
 
     print("Anuncio eliminado")

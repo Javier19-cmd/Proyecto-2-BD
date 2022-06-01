@@ -7,16 +7,11 @@ Carnets: 19026
 """
 import psycopg2 #Librería para la base de datos.
 from datos import *
+from conexion import *
 
 def probando():
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host='project2db-do-user-11101874-0.b.db.ondigitalocean.com',
-            user= user(),
-            password='aYSwBxxQYMU9ZQmJ',
-            database='dbproject2',
-            port='25060'
-    )
+    conexion1 = getConnection()
 
     #Creando cursor. Recorre la base de datos.
     cursor1=conexion1.cursor()
@@ -38,8 +33,5 @@ def probando():
 
     #Commit del query.
     conexion1.commit()
-
-    #Cerrando la conexión.
-    conexion1.close()
 
 probando()

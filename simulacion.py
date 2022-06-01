@@ -11,17 +11,12 @@ import psycopg2     #Importando la librería de la BD.
 import random
 import datetime
 from HoraRandom import *
+from conexion import *
 
 def generador():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-        host=host(), #Host de la base de datos.
-        user= user(), #Usuario de la base de datos.
-        password=passw(), #Contraseña de la base de datos.
-        database=BD(), #Base de datos que se usará.
-        port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -92,7 +87,5 @@ def generador():
         cursor1.execute(sql, (perfil, nombre, link, visto, startDate, id,))
 
     conexion1.commit()
-
-    conexion1.close()
 
 #generador()

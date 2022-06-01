@@ -8,6 +8,7 @@ Carnets: 19026
 #Archivo que modifica el contenido que ven los usuarios.
 from datos import * #Importando los datos de la base de datos.
 import psycopg2 #Librería para abrir la base de datos.
+from conexion import *
 
 #Método que modifica el contenido.
 def modificar_contenidos():
@@ -45,13 +46,7 @@ def modificar_contenidos():
 def agregar_contenido():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
     
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -86,20 +81,11 @@ def agregar_contenido():
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Modificar contenido. 
 def modificar_contenido():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
     
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -147,9 +133,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Película actualizada \n")
 
@@ -188,9 +171,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Actor Actualizado \n")
 
@@ -227,9 +207,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Película actualizada \n")
 
@@ -266,9 +243,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Película actualizada \n")
 
@@ -305,9 +279,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Película actualizada \n")
 
@@ -343,9 +314,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Película actualizada \n")
 
@@ -381,9 +349,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Película actualizada \n")
 
@@ -419,9 +384,6 @@ def modificar_contenido():
                 
                 #Commit del query.
                 conexion1.commit()
-
-                #Cerrando la conexión.
-                conexion1.close()
                 
                 print("Película actualizada \n")
 
@@ -435,13 +397,7 @@ def modificar_contenido():
 def eliminar_contenido():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
     
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -469,9 +425,6 @@ def eliminar_contenido():
             
             #Commit del query.
             conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
             
             print("Película eliminada \n")
 

@@ -14,6 +14,8 @@ from registro_admins import *
 #Login de los usuarios.
 from login import *
 
+from conexion import *
+
 #Página de inicio del programa.
 def inicio():
     while True: #While para que la ejecución nunca termine.
@@ -28,7 +30,6 @@ def inicio():
         print("4. Salir\n")
 
         try:
-
             opcion = int(input("Escoja la opción que desee \n")) #Opción a elegir.
             print("\n") #Salto de línea para que se vea mejor.
 

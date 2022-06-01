@@ -9,6 +9,7 @@ from datos import * #Importando todos los datos de la base de datos.
 from datetime import datetime #Librería para obtener la hora.
 import psycopg2 #Importando la librería para implementar la base de datos.
 from recomendacion import * #Importando todos los métodos usados en la clase de recomendación.
+from conexion import *
 
 def buscar(perfil):
 
@@ -37,13 +38,7 @@ def buscar(perfil):
             #Revisar el lucid chart para agregar los criterios de la búsqueda con el actor.
 
             #Conexión a la base de datos.
-            conexion1 = psycopg2.connect(
-                    host=host(), #Host de la base de datos.
-                    user= user(), #Usuario de la base de datos.
-                    password=passw(), #Contraseña de la base de datos.
-                    database=BD(), #Base de datos que se usará.
-                    port=port() #Puerto de la base de datos.
-            )
+            conexion1 = getConnection()
             
             cursor1 = conexion1.cursor() #Cursor de la conexión.
             
@@ -127,13 +122,7 @@ def buscar(perfil):
         elif eleccion == 2: #Búsqueda por nombre de actor.
             
             #Conexión a la base de datos.
-            conexion1 = psycopg2.connect(
-                    host=host(), #Host de la base de datos.
-                    user= user(), #Usuario de la base de datos.
-                    password=passw(), #Contraseña de la base de datos.
-                    database=BD(), #Base de datos que se usará.
-                    port=port() #Puerto de la base de datos.
-            )
+            conexion1 = getConnection()
             
             cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -215,13 +204,7 @@ def buscar(perfil):
         elif eleccion == 3: #Búsquda por género.
         
         #Conexión a la base de datos.
-            conexion1 = psycopg2.connect(
-                    host=host(), #Host de la base de datos.
-                    user= user(), #Usuario de la base de datos.
-                    password=passw(), #Contraseña de la base de datos.
-                    database=BD(), #Base de datos que se usará.
-                    port=port() #Puerto de la base de datos.
-            )
+            conexion1 = getConnection()
             
             cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -305,13 +288,7 @@ def buscar(perfil):
         elif eleccion == 4: #Búsqueda por director.
             
         #Conexión a la base de datos.
-            conexion1 = psycopg2.connect(
-                    host=host(), #Host de la base de datos.
-                    user= user(), #Usuario de la base de datos.
-                    password=passw(), #Contraseña de la base de datos.
-                    database=BD(), #Base de datos que se usará.
-                    port=port() #Puerto de la base de datos.
-            )
+            conexion1 = getConnection()
             
             cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -396,13 +373,7 @@ def buscar(perfil):
         elif eleccion == 5: #Búsqueda por premio.
             
             #Conexión a la base de datos.
-            conexion1 = psycopg2.connect(
-                    host=host(), #Host de la base de datos.
-                    user= user(), #Usuario de la base de datos.
-                    password=passw(), #Contraseña de la base de datos.
-                    database=BD(), #Base de datos que se usará.
-                    port=port() #Puerto de la base de datos.
-            )
+            conexion1 = getConnection()
             
             cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -486,13 +457,7 @@ def buscar(perfil):
         elif eleccion == 6: #Búsqueda por longitud. (Duración)
 
         #Conexión a la base de datos.
-            conexion1 = psycopg2.connect(
-                    host=host(), #Host de la base de datos.
-                    user= user(), #Usuario de la base de datos.
-                    password=passw(), #Contraseña de la base de datos.
-                    database=BD(), #Base de datos que se usará.
-                    port=port() #Puerto de la base de datos.
-            )
+            conexion1 = psycopg2.getConnection()
             
             cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -569,9 +534,6 @@ def buscar(perfil):
 
             #Commit del query.
             conexion1.commit()
-
-            #Cerrando la conexión.
-            conexion1.close()
         
         elif eleccion == 7: #Salir.
             break; #Saliendo de la pantalla.

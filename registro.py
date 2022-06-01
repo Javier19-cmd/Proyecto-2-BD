@@ -16,6 +16,7 @@ from datos import * #Jalando el archivo que tiene los datos de la BD.
 import cryptocode   #Librería para encriptar las contraseñas.
 from perfiles import * #Llamando al archivo de perfiles, para poder registrarlos en otra tabla de la base de datos.
 from datetime import datetime #Librería para obtener la hora.
+from conexion import *
 
 #Archivo que se encarga de registrar a las personas en la base de datos.
 def registro():
@@ -68,13 +69,7 @@ def registro():
 def insertar(nombre, apellido, usuario, conn, correo, plan, now):
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
     
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -125,9 +120,6 @@ def insertar(nombre, apellido, usuario, conn, correo, plan, now):
         #Commit del query.
         conexion1.commit()
 
-        #Cerrando la conexión.
-        conexion1.close()
-
         basico(usuario) #Llamando al método de plan básico para que se registre el perfil de la persona.
                         #Se le pasa como parámetro el usuario para que cuando se inicie sesión, el sistema jale los datos que son.
 
@@ -143,9 +135,6 @@ def insertar(nombre, apellido, usuario, conn, correo, plan, now):
         #Commit del query.
         conexion1.commit()
 
-        #Cerrando la conexión.
-        conexion1.close()
-
         estandar(usuario) #Llamando al método de plan estándar para que se registren los perfiles de la persona.
                           #Se le pasa como parámetro el usuario para que cuando se inicie sesión, el sistema jale los datos que son.
 
@@ -159,9 +148,6 @@ def insertar(nombre, apellido, usuario, conn, correo, plan, now):
 
         #Commit del query.
         conexion1.commit()
-
-        #Cerrando la conexión.
-        conexion1.close()
 
         avanzado(usuario) #Llamando al método de plan avanzado para que se registren los perfiles de la persona.
                           #Se le pasa como parámetro el usuario para que cuando se inicie sesión, el sistema jale los datos que son.

@@ -7,6 +7,7 @@ Carnets: 19026
 """
 from datos import * #Importando toda la info de la BD.
 import psycopg2 #Importando librería para hacer la conexión con la BD.
+from conexion import *
 
 def reporteria(): 
     print("Bienvenido a la pantalla de reportería \n")
@@ -72,13 +73,7 @@ def reporteria():
 def generos_mas_vistos_y_minutos_consumidos():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -99,24 +94,13 @@ def generos_mas_vistos_y_minutos_consumidos():
     for row in rows: 
         print("Género|Fecha|Minutos Reproducidos")
         print(row) #Imprimiendo los datos de la BD.
-    
-    #Commit del query.
-    conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
 
 #Método que sirve para ver la cantidad de reproducciones por tipo de cuenta en un rango de fechas.
 def cant_reproducciones_por_tipo_cuenta_por_fechas():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -143,20 +127,11 @@ def cant_reproducciones_por_tipo_cuenta_por_fechas():
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Método que calcula el top 10 de directores y actores vistos por los perfiles estándar y avanzaods.
 def top_10_directores_y_actores_por_perfiles_estandar_avanzados():
 
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -181,20 +156,11 @@ def top_10_directores_y_actores_por_perfiles_estandar_avanzados():
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Método que cuenta la cantidad de cuentas avanzadas creadas en los últimos seis meses.
 def cant_cuentas_avanzadas():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -218,20 +184,11 @@ def cant_cuentas_avanzadas():
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Método que va a servir para determinar la hora pico del sistema.
 def hora_pico():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
     
@@ -257,20 +214,11 @@ def hora_pico():
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Función para poder ver el top de términos más buscados en la plataforma de streaming.
 def top_terminos_buscados():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -286,20 +234,11 @@ def top_terminos_buscados():
     #Commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Método para poder ver el contenido más visto en cada hora entre 9:00 a.m. a 1:00 a.m. para un mes dado. 
 def top5_contenido_mas_visto_en_un_mes():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -323,20 +262,11 @@ def top5_contenido_mas_visto_en_un_mes():
     #Haciendo commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Método que jala el top 20 de películas que comenzaron a verse pero que llevan más de 20 días son finalizarse, para un rango de fechas dado.
 def top20_peliculas_sin_finalizar():
     
     #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -355,19 +285,10 @@ def top20_peliculas_sin_finalizar():
     #Haciendo commit del query.
     conexion1.commit()
 
-    #Cerrando la conexión.
-    conexion1.close()
-
 #Método que jala el top de administradores que más modificaciones para un rango de fechas dado.
 def top_adminis_modificaciones():
         #Conexión a la base de datos.
-    conexion1 = psycopg2.connect(
-            host=host(), #Host de la base de datos.
-            user= user(), #Usuario de la base de datos.
-            password=passw(), #Contraseña de la base de datos.
-            database=BD(), #Base de datos que se usará.
-            port=port() #Puerto de la base de datos.
-    )
+    conexion1 = getConnection()
 
     cursor1 = conexion1.cursor() #Cursor de la conexión.
 
@@ -385,6 +306,3 @@ def top_adminis_modificaciones():
 
     #Haciendo commit del query.
     conexion1.commit()
-
-    #Cerrando la conexión.
-    conexion1.close()
