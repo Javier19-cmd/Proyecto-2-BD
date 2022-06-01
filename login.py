@@ -97,6 +97,7 @@ def normal():
         #print(decode) #Imprimiendo la variable.
         if contraseña == decode: 
             print("Contraseña correcta")
+            setConnection(conexion1)
             sql6 = "SET myapp.username = %s"
             cursor1.execute(sql6, (usuario,))
             conexion1.commit()
@@ -182,6 +183,7 @@ def administrador():
         if contraseña == decode: 
             print("Contraseña correcta")
             if confir in entrada:
+                setConnection(conexion1)
                 sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
                 confr = 1
                 cursor1.execute(sqlsa, (confr, usuario,))
