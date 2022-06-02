@@ -604,7 +604,6 @@ select * from historial h;
 
 select * from favoritos f;
 
-
 SELECT nombre, id FROM videos WHERE nombre ILIKE '%mejor%'
 
 
@@ -912,7 +911,7 @@ from
   group by b.username) as subquery
 where my_rank > 10;
 
-select distinct b.username, b.fecha_hora::date, count(b.operation)
+select b.username, b.fecha_hora::date, count(b.operation)
 from bitacora b
 where fecha_hora::date = '2022-05-30' and fecha_hora::date < '2022-06-01' and es_admin = '1'
 group by b.username, b.fecha_hora
@@ -936,9 +935,9 @@ begin
 	return query
 	select distinct b.username, b.fecha_hora::date, count(b.operation)
 	from bitacora b
-	where fecha_hora::date = $1 and fecha_hora::date < $2
+	where fecha_hora::date > $1 and fecha_hora::date < $2
 	group by b.username, b.fecha_hora
-	order by count(b.operation) asc
+	order by count(b.operation) desc
 	limit 5;
 end;
 $body$
@@ -953,7 +952,7 @@ select * from bitacora;
 
 drop function get_mods(date, date)
 
-select * from get_mods('2022-05-30', '2022-06-1');
+select * from get_mods('05-15-2022', '06-08-2022');
 
 
 -- Simulación de operaciones: Hay que preguntarle a los administradores una fecha y la cantidad de visualizaciones de películas.
@@ -1075,6 +1074,8 @@ insert into videos(nombre, genero, director, premio, fecha_streno, link, duracio
 
 select * from videos;
 
+select * from admins;
+
 select * from actores a;
 
 -- Insertando a más actores.
@@ -1181,10 +1182,70 @@ add column ingreso int;
 update admins
 set ingreso = '0';
 
+select * from bitacora b;
 
 -- Bitácora: Hansel López
 
 
+
+CREATE TABLE bitacora (
+	id SERIAL NOT NULL PRIMARY KEY,
+	fecha_hora timestamp DEFAULT CURRENT_TIMESTAMP,
+	userName varchar(25),
+	typeUser int,
+	operation varchar(25),
+	tableName varchar(25),
+	oldRow varchar(512),
+	newRow varchar(512)
+);
+
+CREATE OR REPLACE FUNCTION fn_bitacora() RETURNS TRIGGER AS $$
+BEGIN
+	INSERT INTO bitacora(userName, operation, tableName, oldRow, newRow) VALUES((SELECT current_setting('myapp.username') limit 1), TG_OP, TG_TABLE_NAME, OLD, NEW);
+RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER tr_bitacora AFTER INSERT OR UPDATE OR DELETE
+ON admins
+FOR EACH ROW 
+EXECUTE PROCEDURE fn_bitacora();
+
+
+CREATE TRIGGER tr_bitacora AFTER INSERT OR UPDATE OR DELETE
+ON actores
+FOR EACH ROW 
+EXECUTE PROCEDURE fn_bitacora();
+
+CREATE TRIGGER tr_bitacora AFTER INSERT OR UPDATE OR DELETE
+ON perfiles
+FOR EACH ROW 
+EXECUTE PROCEDURE fn_bitacora();
+
+CREATE TRIGGER tr_bitacora AFTER INSERT OR UPDATE OR DELETE
+ON videos
+FOR EACH ROW 
+EXECUTE PROCEDURE fn_bitacora();
+
+CREATE TRIGGER tr_bitacora AFTER INSERT OR UPDATE OR DELETE
+ON datos_usuario
+FOR EACH ROW 
+EXECUTE PROCEDURE fn_bitacora();
+
+CREATE TRIGGER tr_bitacora AFTER INSERT OR UPDATE OR DELETE
+ON anunciante
+FOR EACH ROW 
+EXECUTE PROCEDURE fn_bitacora();
+
+CREATE TRIGGER tr_bitacora AFTER INSERT OR UPDATE OR DELETE
+ON anuncio
+FOR EACH ROW 
+EXECUTE PROCEDURE fn_bitacora();
+
+SET myapp.username = 'user1';
+
+SELECT current_setting('myapp.username') limit 1;
 
 
 
