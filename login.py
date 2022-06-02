@@ -184,13 +184,13 @@ def administrador():
             print("Contraseña correcta")
             if confir in entrada:
                 setConnection(conexion1)
-                sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
-                confr = 1
-                cursor1.execute(sqlsa, (confr, usuario,))
-                conexion1.commit()
                 # execute SET myapp.username = 'usuario' query;
                 sql6 = "SET myapp.username = %s"
                 cursor1.execute(sql6, (usuario,))
+                conexion1.commit()
+                sqlsa = "UPDATE admins SET ingreso = %s WHERE usuario = %s"
+                confr = 1
+                cursor1.execute(sqlsa, (confr, usuario,))
                 conexion1.commit()
                 menu_admin(usuario) #Trayendo menú de opciones.
             else: 
